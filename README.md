@@ -1,2 +1,12 @@
-# sw_developer_2023_trainer
-WIFI SW Developer Lehrgang Artefakte
+# WIFI Software Developer 2023
+Hallo zusammen...
+
+**Folgen** Dinge sind hier zu finden:
+- Code
+- Spass
+- Bilder
+- Videos
+
+## Inhalt
+
+![TestImage](doc/images/overview.drawio.png)
