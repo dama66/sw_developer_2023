@@ -51,7 +51,7 @@ Hier sollen einige grundlegende Begriffe dargestellt werden:
 |PUSH|Den lokalen Stand auf den Server synchronisieren|
 |PULL|Den Stand auf dem Server in die lokale Repository synchronisieren|
 |FETCH|Abfragen wo welche Änderungen auf eine Synchronisierung warten|
-||
+
 
 
 ![TestImage](doc/images/git-overview.drawio.png)
