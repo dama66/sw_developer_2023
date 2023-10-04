@@ -18,7 +18,8 @@ In this repository i will document the progress of the course and will add every
 <a id="item-md"></a>
 ## MarkDown basics
 
-    We have learned the basics of creating Readme.md and tried out different tools for creatigng graphics, ... e.g. draw.io as VS-Code extension.
+    We have learned the basics of creating Readme.md and tried out different tools for creatigng graphics, ... 
+    e.g. draw.io as VS-Code extension.
 
 ![TestImage](doc/images/overview.drawio.png)
 
