@@ -1,59 +1,76 @@
-![TestImage](doc/images/wifi_campus.PNG)
+![TestImage](doc/images/Logo.png)
 <a id="item-home"></a>
 # WIFI Software Developer 2023
-Hallo zusammen...
+Hi all....
 
-Mit diesem Rpository verwalten wir unsere Arbeitsergebnisse pro Kursabend. Im weiteren Verlauf der Veranstaltung wird hier auch eine kleine Applikation Platz finden, welches im Rahmen der **Aufbau- & Applikationsentwicklungsveranstaltung** entstehen wird. 
+In this repository i will document the progress of the course and will add every week the learned content. 
 
-Wünsche Euch viel Spaß beim Lernen!
-
-**Inhalt**
- - [MarkDown Grundlagen](#item-md)
- - [GIT Grundlagen](#item-git)
+## table of contents
+- **Week 39**
+   - [MarkDown basics](#item-md)
+   - [GIT basics](#item-git)
+  
+- **Week 40**
+   - [VisualStudio basics](#item-vs)
+   - [....](#item-?)
  
 
 <a id="item-md"></a>
-## MarkDown Grundlagen
+## MarkDown basics
 
-    Das ist ein Bild:
+    We have learned the basics of creating Readme.md and tried out different tools for creatigng graphics, ... e.g. draw.io as VS-Code extension.
 
 ![TestImage](doc/images/overview.drawio.png)
 
-    Aufzählungen
+    enumerations
 
-- eins
-- zwei
-- drei
+- one
+- two
+- five
+- 
 
-Cool oder?
+    Tables
 
-
-    Tabelle
-
-|Tag|Count|
+|Day|Count|
 |-----:|:-------:|
-|Montag|12|
-|Dienstag|15|
-|Mittwoch|20|
-|Donnerstag|20|
-|Freitag|20|
-|Samstag|20|
-|Sonntag|20|
+|Monday|12|
+|Tuesday|15|
+|Wednesday|20|
+|Thursday|20|
+|Friday|20|
+|Saturday|20|
+|Sunday|20|
 
 [Zurück](#item-home)
 
 <a id="item-git"></a>
-## GIT Grundlagen
-Hier sollen einige grundlegende Begriffe dargestellt werden:
+## GIT basics
 
-|Begriff|Erklärung|
+    We have set up our Git account and installed Fork. Then we have creared our own Git repository and cloned it to fork and VisualStudio.
+Here are a few basic terms:
+
+|term|explanation|
 |---|---|
-|PUSH|Den lokalen Stand auf den Server synchronisieren|
-|PULL|Den Stand auf dem Server in die lokale Repository synchronisieren|
-|FETCH|Abfragen wo welche Änderungen auf eine Synchronisierung warten|
-
-
+|PUSH|Synchronize the local state to the server|
+|PULL|Synchronize the state on the server to the local repository|
+|FETCH|Query where which changes are waiting for synchronization|
 
 ![TestImage](doc/images/git-overview.drawio.png)
+
+[Zurück](#item-home)
+
+<a id="item-vs"></a>
+## VisualStudio basics
+
+    We have learned the basics of .NET console applications and created our first "Hello World". Further we learned the different datatypes and their usage and made some sample applications with these.
+
+Here are some useful key shortcuts:
+
+|shortcut|explanation|
+|---|---|
+|STRG+R+R|Rename a variable at all points of use|
+|STRG+K+C|Comment out the selected lines|
+|STRG+K+U|Uncomment the selected lines|
+
 
 [Zurück](#item-home)
