@@ -47,7 +47,8 @@ In this repository i will document the progress of the course and will add every
 <a id="item-git"></a>
 ## GIT basics
 
-    We have set up our Git account and installed Fork. Then we have creared our own Git repository and cloned it to fork and VisualStudio.
+    We have set up our Git account and installed Fork. Then we have creared our own Git repository
+    and cloned it to fork and VisualStudio.
 Here are a few basic terms:
 
 |term|explanation|
@@ -63,7 +64,9 @@ Here are a few basic terms:
 <a id="item-vs"></a>
 ## VisualStudio basics
 
-    We have learned the basics of .NET console applications and created our first "Hello World". Further we learned the different datatypes and their usage and made some sample applications with these.
+    We have learned the basics of .NET console applications and created our first "Hello World". 
+    Further we learned the different datatypes and their usage and made some sample applications
+    with these.
 
 Here are some useful key shortcuts:
 
