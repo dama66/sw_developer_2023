@@ -85,7 +85,8 @@ Here are some useful key shortcuts:
 <a id="item-vs2"></a>
 ## VisualStudio basics 2
 
-    In this lesson we have learned querys and inputs with the console. We have created our first "intelligent" application with which we can perform simple calculations. Further we have learned 
+    In this lesson we have learned querys and inputs with the console. We have created our first 
+    "intelligent" application with which we can perform simple calculations. Further we have learned 
     to make them safe with exceptions.
 
 ### learned commands
