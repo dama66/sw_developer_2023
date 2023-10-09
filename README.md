@@ -12,8 +12,11 @@ In this repository i will document the progress of the course and will add every
   
 - **Week 40**
    - [VisualStudio basics](#item-vs)
-   - [....](#item-?)
+   - [VisualStudio basics 2](#item-vs2)
  
+ - **Week 41**
+   - [...](#item-??)
+   - [...](#item-??)
 
 <a id="item-md"></a>
 ## MarkDown basics
@@ -75,6 +78,24 @@ Here are some useful key shortcuts:
 |STRG+R+R|Rename a variable at all points of use|
 |STRG+K+C|Comment out the selected lines|
 |STRG+K+U|Uncomment the selected lines|
+
+
+[Zurück](#item-home)
+
+<a id="item-vs2"></a>
+## VisualStudio basics 2
+
+    In this lesson we have learned querys and inputs with the console. We have created our first "intelligent" application with which we can perform simple calculations. Further we have learned 
+    to make them safe with exceptions.
+
+### learned commands
+
+- Console.Write(Line)
+- Console.Readline
+- Console.SetCursorPosition
+- Parse
+- if/else
+- try/catch
 
 
 [Zurück](#item-home)
