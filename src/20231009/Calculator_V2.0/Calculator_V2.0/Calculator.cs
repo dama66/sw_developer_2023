@@ -9,17 +9,17 @@ namespace Calculator_V2._0
 {
     class Calculator
     {
-        static double pi = 13.1415;
+        const double pi = 3.14159265359;
 
         public void Start()
         {
             Title = "GEOMETRIC CALCULATOR";
-            RunMainMenue();
+            RunMainMenu();
 
             
         }
 
-        private void RunMainMenue()
+        private void RunMainMenu()
         {
             string prompt = @"
    ______                          __       _         ______      __           __      __            
@@ -41,39 +41,30 @@ namespace Calculator_V2._0
                 case 0:
                     Square();
                     break;
-
                 case 1:
                     Rectangle();
                     break;
-
                 case 2:
                     Triangle();
                     break;
-
                 case 3:
                     Circle();
                     break;
-
                 case 4:
                     Cube();
                     break;
-
                 case 5:
                     Cuboid();
                     break;
-
                 case 6:
-                    Cylinder();
+                    Cylinder(); 
                     break;
-
                 case 7:
                     Pyramid();
                     break;
-
                 case 8:
                     Cone();
                     break;
-
                 case 9:
                     Sphere();
                     break;
@@ -83,7 +74,7 @@ namespace Calculator_V2._0
         private void Square()
         {
             Square:
-            var squareSidelenght = 0;
+            var squareSidelenght = 0.0;
             Console.Clear();
 
             //Program Header
@@ -101,7 +92,7 @@ namespace Calculator_V2._0
 
             try
             {
-                squareSidelenght = int.Parse(Console.ReadLine());
+                squareSidelenght = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -117,16 +108,16 @@ namespace Calculator_V2._0
             }
             else
             {
-                Console.WriteLine($"\n\tperimeter: {squareSidelenght * 4} mm");
-                Console.WriteLine($"\tsurface:   {squareSidelenght * 2} mm2\n");
+                Console.WriteLine($"\n\tperimeter: {(squareSidelenght * 4):f2} mm");
+                Console.WriteLine($"\tsurface:   {(squareSidelenght * 2):f2} mm2\n");
             }
         }
 
         private void Rectangle()
         {
             Rectangle:
-            var rectangleSideA = 0;
-            var rectangleSideB = 0;
+            var rectangleSideA = 0.0;
+            var rectangleSideB = 0.0;
 
             Console.Clear();
 
@@ -145,7 +136,7 @@ namespace Calculator_V2._0
 
             try
             {
-                rectangleSideA = int.Parse(Console.ReadLine());
+                rectangleSideA = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -159,11 +150,11 @@ namespace Calculator_V2._0
 
             try
             {
-                rectangleSideB = int.Parse(Console.ReadLine());
+                rectangleSideB = double.Parse(Console.ReadLine());
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("the entered value is not valid!");
+                Console.WriteLine(ex);
                 Console.WriteLine("\nEnter to repeat....!");
                 Console.ReadLine();
                 goto Rectangle;
@@ -179,18 +170,18 @@ namespace Calculator_V2._0
             }
             else
             {
-                Console.WriteLine($"\n\tperimeter: {(rectangleSideA * 2) + (rectangleSideB * 2)} mm");
-                Console.WriteLine($"\tsurface:   {rectangleSideA * rectangleSideB} mm2\n");
+                Console.WriteLine($"\n\tperimeter: {((rectangleSideA * 2) + (rectangleSideB * 2)):f2} mm");
+                Console.WriteLine($"\tsurface:   {(rectangleSideA * rectangleSideB):f2} mm2\n");
             }
         }
 
         private void Triangle()
         {
             Triangle:
-            var triangleSideA = 0;
-            var triangleSideB = 0;
-            var triangleSideC = 0;
-            var triangleAlpha = 0;
+            var triangleSideA = 0.0;
+            var triangleSideB = 0.0;
+            var triangleSideC = 0.0;
+            var triangleAlpha = 0.0;
             var triangleHeight = 0.0;
 
             Console.Clear();
@@ -210,7 +201,7 @@ namespace Calculator_V2._0
 
             try
             {
-                triangleSideA = int.Parse(Console.ReadLine());
+                triangleSideA = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -224,7 +215,7 @@ namespace Calculator_V2._0
 
             try
             {
-                triangleSideB = int.Parse(Console.ReadLine());
+                triangleSideB = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -238,7 +229,7 @@ namespace Calculator_V2._0
 
             try
             {
-                triangleSideC = int.Parse(Console.ReadLine());
+                triangleSideC = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -252,7 +243,7 @@ namespace Calculator_V2._0
 
             try
             {
-                triangleAlpha = int.Parse(Console.ReadLine());
+                triangleAlpha = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -282,17 +273,16 @@ namespace Calculator_V2._0
             {
                 triangleHeight = triangleSideB * Math.Sin(triangleAlpha);
 
-                Console.WriteLine($"\n\theight:    {triangleHeight} mm");
-                Console.WriteLine($"\tperimeter: {triangleSideA + triangleSideB + triangleSideC} mm");
-                Console.WriteLine($"\tsurface:   {0.5 * triangleHeight * triangleSideC} mm2\n");
+                Console.WriteLine($"\n\theight:    {triangleHeight:f2} mm");
+                Console.WriteLine($"\tperimeter: {(triangleSideA + triangleSideB + triangleSideC):f2} mm");
+                Console.WriteLine($"\tsurface:   {(0.5 * triangleHeight * triangleSideC):f2} mm2\n");
             }
         }
 
         private void Circle()
         {
             Circle:
-            var circleRadius = 0;
-            const double pi = 3.14159265359;
+            var circleRadius = 0.0;
 
             Console.Clear();
 
@@ -310,7 +300,7 @@ namespace Calculator_V2._0
 
             try
             {
-                circleRadius = int.Parse(Console.ReadLine());
+                circleRadius = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -326,16 +316,16 @@ namespace Calculator_V2._0
             }
             else
             {
-                Console.WriteLine($"\n\tdiameter:  {2 * circleRadius} mm");
-                Console.WriteLine($"\tperimeter: {2 * circleRadius * pi} mm");
-                Console.WriteLine($"\tsurface:   {Math.Pow(circleRadius, 2) * pi} mm2\n");
+                Console.WriteLine($"\n\tdiameter:  {(2 * circleRadius):f2} mm");
+                Console.WriteLine($"\tperimeter: {(2 * circleRadius * pi):f2} mm");
+                Console.WriteLine($"\tsurface:   {(Math.Pow(circleRadius, 2) * pi):f2} mm2\n");
             }
         }
 
         private void Cube()
         {
             Cube:
-            var cubeSidelenght = 0;
+            var cubeSidelenght = 0.0;
 
             Console.Clear();
 
@@ -353,7 +343,7 @@ namespace Calculator_V2._0
 
             try
             {
-                cubeSidelenght = int.Parse(Console.ReadLine());
+                cubeSidelenght = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -369,17 +359,17 @@ namespace Calculator_V2._0
             }
             else
             {
-                Console.WriteLine($"\n\tsurface:  {Math.Pow(cubeSidelenght, 2) * 6} mm2");
-                Console.WriteLine($"\tvolume:   {Math.Pow(cubeSidelenght, 3)} mm3\n");
+                Console.WriteLine($"\n\tsurface:  {(Math.Pow(cubeSidelenght, 2) * 6):f2} mm2");
+                Console.WriteLine($"\tvolume:   {(Math.Pow(cubeSidelenght, 3)):f2)} mm3\n");
             }
         }
 
         private void Cuboid()
         {
             Cuboid:
-            var cuboidSidelenghtA = 0;
-            var cuboidSidelenghtB = 0;
-            var cuboidSidelenghtC = 0;
+            var cuboidSidelenghtA = 0.0;
+            var cuboidSidelenghtB = 0.0;
+            var cuboidSidelenghtC = 0.0;
 
             Console.Clear();
 
@@ -397,7 +387,7 @@ namespace Calculator_V2._0
 
             try
             {
-                cuboidSidelenghtA = int.Parse(Console.ReadLine());
+                cuboidSidelenghtA = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -411,7 +401,7 @@ namespace Calculator_V2._0
 
             try
             {
-                cuboidSidelenghtB = int.Parse(Console.ReadLine());
+                cuboidSidelenghtB = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -425,7 +415,7 @@ namespace Calculator_V2._0
 
             try
             {
-                cuboidSidelenghtC = int.Parse(Console.ReadLine());
+                cuboidSidelenghtC = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -449,16 +439,16 @@ namespace Calculator_V2._0
             }
             else
             {
-                Console.WriteLine($"\n\tsurface:  {2 * (cuboidSidelenghtA * cuboidSidelenghtB + cuboidSidelenghtA * cuboidSidelenghtC + cuboidSidelenghtB * cuboidSidelenghtC)} mm2");
-                Console.WriteLine($"\tvolume:   {cuboidSidelenghtA * cuboidSidelenghtB * cuboidSidelenghtC} mm3\n");
+                Console.WriteLine($"\n\tsurface:  {(2 * (cuboidSidelenghtA * cuboidSidelenghtB + cuboidSidelenghtA * cuboidSidelenghtC + cuboidSidelenghtB * cuboidSidelenghtC)):f2} mm2");
+                Console.WriteLine($"\tvolume:   {(cuboidSidelenghtA * cuboidSidelenghtB * cuboidSidelenghtC):f2} mm3\n");
             }
         }
 
         private void Cylinder()
         {
             Cylinder:
-            var cylinderRadius = 0;
-            var cylinderHeight = 0;
+            var cylinderRadius = 0.0;
+            var cylinderHeight = 0.0;
 
             Console.Clear();
 
@@ -477,7 +467,7 @@ namespace Calculator_V2._0
 
             try
             {
-                cylinderRadius = int.Parse(Console.ReadLine());
+                cylinderRadius = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -491,7 +481,7 @@ namespace Calculator_V2._0
 
             try
             {
-                cylinderHeight = int.Parse(Console.ReadLine());
+                cylinderHeight = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -511,18 +501,18 @@ namespace Calculator_V2._0
             }
             else
             {
-                Console.WriteLine($"\n\tvolume:         {(Math.Pow(cylinderRadius, 2) * pi) * cylinderHeight} mm3");
-                Console.WriteLine($"\tsurface:        {(Math.Pow(cylinderRadius, 2) * pi * 2) + (2 * pi * cylinderRadius * cylinderHeight)} mm2");
-                Console.WriteLine($"\tbase surface:   {Math.Pow(cylinderRadius, 2) * pi} mm2");
-                Console.WriteLine($"\tshell surface:  {2 * pi * cylinderRadius * cylinderHeight} mm2\n");
+                Console.WriteLine($"\n\tvolume:         {((Math.Pow(cylinderRadius, 2) * pi) * cylinderHeight):f2} mm3");
+                Console.WriteLine($"\tsurface:        {((Math.Pow(cylinderRadius, 2) * pi * 2) + (2 * pi * cylinderRadius * cylinderHeight)):f2} mm2");
+                Console.WriteLine($"\tbase surface:   {(Math.Pow(cylinderRadius, 2) * pi):f2} mm2");
+                Console.WriteLine($"\tshell surface:  {(2 * pi * cylinderRadius * cylinderHeight):f2} mm2\n");
             }
         }
 
         private void Pyramid()
         {
             Pyramid:
-            var pyramidSideA = 0;
-            var pyramidHeight = 0;
+            var pyramidSideA = 0.0;
+            var pyramidHeight = 0.0;
             var pyramidHeightA = 0.0;
 
             Console.Clear();
@@ -542,7 +532,7 @@ namespace Calculator_V2._0
 
             try
             {
-                pyramidSideA = int.Parse(Console.ReadLine());
+                pyramidSideA = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -556,7 +546,7 @@ namespace Calculator_V2._0
 
             try
             {
-                pyramidHeight = int.Parse(Console.ReadLine());
+                pyramidHeight = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -578,18 +568,18 @@ namespace Calculator_V2._0
             {
                 pyramidHeightA = Math.Sqrt(Math.Pow(pyramidHeight, 2) + (Math.Pow(pyramidSideA, 2) / 4));
 
-                Console.WriteLine($"\n\tvolume:         {1.0 / 3.0 * Math.Pow(pyramidSideA, 2) * pyramidHeight} mm3");
-                Console.WriteLine($"\tsurface:        {Math.Pow(pyramidSideA, 2) + 2 * pyramidSideA * pyramidHeightA} mm2");
-                Console.WriteLine($"\tbase surface:   {Math.Pow(pyramidSideA, 2)} mm2");
-                Console.WriteLine($"\tshell surface:  {2 * pyramidSideA * pyramidHeightA} mm2\n");
+                Console.WriteLine($"\n\tvolume:         {(1.0 / 3.0 * Math.Pow(pyramidSideA, 2) * pyramidHeight):f2} mm3");
+                Console.WriteLine($"\tsurface:        {(Math.Pow(pyramidSideA, 2) + 2 * pyramidSideA * pyramidHeightA):f2} mm2");
+                Console.WriteLine($"\tbase surface:   {(Math.Pow(pyramidSideA, 2)):f2)} mm2");
+                Console.WriteLine($"\tshell surface:  {(2 * pyramidSideA * pyramidHeightA):f2} mm2\n");
             }
         }
 
         private void Cone()
         {
             Cone:
-            var coneRadius = 0;
-            var coneHeight = 0;
+            var coneRadius = 0.0;
+            var coneHeight = 0.0;
 
             Console.Clear();
 
@@ -607,7 +597,7 @@ namespace Calculator_V2._0
 
             try
             {
-                coneRadius = int.Parse(Console.ReadLine());
+                coneRadius = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -621,7 +611,7 @@ namespace Calculator_V2._0
 
             try
             {
-                coneHeight = int.Parse(Console.ReadLine());
+                coneHeight = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -643,17 +633,17 @@ namespace Calculator_V2._0
             {
                 var coneS = Math.Sqrt(Math.Pow(coneHeight, 2) + Math.Pow(coneRadius, 2));
 
-                Console.WriteLine($"\n\tvolume:         {1.0 / 3.0 * (Math.Pow(coneRadius, 2) * pi) * coneHeight} mm3");
-                Console.WriteLine($"\tsurface:        {(Math.Pow(coneRadius, 2) * pi) + (pi * coneRadius * coneS)} mm2");
-                Console.WriteLine($"\tbase surface:   {Math.Pow(coneRadius, 2) * pi} mm2");
-                Console.WriteLine($"\tshell surface:  {pi * coneRadius * coneS} mm2\n");
+                Console.WriteLine($"\n\tvolume:         {(1.0 / 3.0 * (Math.Pow(coneRadius, 2) * pi) * coneHeight):f2} mm3");
+                Console.WriteLine($"\tsurface:        {((Math.Pow(coneRadius, 2) * pi) + (pi * coneRadius * coneS)):f2} mm2");
+                Console.WriteLine($"\tbase surface:   {(Math.Pow(coneRadius, 2) * pi):f2} mm2");
+                Console.WriteLine($"\tshell surface:  {(pi * coneRadius * coneS):f2} mm2\n");
             }
         }
 
         private void Sphere()
         {
             Sphere:
-            var sphereRadius = 0;
+            var sphereRadius = 0.0;
 
             Console.Clear();
 
@@ -672,7 +662,7 @@ namespace Calculator_V2._0
 
             try
             {
-                sphereRadius = int.Parse(Console.ReadLine());
+                sphereRadius = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
@@ -688,8 +678,8 @@ namespace Calculator_V2._0
             }
             else
             {
-                Console.WriteLine($"\n\tvolume:    {4.0 / 3.0 * Math.Pow(sphereRadius, 3) * pi} mm3");
-                Console.WriteLine($"\tsurface:   {Math.Pow(sphereRadius, 2) * pi * 4} mm2\n");
+                Console.WriteLine($"\n\tvolume:    {(4.0 / 3.0 * Math.Pow(sphereRadius, 3) * pi):f2} mm3");
+                Console.WriteLine($"\tsurface:   {(Math.Pow(sphereRadius, 2) * pi * 4):f2} mm2\n");
             }
         }
 
