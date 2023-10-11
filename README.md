@@ -106,7 +106,8 @@ Here are some useful key shortcuts:
 ## VisualStudio basics 3
 
     In this lesson we have done a wrapup of the last two lessons. Further we have learned interations and
-    made the first application with them. In Github we have tested "Issues" and made the first project linked to the issue.
+    made the first application with them.
+    In Github we have tested "Issues" and made the first project linked to the issue.
 
 ### learned commands
 
