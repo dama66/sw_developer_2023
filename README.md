@@ -45,7 +45,7 @@ In this repository i will document the progress of the course and will add every
 |Saturday|20|
 |Sunday|20|
 
-[Zurück](#item-home)
+[back](#item-home)
 
 <a id="item-git"></a>
 ## GIT basics
@@ -62,7 +62,7 @@ Here are a few basic terms:
 
 ![TestImage](doc/images/git-overview.drawio.png)
 
-[Zurück](#item-home)
+[back](#item-home)
 
 <a id="item-vs"></a>
 ## VisualStudio basics
@@ -79,8 +79,10 @@ Here are some useful key shortcuts:
 |STRG+K+C|Comment out the selected lines|
 |STRG+K+U|Uncomment the selected lines|
 
+[Link to Project folder](src/20230926)
 
-[Zurück](#item-home)
+
+[back](#item-home)
 
 <a id="item-vs2"></a>
 ## VisualStudio basics 2
@@ -98,16 +100,17 @@ Here are some useful key shortcuts:
 - if/else
 - try/catch
 
+[Link to Project folder](src/20231003)
 
-[Zurück](#item-home)
+
+[back](#item-home)
 
 
 <a id="item-vs3"></a>
 ## VisualStudio basics 3
 
     In this lesson we have done a wrapup of the last two lessons. Further we have learned interations and
-    made the first application with them.
-    In Github we have tested "Issues" and made the first project linked to the issue.
+    made the first application with them. In Github we have tested "Issues" and made the first project linked to the issue.
 
 ### learned commands
 
@@ -117,5 +120,7 @@ Here are some useful key shortcuts:
 
 - Issues in GitHub
 
+[Link to Project folder](src/20231005)
 
-[Zurück](#item-home)
+
+[back](#item-home)
