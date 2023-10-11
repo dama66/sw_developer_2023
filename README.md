@@ -15,7 +15,7 @@ In this repository i will document the progress of the course and will add every
    - [VisualStudio basics 2](#item-vs2)
  
  - **Week 41**
-   - [...](#item-??)
+   - [VisualStudio basics 3](#item-vs3)
    - [...](#item-??)
 
 <a id="item-md"></a>
@@ -97,6 +97,24 @@ Here are some useful key shortcuts:
 - Parse
 - if/else
 - try/catch
+
+
+[Zurück](#item-home)
+
+
+<a id="item-vs3"></a>
+## VisualStudio basics 3
+
+    In this lesson we have done a wrapup of the last two lessons. Further we have learned interations and
+    made the first application with them. In Github we have tested "Issues" and made the first project linked to the issue.
+
+### learned commands
+
+- for loop
+- while loop
+- do/while loop
+
+- Issues in GitHub
 
 
 [Zurück](#item-home)
