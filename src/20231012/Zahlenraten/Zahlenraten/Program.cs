@@ -18,7 +18,7 @@ namespace Zahlenraten
 
             int xTitelPos = 0;
             int anzahlVersuche = 5;
-            TimeSpan versuchsZeit = TimeSpan.FromSeconds(30);
+            TimeSpan versuchsZeit = TimeSpan.FromSeconds(10);
             string eingabe = String.Empty;
             int Ratezahl = -1;
             bool eingabeIstZahl = false;
@@ -95,7 +95,7 @@ namespace Zahlenraten
 
             } while (!eingabeIstZahl || anzahlVersuche > 0 && restZeit.Seconds > 0 && zufallsZahl != Ratezahl);
 
-            if (anzahlVersuche >= 0)
+            if (anzahlVersuche <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"\nVersuche aufgebraucht: Du hast die Zahl {zufallsZahl} leider nicht erraten..... :( ");
