@@ -16,7 +16,7 @@ In this repository i will document the progress of the course and will add every
  
  - **Week 41**
    - [VisualStudio basics 3](#item-vs3)
-   - [...](#item-??)
+   - [VisualStudio basics 4](#item-vs4)
 
 <a id="item-md"></a>
 ## MarkDown basics
@@ -122,5 +122,16 @@ Here are some useful key shortcuts:
 
 [Link to Project folder](src/20231005)
 
+
+[back](#item-home)
+
+
+<a id="item-vs4"></a>
+## VisualStudio basics 4
+
+    In this lesson we have learned methods and made the first few examples.
+
+- [Link to Project folder](src/20231012)
+- [Link to Project folder](src/20231016)
 
 [back](#item-home)
