@@ -25,32 +25,20 @@ namespace Teilnehmerverwaltung_V2._0
            - Teilnehmerdaten sollen nach der Eingabe tabellarisch ausgegeben werden
          */
 
-
         static void Main(string[] args)
         {
-            var name = String.Empty;
-            var vorname = String.Empty;
-            var geburtsdatum = DateTime.MinValue;
-            var plz = 0;
-            var ort = string.Empty;
+            Teilnehmer teilnehmer = new Teilnehmer();
 
             string headerText = "Teilnehmerverwaltung v2.0 @2023 WIFI-Soft";
 
+            //Header ausgeben
             CreateHeader(headerText, ConsoleColor.Yellow, true);
 
-            Console.WriteLine("Bitte geben Sie die Teilnehmer Daten ein:");
+            //Daten einlesen
+            teilnehmer = GetStudentInfos();
 
-            vorname = ReadString("\tVorname:  ");
-
-            name = ReadString("\tNachname:  ");
-
-            geburtsdatum = ReadDateTime("\tGeburtsdatum: (dd.mm.yyyy)  ");
-
-            plz = ReadInt("\tPLZ:  ");
-
-            ort = ReadString("\tWohnort:  ");
-
-            DisplayStudentInfo(name, vorname, geburtsdatum, plz, ort, ConsoleColor.DarkGreen);
+            //Ausgabe der Daten
+            DisplayStudentInfo(teilnehmer);
         }
 
         private static void CreateHeader(string headerText, ConsoleColor headerTextColor, bool clearScreen)
@@ -161,16 +149,40 @@ namespace Teilnehmerverwaltung_V2._0
             {
                 Console.Write(inputPrompt);
                 inputString = Console.ReadLine();
+
+                    if (string.IsNullOrEmpty(inputString))
+                    {
+                        ConsoleColor oldColor = Console.ForegroundColor;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\aERROR: Ungültige Eigabe.");
+                        Console.ForegroundColor = oldColor;
+                    }
+
             }
             while (string.IsNullOrEmpty(inputString));
 
             return inputString;
         }
 
-        private static void DisplayStudentInfo(string name, string vorname, DateTime geburtsdatum, int plz, string ort, ConsoleColor outputColour)
+        private static Teilnehmer GetStudentInfos()
+        {
+            Teilnehmer teilnehmer;
+
+            Console.WriteLine("Bitte geben Sie die Teilnehmer Daten ein:");
+
+            teilnehmer.Vorname = ReadString("\tVorname:  ");
+            teilnehmer.Name = ReadString("\tNachname:  ");
+            teilnehmer.Gebutsdatum = ReadDateTime("\tGeburtsdatum: (dd.mm.yyyy)  ");
+            teilnehmer.Plz = ReadInt("\tPLZ:  ");
+            teilnehmer.Ort = ReadString("\tWohnort:  ");
+
+            return teilnehmer;
+        }
+
+        private static void DisplayStudentInfo(Teilnehmer studentInfo)
         {
             Console.WriteLine("\n\nDie Teilnehmerdaten:");
-            Console.WriteLine($"\n\t{vorname}, {name}, {geburtsdatum}, {plz}, {ort}");
+            Console.WriteLine($"\n\t{studentInfo.Vorname}, {studentInfo.Name}, {studentInfo.Gebutsdatum.ToShortDateString()}, {studentInfo.Plz}, {studentInfo.Ort}");
 
         }
     }
