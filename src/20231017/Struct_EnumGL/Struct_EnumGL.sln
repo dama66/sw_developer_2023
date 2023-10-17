@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Struct_EnumGL", "Struct_EnumGL\Struct_EnumGL.csproj", "{1E2C046C-5459-4821-BC16-62E12A7F66C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E2C046C-5459-4821-BC16-62E12A7F66C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2C046C-5459-4821-BC16-62E12A7F66C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2C046C-5459-4821-BC16-62E12A7F66C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2C046C-5459-4821-BC16-62E12A7F66C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C21EE32-BC1F-4C17-9AA0-12B39F4877E5}
+	EndGlobalSection
+EndGlobal
