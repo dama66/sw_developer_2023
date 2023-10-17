@@ -169,24 +169,6 @@ namespace Teilnehmerverwaltung_V2._0
 
         private static void DisplayStudentInfo(string name, string vorname, DateTime geburtsdatum, int plz, string ort, ConsoleColor outputColour)
         {
-            //Console.Clear();
-            //Console.Write($"\n\n\tName:\t\t");
-            //Console.ForegroundColor = outputColour;
-            //Console.Write($"{name}");
-            //Console.ResetColor();
-            //Console.Write($"\n\tVorname:\t");
-            //Console.ForegroundColor = outputColour;
-            //Console.Write($"{vorname}");
-            //Console.ResetColor();
-            //Console.Write($"\n\tGeburtsdatum:\t");
-            //Console.ForegroundColor = outputColour;
-            //Console.Write($"{geburtsdatum.ToShortDateString()}");
-            //Console.ResetColor();
-            //Console.Write($"\n\tWohnort:\t");
-            //Console.ForegroundColor = outputColour;
-            //Console.Write($"{plz.ToString()} {ort}\n");
-            //Console.ResetColor();
-
             Console.WriteLine("\n\nDie Teilnehmerdaten:");
             Console.WriteLine($"\n\t{vorname}, {name}, {geburtsdatum}, {plz}, {ort}");
 
