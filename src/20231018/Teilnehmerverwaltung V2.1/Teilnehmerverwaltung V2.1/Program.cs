@@ -192,7 +192,10 @@ namespace Teilnehmerverwaltung_V2._1
 
         private static void DisplayStudentInfo(Teilnehmer[] studentInfo)
         {
+            ConsoleColor oldColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             var table = new ConsoleTable("Name", "Vorname", "Geb. Datum", "PLZ", "Wohnort" );
+            Console.ForegroundColor = oldColor;
 
             Console.WriteLine("\n\nDie Teilnehmerdaten:\n");
 
