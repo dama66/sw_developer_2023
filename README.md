@@ -18,6 +18,10 @@ In this repository i will document the progress of the course and will add every
    - [VisualStudio basics 3](#item-vs3)
    - [VisualStudio basics 4](#item-vs4)
 
+ - **Week 42**
+   - [VisualStudio basics 5](#item-vs5)
+   - [VisualStudio basics 6](#item-vs6)
+     
 <a id="item-md"></a>
 ## MarkDown basics
 
@@ -133,5 +137,16 @@ Here are some useful key shortcuts:
 
 - [Link to Project folder](src/20231012)
 - [Link to Project folder](src/20231016)
+
+[back](#item-home)
+
+
+<a id="item-vs4"></a>
+## VisualStudio basics 5
+
+    In this lesson we have included methods in our curent Porject. furthermore we have looked at structs 
+    abd implemented them alsu in our project.
+
+- [Link to Project folder](src/20231017)
 
 [back](#item-home)
