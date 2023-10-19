@@ -199,10 +199,10 @@ namespace Teilnehmerverwaltung_V2._1
             for (int i = 0; i < studentInfo.Length; i++)
             {
                 table.AddRow($"{studentInfo[i].Vorname}", $"{studentInfo[i].Name}", $"{studentInfo[i].Gebutsdatum.ToShortDateString()}", $"{studentInfo[i].Plz}", $"{studentInfo[i].Ort}");
-               // Console.WriteLine($"\t{studentInfo[i].Vorname}, {studentInfo[i].Name}, {studentInfo[i].Gebutsdatum.ToShortDateString()}, {studentInfo[i].Plz}, {studentInfo[i].Ort}");
             }
 
             table.Write();
+
             Console.ReadLine();
         }
     }
