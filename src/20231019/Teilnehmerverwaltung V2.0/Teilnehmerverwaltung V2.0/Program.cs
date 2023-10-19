@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
@@ -47,14 +48,21 @@ namespace Teilnehmerverwaltung_V2._0
             for (int i = 0; i < teilnehmerListe.Length; i++)
             {
                 Console.WriteLine($"\nTeilnehmer {i + 1}/{teilnehmerListe.Length}");
-
+                //TODO: GetStudentInfos() kann auch als Überladung mit der Anzahl als input realiserit werden....
                 teilnehmerListe[i] = GetStudentInfos();
             }
-            
 
             //Ausgabe der Daten
+            Console.WriteLine("\n\nDie Teilnehmerdaten:");
             DisplayStudentInfo(teilnehmerListe);
+
+            //TODO: implement .json and .xml too!!
+            SaveStudentInfoToFile(teilnehmerListe, "Teilnehmerliste.csv");
+
+            //TODO: Datei mit StreamReader einlesen (LoadStudentInfoFromFile)
         }
+
+       
 
         private static void CreateHeader(string headerText, ConsoleColor headerTextColor, bool clearScreen)
         {
@@ -194,7 +202,6 @@ namespace Teilnehmerverwaltung_V2._0
 
         private static void DisplayStudentInfo(Teilnehmer studentInfo)
         {
-            Console.WriteLine("\n\nDie Teilnehmerdaten:");
             Console.WriteLine($"\n\t{studentInfo.Vorname}, {studentInfo.Name}, {studentInfo.Gebutsdatum.ToShortDateString()}, {studentInfo.Plz}, {studentInfo.Ort}");
 
         }
@@ -205,6 +212,21 @@ namespace Teilnehmerverwaltung_V2._0
             {
                 DisplayStudentInfo(studentInfos[i]);
             }
+        }
+
+        private static void SaveStudentInfoToFile(Teilnehmer[] students, string filename)
+        {
+            // Dateizugriff immer mit "using". Damit ist sichergestellt dass die Datei nach ende oder bei Absturz die Datei wieder freigegeben wird.
+            using (StreamWriter sw = new StreamWriter(filename, true))
+            {
+                for (int i = 0; i < students.Length; i++)
+                {
+                    string dataline = $"{students[i].Vorname}, {students[i].Name}, {students[i].Gebutsdatum.ToShortDateString()}, {students[i].Plz}, {students[i].Ort}";
+                    sw.WriteLine(dataline);
+                }
+            }
+
+            
         }
     }
 }
