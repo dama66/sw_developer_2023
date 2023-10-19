@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
+using ConsoleTables;
 
 namespace Teilnehmerverwaltung_V2._2
 {
@@ -212,12 +213,16 @@ namespace Teilnehmerverwaltung_V2._2
 
         private static void DisplayStudentInfo(List<Teilnehmer> studentInfo)
         {
+            var table = new ConsoleTable("Name", "Vorname", "Geb. Datum", "PLZ", "Wohnort");
+
             Console.WriteLine("\n\nDie Teilnehmerdaten:\n");
 
             for (int i = 0; i < studentInfo.Count; i++)
             {
-                Console.WriteLine($"\t{studentInfo[i].Vorname}, {studentInfo[i].Name}, {studentInfo[i].Gebutsdatum.ToShortDateString()}, {studentInfo[i].Plz}, {studentInfo[i].Ort}");
+                table.AddRow($"{studentInfo[i].Vorname}", $"{studentInfo[i].Name}", $"{studentInfo[i].Gebutsdatum.ToShortDateString()}", $"{studentInfo[i].Plz}", $"{studentInfo[i].Ort}");
             }
+
+            table.Write();
 
             Console.ReadLine();
         }

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using Teilnehmerverwaltung_V2._1;
+using ConsoleTables;
 
 namespace Teilnehmerverwaltung_V2._1
 {
@@ -190,12 +192,18 @@ namespace Teilnehmerverwaltung_V2._1
 
         private static void DisplayStudentInfo(Teilnehmer[] studentInfo)
         {
+            var table = new ConsoleTable("Name", "Vorname", "Geb. Datum", "PLZ", "Wohnort" );
+
             Console.WriteLine("\n\nDie Teilnehmerdaten:\n");
 
             for (int i = 0; i < studentInfo.Length; i++)
             {
-                Console.WriteLine($"\t{studentInfo[i].Vorname}, {studentInfo[i].Name}, {studentInfo[i].Gebutsdatum.ToShortDateString()}, {studentInfo[i].Plz}, {studentInfo[i].Ort}");
+                table.AddRow($"{studentInfo[i].Vorname}", $"{studentInfo[i].Name}", $"{studentInfo[i].Gebutsdatum.ToShortDateString()}", $"{studentInfo[i].Plz}", $"{studentInfo[i].Ort}");
+               // Console.WriteLine($"\t{studentInfo[i].Vorname}, {studentInfo[i].Name}, {studentInfo[i].Gebutsdatum.ToShortDateString()}, {studentInfo[i].Plz}, {studentInfo[i].Ort}");
             }
+
+            table.Write();
+            Console.ReadLine();
         }
     }
 }
