@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
-using System.Reflection.Emit;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
-using Teilnehmerverwaltung_V2._1;
-using ConsoleTables;
 
-namespace Teilnehmerverwaltung_V2._1
+namespace Teilnehmerverwaltung_V2._0
 {
     internal class Program
     {
@@ -17,6 +16,7 @@ namespace Teilnehmerverwaltung_V2._1
         erfasst und dargestellt werden können. 
         Folgende Anforderung sollen dabei erfüllt werden:
            
+           - max. Anzahl der Teilnehmer soll zu Beginn vom User befragt werden
            - Einlesen folgender Daten:
              - Name, Vorname
              - Geburtsdatum
@@ -29,25 +29,40 @@ namespace Teilnehmerverwaltung_V2._1
 
         static void Main(string[] args)
         {
-            
+            int teilnehmerCount = 0;
+            Teilnehmer teilnehmer = new Teilnehmer();
+            Teilnehmer[] teilnehmerListe;
             string headerText = "Teilnehmerverwaltung v2.0 @2023 WIFI-Soft";
-            var anzahlTeilnehmer = 0;
-
 
             //Header ausgeben
             CreateHeader(headerText, ConsoleColor.Yellow, true);
 
-            //Anzahl Teilnehmer einlesen
-            anzahlTeilnehmer = ReadInt("Anzahl der Teilnehmer: ");
+            //Abfrage Anzahl Teilnehmer
+            teilnehmerCount = ReadInt("Bitte Anzahl der Teilnehmer eingeben: ");
 
-            Teilnehmer[] teilnehmer = new Teilnehmer[anzahlTeilnehmer];
+            //Teilnehmerliste vorbereiten
+            teilnehmerListe = new Teilnehmer[teilnehmerCount];
 
             //Daten einlesen
-            teilnehmer = GetStudentInfos(anzahlTeilnehmer);
+            Console.WriteLine("\nBitte geben Sie die Teilnehmer Daten ein:");
+            for (int i = 0; i < teilnehmerListe.Length; i++)
+            {
+                Console.WriteLine($"\nTeilnehmer {i + 1}/{teilnehmerListe.Length}");
+                //TODO: GetStudentInfos() kann auch als Überladung mit der Anzahl als input realiserit werden....
+                teilnehmerListe[i] = GetStudentInfos();
+            }
 
             //Ausgabe der Daten
-            DisplayStudentInfo(teilnehmer);
+            Console.WriteLine("\n\nDie Teilnehmerdaten:");
+            DisplayStudentInfo(teilnehmerListe);
+
+            //TODO: implement .json and .xml too!!
+            SaveStudentInfoToFile(teilnehmerListe, "Teilnehmerliste.csv");
+
+            //TODO: Datei mit StreamReader einlesen (LoadStudentInfoFromFile)
         }
+
+       
 
         private static void CreateHeader(string headerText, ConsoleColor headerTextColor, bool clearScreen)
         {
@@ -114,7 +129,7 @@ namespace Teilnehmerverwaltung_V2._1
 
         private static DateTime ReadDateTime(string inputPrompt)
         {
-            return ReadDateTime(inputPrompt, "dd.MM.yyyy");
+           return ReadDateTime(inputPrompt, "dd.MM.yyyy");
         }
 
         private static int ReadInt(string inputPrompt)
@@ -158,13 +173,13 @@ namespace Teilnehmerverwaltung_V2._1
                 Console.Write(inputPrompt);
                 inputString = Console.ReadLine();
 
-                if (string.IsNullOrEmpty(inputString))
-                {
-                    ConsoleColor oldColor = Console.ForegroundColor;
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\aERROR: Ungültige Eigabe.");
-                    Console.ForegroundColor = oldColor;
-                }
+                    if (string.IsNullOrEmpty(inputString))
+                    {
+                        ConsoleColor oldColor = Console.ForegroundColor;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\aERROR: Ungültige Eigabe.");
+                        Console.ForegroundColor = oldColor;
+                    }
 
             }
             while (string.IsNullOrEmpty(inputString));
@@ -172,41 +187,46 @@ namespace Teilnehmerverwaltung_V2._1
             return inputString;
         }
 
-        private static Teilnehmer[] GetStudentInfos(int anzahl)
+        private static Teilnehmer GetStudentInfos()
         {
-            Teilnehmer[] teilnehmer = new Teilnehmer[anzahl];
+            Teilnehmer teilnehmer;
 
-            for (int i = 0; i < anzahl; i++)
-            {
-                Console.WriteLine($"\nBitte geben Sie die Daten von Teilnehmer{i+1} ein:");
-
-                teilnehmer[i].Vorname = ReadString("\tVorname:  ");
-                teilnehmer[i].Name = ReadString("\tNachname:  ");
-                teilnehmer[i].Gebutsdatum = ReadDateTime("\tGeburtsdatum: (dd.mm.yyyy)  ");
-                teilnehmer[i].Plz = ReadInt("\tPLZ:  ");
-                teilnehmer[i].Ort = ReadString("\tWohnort:  ");
-            }
+            teilnehmer.Vorname = ReadString("\tVorname:  ");
+            teilnehmer.Name = ReadString("\tNachname:  ");
+            teilnehmer.Gebutsdatum = ReadDateTime("\tGeburtsdatum: (dd.mm.yyyy)  ");
+            teilnehmer.Plz = ReadInt("\tPLZ:  ");
+            teilnehmer.Ort = ReadString("\tWohnort:  ");
 
             return teilnehmer;
         }
 
-        private static void DisplayStudentInfo(Teilnehmer[] studentInfo)
+        private static void DisplayStudentInfo(Teilnehmer studentInfo)
         {
-            ConsoleColor oldColor = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            var table = new ConsoleTable("Name", "Vorname", "Geb. Datum", "PLZ", "Wohnort" );
-            Console.ForegroundColor = oldColor;
+            Console.WriteLine($"\n\t{studentInfo.Vorname}, {studentInfo.Name}, {studentInfo.Gebutsdatum.ToShortDateString()}, {studentInfo.Plz}, {studentInfo.Ort}");
 
-            Console.WriteLine("\n\nDie Teilnehmerdaten:\n");
+        }
 
-            for (int i = 0; i < studentInfo.Length; i++)
+        private static void DisplayStudentInfo(Teilnehmer[] studentInfos)
+        {
+            for (int i = 0; i < studentInfos.Length; i++)
             {
-                table.AddRow($"{studentInfo[i].Vorname}", $"{studentInfo[i].Name}", $"{studentInfo[i].Gebutsdatum.ToShortDateString()}", $"{studentInfo[i].Plz}", $"{studentInfo[i].Ort}");
+                DisplayStudentInfo(studentInfos[i]);
+            }
+        }
+
+        private static void SaveStudentInfoToFile(Teilnehmer[] students, string filename)
+        {
+            // Dateizugriff immer mit "using". Damit ist sichergestellt dass die Datei nach ende oder bei Absturz die Datei wieder freigegeben wird.
+            using (StreamWriter sw = new StreamWriter(filename, true))
+            {
+                for (int i = 0; i < students.Length; i++)
+                {
+                    string dataline = $"{students[i].Vorname}, {students[i].Name}, {students[i].Gebutsdatum.ToShortDateString()}, {students[i].Plz}, {students[i].Ort}";
+                    sw.WriteLine(dataline);
+                }
             }
 
-            table.Write();
-
-            Console.ReadLine();
+            
         }
     }
 }
