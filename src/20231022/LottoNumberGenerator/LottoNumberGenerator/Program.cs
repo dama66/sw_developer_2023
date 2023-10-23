@@ -7,6 +7,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Teilnehmerverwaltung_V2._0
 {
     internal class Program
@@ -31,22 +32,32 @@ namespace Teilnehmerverwaltung_V2._0
         {
             const int minValue = 1; 
             const int maxValue = 45;
+            const int minAmount = 1;
+            const int maxAmount = 12;
             const int numbersPerTip = 6;
             var tipAmount = 0;
             string headerText = "Lottery Ticket Generator";
             int[] tipNumbers = new int[numbersPerTip];
 
-   
+
+            Console.WindowWidth = 151;
+
 
             //Header
             CreateHeader(headerText, ConsoleColor.Yellow, true);
 
             //Amount query
-            tipAmount = ReadInt("Please enter number of tips: ");
+            tipAmount = ReadInt(minAmount, maxAmount, "Please enter number of tips (1..12): ", ConsoleColor.Yellow);
 
+            // Declare and init jagged Array
             int[][] tips = new int[tipAmount][];
-            //Random int generator
 
+            for (int i = 0; i < tipAmount; i++)
+            {
+                tips[i] = new int[numbersPerTip];
+            }
+
+            //Random int generator
             tips = RandomIntGenerator(minValue, maxValue, tipAmount, numbersPerTip);
 
             //output
@@ -88,7 +99,7 @@ namespace Teilnehmerverwaltung_V2._0
             Console.Title = headerText;
         }
 
-        private static int ReadInt(string inputPrompt)
+        private static int ReadInt(int minAmount, int maxAmount, string inputPrompt, ConsoleColor inputColour)
         {
             var inputString = string.Empty;
             var inputInt = 0;
@@ -97,19 +108,33 @@ namespace Teilnehmerverwaltung_V2._0
             do
             {
                 Console.Write(inputPrompt);
+                ConsoleColor oldInputColor = Console.ForegroundColor;
+                Console.ForegroundColor = inputColour;
                 inputString = Console.ReadLine();
-                Console.ResetColor();
+                Console.ForegroundColor = oldInputColor;
 
                 try
                 {
                     inputInt = int.Parse(inputString);
-                    inputIsValid = true;
+                    if (inputInt >= minAmount && inputInt <= maxAmount)
+                    {
+                        inputIsValid = true;
+                    }
+                    else
+                    {
+                        ConsoleColor oldColor = Console.ForegroundColor;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"\aERROR: invalid input! number must be between {minAmount} and {maxAmount}");
+                        inputInt = 0;
+                        Console.ForegroundColor = oldColor;
+                    }
+
                 }
                 catch
                 {
                     ConsoleColor oldColor = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\aERROR: Ungültige Zahleneigabe.");
+                    Console.WriteLine("\aERROR: invalid input.");
                     inputInt = 0;
                     Console.ForegroundColor = oldColor;
                     inputIsValid = false;
@@ -123,6 +148,8 @@ namespace Teilnehmerverwaltung_V2._0
         private static int[][] RandomIntGenerator(int minValue, int maxValue, int tipAmount, int numbersPerTip)
         {
             int[][] result = new int[tipAmount][];
+            Random rnd = new Random();
+            int tempResult = 0;
 
             for (int j = 0; j < tipAmount; j++)
             {
@@ -130,9 +157,12 @@ namespace Teilnehmerverwaltung_V2._0
 
                 for (int i = 0; i < numbersPerTip; i++)
                 {
-                   
-                    Random rnd = new Random();
-                    result[j][i] = rnd.Next(minValue, maxValue);
+                    do
+                    {
+                        tempResult = rnd.Next(minValue, maxValue);
+                    } while (result[j].Contains(tempResult));
+                    
+                    result[j][i] = tempResult;
                 }
             }
 
@@ -141,17 +171,62 @@ namespace Teilnehmerverwaltung_V2._0
 
         private static void LotteryTicketOutput(int[][] tips, int minValue, int maxValue)
         {
+            var top1 = 7;
+            var top2 = 16;
+
             Console.WriteLine("Your lottery ticket: ");
 
             for (int i = 0; i < tips.Length; i++)
             {
-                if (i == 1)
+                switch (i)
                 {
-                    Console.SetCursorPosition(25, 6);
-                }
-                if (i == 2)
-                {
-                    Console.SetCursorPosition(50, 6);
+                    case 0:
+                        Console.SetCursorPosition(0, top1);
+                        break;
+
+                    case 1:
+                        Console.SetCursorPosition(25, top1);
+                        break;
+
+                    case 2:
+                        Console.SetCursorPosition(50, top1);
+                        break;
+
+                    case 3:
+                        Console.SetCursorPosition(75, top1);
+                        break;
+
+                    case 4:
+                        Console.SetCursorPosition(100, top1);
+                        break;
+
+                    case 5: 
+                        Console.SetCursorPosition(125, top1);
+                        break;
+
+                    case 6:
+                        Console.SetCursorPosition(0, top2);
+                        break;
+
+                    case 7:
+                        Console.SetCursorPosition(25, top2);
+                        break;
+
+                    case 8:
+                        Console.SetCursorPosition(50, top2);
+                        break;
+
+                    case 9:
+                        Console.SetCursorPosition(75, top2);
+                        break;
+
+                    case 10:
+                        Console.SetCursorPosition(100, top2);
+                        break;
+
+                    case 11:
+                        Console.SetCursorPosition(125, top2);
+                        break;
                 }
 
                 for (int j = minValue; j <= maxValue; j++)
@@ -173,15 +248,14 @@ namespace Teilnehmerverwaltung_V2._0
                         Console.Write($"{j}  ");
                     }
 
-                    var cursorLeft = Console.CursorLeft;
+                    #region cursor positioning
                     var cursorTop = Console.CursorTop;
-                    
-                    //if (j <=6 && i == 1)
-                    //{
-                    //    Console.SetCursorPosition(25, 7);
-                    //}
 
-                    if (j % 6 == 0 && i == 1)
+                    if (j % 6 == 0 && i == 0)
+                    {
+                        Console.SetCursorPosition(0, cursorTop + 1);
+                    }
+                    else if (j % 6 == 0 && i == 1)
                     {
                         Console.SetCursorPosition(25, cursorTop + 1);
                     }
@@ -189,10 +263,43 @@ namespace Teilnehmerverwaltung_V2._0
                     {
                         Console.SetCursorPosition(50, cursorTop + 1);
                     }
-                    else if (j % 6 == 0)
+                    else if (j % 6 == 0 && i == 3)
                     {
-                        Console.SetCursorPosition(0, cursorTop+1);
+                        Console.SetCursorPosition(75, cursorTop + 1);
                     }
+                    else if (j % 6 == 0 && i == 4)
+                    {
+                        Console.SetCursorPosition(100, cursorTop + 1);
+                    }
+                    else if (j % 6 == 0 && i == 5)
+                    {
+                        Console.SetCursorPosition(125, cursorTop + 1);
+                    }
+                    else if (j % 6 == 0 && i == 6)
+                    {
+                        Console.SetCursorPosition(0, cursorTop + 1);
+                    }
+                    else if (j % 6 == 0 && i == 7)
+                    {
+                        Console.SetCursorPosition(25, cursorTop + 1);
+                    }
+                    else if (j % 6 == 0 && i == 8)
+                    {
+                        Console.SetCursorPosition(50, cursorTop + 1);
+                    }
+                    else if (j % 6 == 0 && i == 9)
+                    {
+                        Console.SetCursorPosition(75, cursorTop + 1);
+                    }
+                    else if (j % 6 == 0 && i == 10)
+                    {
+                        Console.SetCursorPosition(100, cursorTop + 1);
+                    }
+                    else if (j % 6 == 0 && i == 11)
+                    {
+                        Console.SetCursorPosition(125, cursorTop + 1);
+                    }
+                    #endregion
                 }
 
 
