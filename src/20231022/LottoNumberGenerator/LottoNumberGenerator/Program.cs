@@ -12,22 +12,6 @@ namespace Teilnehmerverwaltung_V2._0
 {
     internal class Program
     {
-        /*
-        Implementieren Sie eine Applikation mit der beliebig viele Teilnehmerdaten 
-        erfasst und dargestellt werden können. 
-        Folgende Anforderung sollen dabei erfüllt werden:
-           
-           - max. Anzahl der Teilnehmer soll zu Beginn vom User befragt werden
-           - Einlesen folgender Daten:
-             - Name, Vorname
-             - Geburtsdatum
-             - PLZ, Ort
-           - Fehlertolerante Eingaben
-           - verwenden sie Methoden wo sinnvoll
-           - verwenden sie Farben
-           - Teilnehmerdaten sollen nach der Eingabe tabellarisch ausgegeben werden
-         */
-
         static void Main(string[] args)
         {
             const int minValue = 1; 
