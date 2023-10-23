@@ -141,12 +141,23 @@ Here are some useful key shortcuts:
 [back](#item-home)
 
 
-<a id="item-vs4"></a>
+<a id="item-vs5"></a>
 ## VisualStudio basics 5
 
     In this lesson we have included methods in our curent Porject. furthermore we have looked at structs 
     abd implemented them alsu in our project.
 
 - [Link to Project folder](src/20231017)
+
+[back](#item-home)
+
+
+
+<a id="item-vs6"></a>
+## VisualStudio basics 6
+
+    In this lesson we have learned Enum and Array and made some exymles with those.
+
+- [Link to Project folder](src/20231019)
 
 [back](#item-home)
