@@ -45,19 +45,15 @@ namespace Teilnehmerverwaltung_V2._0
 
             //Daten einlesen
             Console.WriteLine("\nBitte geben Sie die Teilnehmer Daten ein:");
-            for (int i = 0; i < teilnehmerListe.Length; i++)
-            {
-                Console.WriteLine($"\nTeilnehmer {i + 1}/{teilnehmerListe.Length}");
-                //TODO: GetStudentInfos() kann auch als Überladung mit der Anzahl als input realiserit werden....
-                teilnehmerListe[i] = GetStudentInfos();
-            }
 
+            teilnehmerListe = GetStudentInfos(teilnehmerCount);
+            
             //Ausgabe der Daten
             Console.WriteLine("\n\nDie Teilnehmerdaten:");
             DisplayStudentInfo(teilnehmerListe);
 
             //TODO: implement .json and .xml too!!
-            SaveStudentInfoToFile(teilnehmerListe, "Teilnehmerliste.csv");
+            SaveStudentInfoToFile(teilnehmerListe, "Teilnehmerliste", Format.csv);
 
             //TODO: Datei mit StreamReader einlesen (LoadStudentInfoFromFile)
         }
@@ -200,6 +196,21 @@ namespace Teilnehmerverwaltung_V2._0
             return teilnehmer;
         }
 
+        private static Teilnehmer[] GetStudentInfos(int amount)
+        {
+
+            Teilnehmer[] teilnehmerListe = new Teilnehmer[amount];
+
+            for (int i = 0; i < amount; i++)
+            {
+                Console.WriteLine($"\nTeilnehmer {i + 1}/{amount}");
+
+                teilnehmerListe[i] = GetStudentInfos();
+            }
+
+            return teilnehmerListe;
+        }
+
         private static void DisplayStudentInfo(Teilnehmer studentInfo)
         {
             Console.WriteLine($"\n\t{studentInfo.Vorname}, {studentInfo.Name}, {studentInfo.Gebutsdatum.ToShortDateString()}, {studentInfo.Plz}, {studentInfo.Ort}");
@@ -227,6 +238,38 @@ namespace Teilnehmerverwaltung_V2._0
             }
 
             
+        }
+
+        private static void SaveStudentInfoToFile(Teilnehmer[] students, string filename, Format format)
+        {
+            using (StreamWriter sw = new StreamWriter($"{filename}.{format}", true))
+            {
+                if (format == Format.csv)
+                {
+                    for (int i = 0; i < students.Length; i++)
+                    {
+                        string dataline =
+                            $"{students[i].Vorname}, {students[i].Name}, {students[i].Gebutsdatum.ToShortDateString()}, {students[i].Plz}, {students[i].Ort}";
+                        sw.WriteLine(dataline);
+                    }
+                }
+                else if (format == Format.json)
+                {
+                    for (int i = 0; i < students.Length; i++)
+                    {
+                        string dataline =
+                            "{\n\"first name\": \"" + students[i].Vorname + "\"\n\"last name\": \"" + students[i].Name +
+                            "\"\n\"birth date\": \"" + students[i].Gebutsdatum.ToShortDateString() +
+                            "\"\n\"postal code\": \"" + students[i].Plz + "\"\n\"residence\": \"" + students[i].Ort +
+                            "}\n";
+                        sw.WriteLine(dataline);
+                    }
+                }
+                else if (format == Format.xml)
+                {
+
+                }
+            }
         }
     }
 }
