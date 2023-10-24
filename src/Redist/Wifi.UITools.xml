@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wifi.UITools</name>
+    </assembly>
+    <members>
+        <member name="T:Wifi.UITools.ConsoleTools">
+            <summary>
+            Sammelsurium von Methoden für die Arbeit in der Console
+            </summary>
+        </member>
+        <member name="M:Wifi.UITools.ConsoleTools.CreateHeader(System.String,System.ConsoleColor,System.Boolean)">
+            <summary> 
+            Liefert eine Eingabe als String zurück. string.Empty und NULL werden nicht akzeptiert. 
+            </summary>
+            <param name="headerText">Tiltel im Header</param>
+            <param name="headerTextColor">Farbe für den Text im Header</param>
+            <param name="clearScreen">BOOL für das Löschen der Console vor der Ausgabe</param>
+        </member>
+        <member name="M:Wifi.UITools.ConsoleTools.ReadDateTime(System.String,System.String)">
+            <summary>
+            Liefert eine Eigabe als DateTime zurück. Das Format für das Datum kann ausgewählt werden.
+            </summary>
+            <param name="inputPrompt"></param>
+            <param name="inputFormat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wifi.UITools.ConsoleTools.ReadDateTime(System.String)">
+            <summary>
+            Liefert eine Eigabe als DateTime zurück. Es wird nur das Format dd.MM.yyyy akzeptiert.
+            </summary>
+            <param name="inputPrompt">Text für die Eingabeaufforderung</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wifi.UITools.ConsoleTools.ReadInt(System.String)">
+            <summary>
+            Liefert eine Eigabe als int zurück. Es werden nur valide Zahlen akzeptiert
+            </summary>
+            <param name="inputPrompt">Text für die Eingabeaufforderung</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wifi.UITools.ConsoleTools.ReadString(System.String)">
+            <summary>
+            Liefert eine Eigabe als string zurück. string.Empty und NULL werden nicht akzeptiert.
+            </summary>
+            <param name="inputPrompt">Text für die Eingabeaufforderung</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
