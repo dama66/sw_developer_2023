@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LottoNumberGenerator;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -15,12 +16,12 @@ namespace Teilnehmerverwaltung_V2._0
     {
         static void Main(string[] args)
         {
-            const int minValue = 1; 
+            const int minValue = 1;
             const int maxValue = 45;
             const int minAmount = 1;
             const int maxAmount = 12;
             const int numbersPerTip = 6;
-            var tipAmount = 0;
+            int tipAmount = 0;
             string headerText = "Lottery Ticket Generator";
             int[] tipNumbers = new int[numbersPerTip];
 
@@ -32,7 +33,11 @@ namespace Teilnehmerverwaltung_V2._0
             ConsoleTools.CreateHeader(headerText, ConsoleColor.Yellow, true);
 
             //Amount query
-            tipAmount = ReadInt(minAmount, maxAmount, "Please enter number of tips (1..12): ", ConsoleColor.Yellow);
+            ReadInt Read = new ReadInt(minAmount, maxAmount, "Please enter number of tips (1..12): ", ConsoleColor.Yellow);
+
+            Read.Start();
+
+            tipAmount = Read.Number;
 
             // Declare and init jagged Array
             int[][] tips = new int[tipAmount][];
@@ -43,220 +48,18 @@ namespace Teilnehmerverwaltung_V2._0
             }
 
             //Random int generator
-            tips = RandomIntGenerator(minValue, maxValue, tipAmount, numbersPerTip);
+            RandomIntGenerator Rnd = new RandomIntGenerator(minValue, maxValue, tipAmount, numbersPerTip);
+
+            Rnd.Start();
+
+            tips = Rnd.Result;
 
             //output
-            LotteryTicketOutput(tips, minValue, maxValue);
+            Output LotteryTicketOutput = new Output(tips, minValue, maxValue);
+
+            LotteryTicketOutput.Start();
 
             Console.ReadLine();
-        }
-
-        private static int ReadInt(int minAmount, int maxAmount, string inputPrompt, ConsoleColor inputColour)
-        {
-            var inputString = string.Empty;
-            var inputInt = 0;
-            var inputIsValid = false;
-
-            do
-            {
-                Console.Write(inputPrompt);
-                ConsoleColor oldInputColor = Console.ForegroundColor;
-                Console.ForegroundColor = inputColour;
-                inputString = Console.ReadLine();
-                Console.ForegroundColor = oldInputColor;
-
-                try
-                {
-                    inputInt = int.Parse(inputString);
-                    if (inputInt >= minAmount && inputInt <= maxAmount)
-                    {
-                        inputIsValid = true;
-                    }
-                    else
-                    {
-                        ConsoleColor oldColor = Console.ForegroundColor;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"\aERROR: invalid input! number must be between {minAmount} and {maxAmount}");
-                        inputInt = 0;
-                        Console.ForegroundColor = oldColor;
-                    }
-
-                }
-                catch
-                {
-                    ConsoleColor oldColor = Console.ForegroundColor;
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\aERROR: invalid input.");
-                    inputInt = 0;
-                    Console.ForegroundColor = oldColor;
-                    inputIsValid = false;
-                }
-            }
-            while (!inputIsValid);
-
-            return inputInt;
-        }
-
-        private static int[][] RandomIntGenerator(int minValue, int maxValue, int tipAmount, int numbersPerTip)
-        {
-            int[][] result = new int[tipAmount][];
-            Random rnd = new Random();
-            int tempResult = 0;
-
-            for (int j = 0; j < tipAmount; j++)
-            {
-                result[j] = new int[numbersPerTip];
-
-                for (int i = 0; i < numbersPerTip; i++)
-                {
-                    do
-                    {
-                        tempResult = rnd.Next(minValue, maxValue);
-                    } while (result[j].Contains(tempResult));
-                    
-                    result[j][i] = tempResult;
-                }
-            }
-
-            return result;
-        }
-
-        private static void LotteryTicketOutput(int[][] tips, int minValue, int maxValue)
-        {
-            var top1 = 7;
-            var top2 = 16;
-
-            Console.WriteLine("Your lottery ticket: ");
-
-            for (int i = 0; i < tips.Length; i++)
-            {
-                switch (i)
-                {
-                    case 0:
-                        Console.SetCursorPosition(0, top1);
-                        break;
-
-                    case 1:
-                        Console.SetCursorPosition(25, top1);
-                        break;
-
-                    case 2:
-                        Console.SetCursorPosition(50, top1);
-                        break;
-
-                    case 3:
-                        Console.SetCursorPosition(75, top1);
-                        break;
-
-                    case 4:
-                        Console.SetCursorPosition(100, top1);
-                        break;
-
-                    case 5: 
-                        Console.SetCursorPosition(125, top1);
-                        break;
-
-                    case 6:
-                        Console.SetCursorPosition(0, top2);
-                        break;
-
-                    case 7:
-                        Console.SetCursorPosition(25, top2);
-                        break;
-
-                    case 8:
-                        Console.SetCursorPosition(50, top2);
-                        break;
-
-                    case 9:
-                        Console.SetCursorPosition(75, top2);
-                        break;
-
-                    case 10:
-                        Console.SetCursorPosition(100, top2);
-                        break;
-
-                    case 11:
-                        Console.SetCursorPosition(125, top2);
-                        break;
-                }
-
-                for (int j = minValue; j <= maxValue; j++)
-                {
-                    if (j < 10)
-                    {
-                        Console.Write(" ");
-                    }
-
-                    if (tips[i].Contains(j))
-                    {
-                        ConsoleColor old = Console.ForegroundColor;
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write($"{j}  ");
-                        Console.ForegroundColor = old;
-                    }
-                    else
-                    {
-                        Console.Write($"{j}  ");
-                    }
-
-                    #region cursor positioning
-                    var cursorTop = Console.CursorTop;
-
-                    if (j % 6 == 0 && i == 0)
-                    {
-                        Console.SetCursorPosition(0, cursorTop + 1);
-                    }
-                    else if (j % 6 == 0 && i == 1)
-                    {
-                        Console.SetCursorPosition(25, cursorTop + 1);
-                    }
-                    else if (j % 6 == 0 && i == 2)
-                    {
-                        Console.SetCursorPosition(50, cursorTop + 1);
-                    }
-                    else if (j % 6 == 0 && i == 3)
-                    {
-                        Console.SetCursorPosition(75, cursorTop + 1);
-                    }
-                    else if (j % 6 == 0 && i == 4)
-                    {
-                        Console.SetCursorPosition(100, cursorTop + 1);
-                    }
-                    else if (j % 6 == 0 && i == 5)
-                    {
-                        Console.SetCursorPosition(125, cursorTop + 1);
-                    }
-                    else if (j % 6 == 0 && i == 6)
-                    {
-                        Console.SetCursorPosition(0, cursorTop + 1);
-                    }
-                    else if (j % 6 == 0 && i == 7)
-                    {
-                        Console.SetCursorPosition(25, cursorTop + 1);
-                    }
-                    else if (j % 6 == 0 && i == 8)
-                    {
-                        Console.SetCursorPosition(50, cursorTop + 1);
-                    }
-                    else if (j % 6 == 0 && i == 9)
-                    {
-                        Console.SetCursorPosition(75, cursorTop + 1);
-                    }
-                    else if (j % 6 == 0 && i == 10)
-                    {
-                        Console.SetCursorPosition(100, cursorTop + 1);
-                    }
-                    else if (j % 6 == 0 && i == 11)
-                    {
-                        Console.SetCursorPosition(125, cursorTop + 1);
-                    }
-                    #endregion
-                }
-
-
-            }
-
         }
     }
 }
