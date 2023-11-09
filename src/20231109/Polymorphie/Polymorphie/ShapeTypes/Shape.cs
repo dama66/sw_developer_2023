@@ -17,14 +17,18 @@ namespace Polymorphie.ShapeTypes
             _color = color;
         }
 
-        public string Description { get { return _description; } }
+        public virtual string Description { get { return _description; } }
         public int CornerCount { get { return _cornerCount; } }
         public ConsoleColor Colour { get { return _color; } set { _color = value; ; }
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
+            var oldColor = Console.ForegroundColor;
+
+            Console.ForegroundColor = _color;
             Console.WriteLine($"[{_description}] Corners: {_cornerCount}");
+            Console.ForegroundColor = oldColor;
         }
 
     }

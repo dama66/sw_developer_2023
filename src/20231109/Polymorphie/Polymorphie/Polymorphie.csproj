@@ -47,7 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShapeTypes\Dreieck.cs" />
     <Compile Include="ShapeTypes\Kreis.cs" />
-    <Compile Include="ShapeTypes\Program.cs" />
     <Compile Include="ShapeTypes\Shape.cs" />
     <Compile Include="ShapeTypes\VielEck.cs" />
   </ItemGroup>
