@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vererbung_HAT_EIN", "Vererbung_HAT_EIN\Vererbung_HAT_EIN.csproj", "{C4BDDF67-233D-4836-80B2-AF2BFF93F544}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4BDDF67-233D-4836-80B2-AF2BFF93F544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4BDDF67-233D-4836-80B2-AF2BFF93F544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4BDDF67-233D-4836-80B2-AF2BFF93F544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4BDDF67-233D-4836-80B2-AF2BFF93F544}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02A80189-0208-43AF-A1BC-A0B7C445AC26}
+	EndGlobalSection
+EndGlobal
