@@ -180,15 +180,5 @@ namespace Wifi.UITools
             
         }
 
-        private static void InlineErrorHandler(string invalidUserInput)
-        {
-            ConsoleColor oldColor = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\aERROR: Ungültige Zahleneigabe.");
-
-            Console.ForegroundColor = oldColor;
-
-        }
-
     }
 }
