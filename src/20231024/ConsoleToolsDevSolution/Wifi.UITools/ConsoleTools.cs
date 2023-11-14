@@ -12,6 +12,8 @@ namespace Wifi.UITools
     /// </summary>
     public abstract class ConsoleTools
     {
+        public delegate void InvalidInputHandler(string invalidUserInput);
+
         /// <summary> 
         /// Liefert eine Eingabe als String zurück. string.Empty und NULL werden nicht akzeptiert. 
         /// </summary>
@@ -98,7 +100,13 @@ namespace Wifi.UITools
         /// </summary>
         /// <param name="inputPrompt">Text für die Eingabeaufforderung</param>
         /// <returns></returns>
+
         public static int ReadInt(string inputPrompt)
+        {
+            return ReadInt(inputPrompt, DefaultErrorHandler);
+        }
+
+            public static int ReadInt(string inputPrompt, InvalidInputHandler invalidInputHandler)
         {
             var inputString = string.Empty;
             var inputInt = 0;
@@ -117,17 +125,23 @@ namespace Wifi.UITools
                 }
                 catch
                 {
-                    ConsoleColor oldColor = Console.ForegroundColor;
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\aERROR: Ungültige Zahleneigabe.");
+                    if (invalidInputHandler != null)
+                    {
+                        invalidInputHandler(inputString);
+                    }
+                   //  invalidInputHandler?.Invoke(inputString);
+
+
                     inputInt = 0;
-                    Console.ForegroundColor = oldColor;
                     inputIsValid = false;
                 }
             } while (!inputIsValid);
 
             return inputInt;
         }
+
+
+
         /// <summary>
         /// Liefert eine Eigabe als string zurück. string.Empty und NULL werden nicht akzeptiert.
         /// </summary>
@@ -153,6 +167,27 @@ namespace Wifi.UITools
             } while (string.IsNullOrEmpty(inputString));
 
             return inputString;
+        }
+
+
+        private static void DefaultErrorHandler(string invalidUserInput)
+        {
+            ConsoleColor oldColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\aERROR: Ungültige Zahleneigabe.");
+            
+            Console.ForegroundColor = oldColor;
+            
+        }
+
+        private static void InlineErrorHandler(string invalidUserInput)
+        {
+            ConsoleColor oldColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\aERROR: Ungültige Zahleneigabe.");
+
+            Console.ForegroundColor = oldColor;
+
         }
 
     }
