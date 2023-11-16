@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DA01080A-2F4D-495F-8ED4-4623DC386ADD}</ProjectGuid>
+    <ProjectGuid>{1BB211F8-138C-4DC8-9C46-2EE46CA789A6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>FormsCalculator</RootNamespace>
-    <AssemblyName>FormsCalculator</AssemblyName>
+    <RootNamespace>Wifi.Playlist.FormsUI</RootNamespace>
+    <AssemblyName>Wifi.Playlist.FormsUI</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -54,9 +54,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
