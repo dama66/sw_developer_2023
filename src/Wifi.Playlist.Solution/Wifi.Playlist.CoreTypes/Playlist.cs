@@ -26,7 +26,7 @@ namespace Wifi.Playlist.CoreTypes
             set
             {
                 _name = value;
-            } 
+            }
 
         }
 
@@ -52,7 +52,7 @@ namespace Wifi.Playlist.CoreTypes
         }
 
         public Playlist(string name, string author)
-            :this(name, author, DateTime.Now) { }
+            : this(name, author, DateTime.Now) { }
 
         public Playlist(string name, string author, DateTime createdAt)
         {
@@ -77,9 +77,12 @@ namespace Wifi.Playlist.CoreTypes
             {
                 var sum = TimeSpan.Zero;
 
-                if (_items == null || _items.Count == 0)
+                if (_items.Count == 0)
+                {
+                    return sum;
+                }
 
-                _items.ForEach(x => sum.Add(x.Duration));
+                    _items.ForEach(x => sum = sum.Add(x.Duration));
 
                 return sum;
             }
