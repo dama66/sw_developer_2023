@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using System.Timers;
 using Timer = System.Timers.Timer;
@@ -11,11 +13,15 @@ namespace Linq_GL
     public delegate void DoSomething(string data);
 
     public delegate bool FilterHandler(int value);
+    public delegate bool FilterHandler<T>(T value);
 
     internal class Program
     {
         static void Main(string[] args)
         {
+
+
+
             DoSomething doSomething = PrintMessage;
 
             doSomething("Dies ist ein Test!");
@@ -81,9 +87,18 @@ namespace Linq_GL
             filterValues = Filter(myValues, x => x > 30);
             filterValues = Filter(myValues, x => x < 30 && x > 10);
 
+            var nameList = new string[] { "David", "Alex", "Adrian", "Valentina" };
+
+            var filteredNames = Filter(nameList, x => x.ToLower().Contains("v"));
+            var filteredNames2 = nameList.ToList().Where(x => x.ToLower().Contains("v"));
+
+            var nameStartingLetter = nameList.ToList()
+                                                                        .Select(x => x[0])
+                                                                        .OrderBy(x => x);
+
             //Actions ==> Delegate Methode mit Rückgabetype == void
             //Func ==> Delegate Methode mit Rückgabetype != void
-            //Predicate ==> Delegate Methode mit Rückgabetype == bool
+            //Predicate ==> Func Methode mit Rückgabetype == bool
 
 
         }
@@ -98,12 +113,12 @@ namespace Linq_GL
             return value % 2 != 0;
         }
 
-        private static int[] Filter(int[] Valuelist, FilterHandler handler)
+        private static T[] Filter<T>(T[] Valuelist, Func<T, bool> predicate)
         {
-            var selectedValueList = new List<int>();
-            foreach (int value in Valuelist)
+            var selectedValueList = new List<T>();
+            foreach (var value in Valuelist)
             {
-                if (handler(value))
+                if (predicate(value))
                 {
                     selectedValueList.Add(value);
                 }
@@ -111,6 +126,34 @@ namespace Linq_GL
 
             return selectedValueList.ToArray();
         }
+
+        //private static T[] Filter<T>(T[] Valuelist, FilterHandler<T> handler)
+        //{
+        //    var selectedValueList = new List<T>();
+        //    foreach (var value in Valuelist)
+        //    {
+        //        if (handler(value))
+        //        {
+        //            selectedValueList.Add(value);
+        //        }
+        //    }
+
+        //    return selectedValueList.ToArray();
+        //}
+
+        //private static int[] Filter(int[] Valuelist, FilterHandler predicate)
+        //{
+        //    var selectedValueList = new List<int>();
+        //    foreach (int value in Valuelist)
+        //    {
+        //        if (predicate(value))
+        //        {
+        //            selectedValueList.Add(value);
+        //        }
+        //    }
+
+        //    return selectedValueList.ToArray();
+        //}
 
 
         private static void PrintMessage(string data)
