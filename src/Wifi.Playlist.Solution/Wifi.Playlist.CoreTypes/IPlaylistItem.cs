@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Wifi.Playlist.CoreTypes
 {
     public interface IPlaylistItem
     {
+        string Title { get; }
+        string Author { get; }
+        TimeSpan Duration { get; }
+        string FilePath { get; }
+        Image Thumbnail { get; }
     }
 }
