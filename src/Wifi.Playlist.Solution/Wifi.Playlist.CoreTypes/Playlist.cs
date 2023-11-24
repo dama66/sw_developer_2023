@@ -90,18 +90,13 @@ namespace Wifi.Playlist.CoreTypes
 
         public void Add(IPlaylistItem item)
         {
-            if (item != null)
-            {
                 _items.Add(item);
-            }
         }
 
         public void Remove(IPlaylistItem item)
         {
-            if (item != null)
-            {
+
                 _items.Remove(item);
-            }
         }
 
         public void Clear()

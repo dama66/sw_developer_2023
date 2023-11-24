@@ -12,14 +12,12 @@ namespace Wifi.Playlist.CoreTypes.Test
     public class PlaylistTests
     {
         private Playlist _fixture;
+        private Playlist _fixture2;
 
         [SetUp]
         public void init()
         {
-           
-
             _fixture = new Playlist("Metal Charge", "David");
-
         }
 
         [Test]
@@ -42,6 +40,39 @@ namespace Wifi.Playlist.CoreTypes.Test
             var erg = _fixture.Name;
             //Assert
             Assert.That(erg, Is.EqualTo("SchlagerStars"));
+        }
+
+        [Test]
+        public void Authot_get()
+        {
+            //Arrange
+
+            //Act
+            var erg = _fixture.Author;
+            //Assert
+            Assert.That(erg, Is.EqualTo("David"));
+        }
+
+        [Test]
+        public void Author_set()
+        {
+            //Arrange
+            _fixture.Author = "Alex";
+            //Act
+            var erg = _fixture.Author;
+            //Assert
+            Assert.That(erg, Is.EqualTo("Alex"));
+        }
+
+        [Test]
+        public void CreatedAt_get()
+        {
+            //Arrange
+
+            //Act
+            var erg = _fixture.CreatedAt.Date;
+            //Assert
+            Assert.That(erg, Is.EqualTo(DateTime.Now.Date));
         }
 
         [Test]
@@ -89,6 +120,50 @@ namespace Wifi.Playlist.CoreTypes.Test
 
             //Assert
             Assert.That(erg, Is.EqualTo(8));
+        }
+
+        [Test]
+        public void Item_Add()
+        {
+            //Arrange
+            var item1 = new Mock<IPlaylistItem>();
+
+            //Act
+            _fixture.Add(item1.Object);
+
+            //Assert
+            Assert.That(item1.Object, Is.EqualTo(_fixture.Items.Last()));
+        }
+
+        [Test]
+        public void Item_Remove()
+        {
+            //Arrange
+            var item1 = new Mock<IPlaylistItem>();
+            var item2 = new Mock<IPlaylistItem>();
+            _fixture.Add(item1.Object);
+            _fixture.Add(item2.Object);
+            //Act
+            _fixture.Remove(item2.Object);
+
+            //Assert
+            Assert.That(item1.Object, Is.EqualTo(_fixture.Items.Last()));
+        }
+
+        [Test]
+        public void Item_Clear()
+        {
+            //Arrange
+            _fixture2 = new Playlist("", "");
+
+            var item1 = new Mock<IPlaylistItem>();
+            _fixture.Add(item1.Object);
+
+            //Act
+            _fixture.Clear();
+
+            //Assert
+            Assert.That(_fixture.Items, Is.EqualTo(_fixture2.Items));
         }
     }
 }
