@@ -17,7 +17,7 @@ namespace Wifi.Playlist.CoreTypes.Test
         [SetUp]
         public void init()
         {
-            _fixture = new Playlist("Metal Charge", "David");
+            _fixture = new Playlist("Metal Charge", "David", new DateTime(2023, 11, 24, 11, 11, 11));
         }
 
         [Test]
@@ -70,9 +70,9 @@ namespace Wifi.Playlist.CoreTypes.Test
             //Arrange
 
             //Act
-            var erg = _fixture.CreatedAt.Date;
+            var erg = _fixture.CreatedAt;
             //Assert
-            Assert.That(erg, Is.EqualTo(DateTime.Now.Date));
+            Assert.That(erg, Is.EqualTo(new DateTime(2023, 11, 24, 11, 11, 11)));
         }
 
         [Test]

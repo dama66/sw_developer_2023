@@ -59,7 +59,7 @@ namespace Wifi.Playlist.CoreTypes
             _name = name;
             _author = author;
 
-            _createdAt = DateTime.Now;
+            _createdAt = createdAt;
             _items = new List<IPlaylistItem>();
         }
 
