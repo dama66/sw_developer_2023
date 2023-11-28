@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using TagLib;
 using Wifi.Playlist.CoreTypes;
 using File = TagLib.File;
@@ -38,7 +37,8 @@ namespace Wifi.Playlist.Items
 
                 if (_tagfile.Tag.Pictures != null && _tagfile.Tag.Pictures.Length > 0)
                 {
-                    image = Image.FromStream(new MemoryStream(_tagfile.Tag.Pictures[0].Data.Data));  
+                    image = Image.FromStream(new MemoryStream(_tagfile.Tag.Pictures[0].Data.Data));
+                    image = image.GetThumbnailImage(128, 128, null, IntPtr.Zero);
                 }
 
                 return image;
