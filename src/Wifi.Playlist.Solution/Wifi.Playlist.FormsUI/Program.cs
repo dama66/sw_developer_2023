@@ -16,7 +16,12 @@ namespace Wifi.Playlist.FormsUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            // create Types
+            var provider = new NewPlaylistForm();
+            //var provider = new DummyEditor();
+
+            Application.Run(new MainForm(provider));
         }
     }
 }
