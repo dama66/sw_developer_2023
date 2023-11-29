@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>23d221e4-3e9b-40bd-8d00-7e942fd1a96e</ProjectGuid>
+    <ProjectGuid>8758fcf0-33f3-4bc0-b7d9-379b79aa132c</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Wifi.Playlist.Repositories</RootNamespace>

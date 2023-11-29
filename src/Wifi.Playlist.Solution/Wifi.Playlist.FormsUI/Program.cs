@@ -17,9 +17,9 @@ namespace Wifi.Playlist.FormsUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // create Types
-            var provider = new NewPlaylistForm();
-            //var provider = new DummyEditor();
+            //create types
+            //var provider = new NewPlaylistForm();
+            var provider = new DummyEditor();
 
             Application.Run(new MainForm(provider));
         }

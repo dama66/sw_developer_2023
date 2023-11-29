@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Wifi.Playlist.FormsUI
@@ -20,10 +13,11 @@ namespace Wifi.Playlist.FormsUI
         public string PlaylistName
         {
             get
-            { 
+            {
                 return txt_name.Text;
             }
         }
+
         public string PlaylistAuthor
         {
             get
@@ -37,9 +31,10 @@ namespace Wifi.Playlist.FormsUI
             return ShowDialog();
         }
 
+
         private void btt_ok_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(txt_author.Text) || string.IsNullOrEmpty(txt_name.Text))
+            if (string.IsNullOrEmpty(txt_author.Text) || string.IsNullOrEmpty(txt_name.Text))
             {
                 return;
             }
@@ -48,10 +43,10 @@ namespace Wifi.Playlist.FormsUI
             Close();
         }
 
-        private void btt_cancle_Click(object sender, EventArgs e)
+        private void btt_cancel_Click(object sender, EventArgs e)
         {
-            DialogResult= DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
             Close();
-        }
+        }        
     }
 }

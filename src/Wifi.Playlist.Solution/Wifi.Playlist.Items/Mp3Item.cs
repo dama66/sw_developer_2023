@@ -15,12 +15,9 @@ namespace Wifi.Playlist.Items
         public Mp3Item(string filePath)
         {
             _filePath = filePath;
-
             _tagfile = TagLib.File.Create(_filePath);
         }
 
-
-       
         public string Title => _tagfile.Tag.Title;
 
         public string Author => _tagfile.Tag.FirstPerformer;
@@ -30,25 +27,24 @@ namespace Wifi.Playlist.Items
         public string FilePath => _filePath;
 
         public Image Thumbnail
-        { 
-        get
+        {
+            get
             {
-                Image image = null;
+                Image image = null;                
 
-                if (_tagfile.Tag.Pictures != null && _tagfile.Tag.Pictures.Length > 0)
-                {
-                    image = Image.FromStream(new MemoryStream(_tagfile.Tag.Pictures[0].Data.Data));
-                    image = image.GetThumbnailImage(128, 128, null, IntPtr.Zero);
+                if(_tagfile.Tag.Pictures != null && _tagfile.Tag.Pictures.Length > 0)
+                {                    
+                    //https://stackoverflow.com/questions/10247216/c-sharp-mp3-id-tags-with-taglib-album-art
+                    image = Image.FromStream(new MemoryStream(_tagfile.Tag.Pictures[0].Data.Data));  
+                    image = image.GetThumbnailImage(128,128, null, IntPtr.Zero);
                 }
 
                 return image;
-
             }
         }
 
-        public string Descriprion => "MP3 music file";
+        public string Description => "MP3 music file";
 
         public string Extension => ".mp3";
-
     }
 }

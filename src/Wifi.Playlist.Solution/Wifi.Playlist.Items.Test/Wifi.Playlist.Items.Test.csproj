@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{70FF5BCA-9984-42BF-B2BD-168A90186D54}</ProjectGuid>
+    <ProjectGuid>{8232026A-9EA0-48A8-A689-B2DF022C9836}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Wifi.Playlist.Items.Test</RootNamespace>
@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mp3ItemTest.cs" />
+    <Compile Include="Mp3ItemTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wifi.Playlist.Items\Wifi.Playlist.Items.csproj">
-      <Project>{3d860ba0-a12d-412c-ba7b-d6613c7a6346}</Project>
+      <Project>{f1e95ad3-ab90-412b-8740-5ab224698e9d}</Project>
       <Name>Wifi.Playlist.Items</Name>
     </ProjectReference>
   </ItemGroup>

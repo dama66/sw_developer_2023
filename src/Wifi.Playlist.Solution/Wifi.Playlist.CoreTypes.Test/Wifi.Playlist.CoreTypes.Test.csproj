@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7750B9F1-047B-442B-B7F4-2DDF02E7A068}</ProjectGuid>
+    <ProjectGuid>{EF9F9029-8150-4868-84AB-92E717E49B2D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Wifi.Playlist.CoreTypes.Test</RootNamespace>
@@ -12,8 +12,6 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wifi.Playlist.CoreTypes\Wifi.Playlist.CoreTypes.csproj">
-      <Project>{8D758641-8DA2-4D3A-A778-7F2EFEE8C4A2}</Project>
+      <Project>{8b9f2d64-7ce4-46c3-a7ae-ff854178787a}</Project>
       <Name>Wifi.Playlist.CoreTypes</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
+
 namespace Wifi.Playlist.CoreTypes
 {
     public interface IPlaylistItem : IFileInfo

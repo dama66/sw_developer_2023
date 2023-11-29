@@ -19,14 +19,15 @@ namespace Wifi.Playlist.FormsUI
         public MainForm(INewPlaylistDataProvider newPlaylistDataProvider)
         {
             InitializeComponent();
+
             _newPlaylistDataProvider = newPlaylistDataProvider;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            lbl_itemDetails.Text = string.Empty;
-            lbl_playlistDetails.Text = string.Empty;    
             lbl_playlistName.Text = string.Empty;
+            lbl_itemDetails.Text = string.Empty;
+            lbl_playlistDetails.Text = string.Empty;
 
             EnableEditControls(false);
         }
@@ -39,28 +40,20 @@ namespace Wifi.Playlist.FormsUI
             saveToolStripMenuItem.Enabled = controlsEnabled;
         }
 
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-
-            if(_newPlaylistDataProvider.ShowEditor() != DialogResult.OK) 
+        private void neuToolStripMenuItem_Click(object sender, EventArgs e)
+        {                        
+            if(_newPlaylistDataProvider.ShowEditor() != DialogResult.OK)
             {
                 return;
             }
 
-            _playlist = new CoreTypes.Playlist(_newPlaylistDataProvider.PlaylistName, 
-                                                _newPlaylistDataProvider.PlaylistAuthor);
+            _playlist = new CoreTypes.Playlist(_newPlaylistDataProvider.PlaylistName,
+                                               _newPlaylistDataProvider.PlaylistAuthor);            
 
             //update view
             EnableEditControls(true);
-
-           ShowPlaylistDetails();
-           ShowPlaylistItems();
-        }
-
-        private void ShowPlaylistItems()
-        {
-           
+            ShowPlaylistDetails();
+            //ShowPlaylistItems();
         }
 
         private void ShowPlaylistDetails()

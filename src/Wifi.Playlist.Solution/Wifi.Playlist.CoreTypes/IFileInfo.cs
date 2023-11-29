@@ -2,8 +2,7 @@
 {
     public interface IFileInfo
     {
-        string Descriprion { get; } 
-
+        string Description { get; }
         string Extension { get; }
     }
 }
