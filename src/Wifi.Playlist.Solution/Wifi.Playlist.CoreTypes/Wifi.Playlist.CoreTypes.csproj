@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IFileInfo.cs" />
+    <Compile Include="IPlaylist.cs" />
     <Compile Include="IPlaylistItem.cs" />
     <Compile Include="IPlaylistItemFactory.cs" />
     <Compile Include="IPlaylistRepository.cs" />
