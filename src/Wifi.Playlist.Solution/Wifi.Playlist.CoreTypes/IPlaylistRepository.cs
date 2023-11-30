@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Wifi.Playlist.CoreTypes
 {
-    public interface IPlaylistRepository
+    public interface IPlaylistRepository : IFileInfo
     {
+        void Save(IPlaylist playlist, string filePath);
+
+        IPlaylist Load(string filePath);
     }
 }

@@ -46,5 +46,10 @@ namespace Wifi.Playlist.Items
         public string Description => "MP3 music file";
 
         public string Extension => ".mp3";
+
+        public override string ToString()
+        {
+            return $"{Title} [{Author}]";
+        }
     }
 }

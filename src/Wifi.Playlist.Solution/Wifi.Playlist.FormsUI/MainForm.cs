@@ -15,12 +15,15 @@ namespace Wifi.Playlist.FormsUI
     {
         private CoreTypes.Playlist _playlist;
         private readonly INewPlaylistDataProvider _newPlaylistDataProvider;
+        private readonly IPlaylistItemFactory _playlistItemFactory;
 
-        public MainForm(INewPlaylistDataProvider newPlaylistDataProvider)
+        public MainForm(INewPlaylistDataProvider newPlaylistDataProvider,
+                        IPlaylistItemFactory playlistItemFactory)
         {
             InitializeComponent();
 
             _newPlaylistDataProvider = newPlaylistDataProvider;
+            _playlistItemFactory = playlistItemFactory;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -41,25 +44,148 @@ namespace Wifi.Playlist.FormsUI
         }
 
         private void neuToolStripMenuItem_Click(object sender, EventArgs e)
-        {                        
-            if(_newPlaylistDataProvider.ShowEditor() != DialogResult.OK)
+        {
+            if (_newPlaylistDataProvider.ShowEditor() != DialogResult.OK)
             {
                 return;
             }
 
+
+            //HACK: Wird verbessert!
             _playlist = new CoreTypes.Playlist(_newPlaylistDataProvider.PlaylistName,
-                                               _newPlaylistDataProvider.PlaylistAuthor);            
+                                               _newPlaylistDataProvider.PlaylistAuthor);
 
             //update view
             EnableEditControls(true);
             ShowPlaylistDetails();
-            //ShowPlaylistItems();
+            ShowPlaylistItems();
+        }
+
+        private void ShowPlaylistItems()
+        {
+            int imageIndex = 0;
+
+            lst_itemsView.Items.Clear();
+            imageList.Images.Clear();
+
+            foreach (var item in _playlist.Items)
+            {
+                var listViewItem = new ListViewItem(item.ToString());
+                listViewItem.Tag = item;
+
+                if (item.Thumbnail != null)
+                {
+                    imageList.Images.Add(item.Thumbnail);
+                }
+                else
+                {
+                    imageList.Images.Add(Resource.no_image_icon);
+                }
+                listViewItem.ImageIndex = imageIndex++;
+                lst_itemsView.Items.Add(listViewItem);
+            }
+
+            lst_itemsView.LargeImageList = imageList;
+
         }
 
         private void ShowPlaylistDetails()
         {
             lbl_playlistName.Text = _playlist.Name;
-            lbl_playlistDetails.Text = $"Gesamt Spieldauer: {_playlist.Duration} Autor: {_playlist.Author}";
+            lbl_playlistDetails.Text = $"Gesamt Spieldauer: {_playlist.Duration.ToString("hh\\:mm\\:ss")} Autor: {_playlist.Author}";
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog.Multiselect = true;
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+
+            foreach (var fileName in openFileDialog.FileNames)
+            {
+                var newItem = _playlistItemFactory.Create(fileName);
+
+                if (newItem == null)
+                {
+                    return;
+                }
+
+                _playlist.Add(newItem);
+            }
+
+            ShowPlaylistDetails();
+            ShowPlaylistItems();
+        }
+
+        private void lst_itemsView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          var item =  GetSelectedPlaylistItem(sender);
+
+            if(item == null)
+            {
+                return; 
+            }
+
+            ShowPlaylistItemDetails(item);
+        }
+
+        private void ShowPlaylistItemDetails(IPlaylistItem item)
+        {
+
+            if (item == null)
+            { 
+                return; 
+            }
+            lbl_itemDetails.Text = $"Pfad: {item.FilePath} {Environment.NewLine}";
+            lbl_itemDetails.Text += $"Dauer: {item.Duration.ToString("hh\\:mm\\:ss")}";
+        }
+
+        private IPlaylistItem GetSelectedPlaylistItem(object sender)
+        {
+            var listView = sender as ListView;
+            if (listView == null || listView.SelectedItems.Count != 1)
+            {
+                return null;
+            }
+            var selectedItem = listView.SelectedItems[0];
+            var playlistItem = selectedItem.Tag as IPlaylistItem;
+            if (playlistItem == null)
+            {
+                return null;
+            }
+
+            return playlistItem;
+        }
+
+        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var item = GetSelectedPlaylistItem(lst_itemsView);
+            if (item == null)
+            {
+                return;
+            }
+             
+            _playlist.Remove(item);
+
+            ShowPlaylistDetails();
+            ShowPlaylistItems();
+        }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _playlist.Clear();
+
+            ShowPlaylistDetails();
+            ShowPlaylistItems();
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

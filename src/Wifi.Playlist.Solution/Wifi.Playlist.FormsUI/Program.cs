@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wifi.Playlist.Factories;
 
 namespace Wifi.Playlist.FormsUI
 {
@@ -19,9 +20,12 @@ namespace Wifi.Playlist.FormsUI
 
             //create types
             //var provider = new NewPlaylistForm();
-            var provider = new DummyEditor();
+           var provider = new DummyEditor();
 
-            Application.Run(new MainForm(provider));
+            //factories erzeugen
+            var itemFactory = new PlaylistItemFactory();
+
+            Application.Run(new MainForm(provider, itemFactory));
         }
     }
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8B9F2D64-7CE4-46C3-A7AE-FF854178787A}</ProjectGuid>
+    <ProjectGuid>{D7821284-26B9-4240-BAB8-C130AF0B1E9B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wifi.Playlist.CoreTypes</RootNamespace>
-    <AssemblyName>Wifi.Playlist.CoreTypes</AssemblyName>
+    <RootNamespace>Wifi.Playlist.Factories</RootNamespace>
+    <AssemblyName>Wifi.Playlist.Factories</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,7 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,14 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IFileInfo.cs" />
-    <Compile Include="IPlaylist.cs" />
-    <Compile Include="IPlaylistItem.cs" />
-    <Compile Include="IPlaylistItemFactory.cs" />
-    <Compile Include="IPlaylistRepository.cs" />
-    <Compile Include="IWeatherData.cs" />
-    <Compile Include="Playlist.cs" />
+    <Compile Include="PlaylistItemFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wifi.Playlist.CoreTypes\Wifi.Playlist.CoreTypes.csproj">
+      <Project>{8b9f2d64-7ce4-46c3-a7ae-ff854178787a}</Project>
+      <Name>Wifi.Playlist.CoreTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wifi.Playlist.Items\Wifi.Playlist.Items.csproj">
+      <Project>{f1e95ad3-ab90-412b-8740-5ab224698e9d}</Project>
+      <Name>Wifi.Playlist.Items</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
