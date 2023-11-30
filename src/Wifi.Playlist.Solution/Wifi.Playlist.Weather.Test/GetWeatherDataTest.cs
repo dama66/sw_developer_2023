@@ -36,7 +36,6 @@ namespace Wifi.Playlist.Weather.Test
 
             // get weather data
             var weatherClient = new HttpClient();
-            var exclude = "minutely,hourly,daily,alerts";
 
             var weatherUrl = $"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={weatherApi}&units={"metric"}";
 
