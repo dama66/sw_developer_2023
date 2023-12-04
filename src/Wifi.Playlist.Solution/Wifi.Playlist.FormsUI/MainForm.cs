@@ -42,21 +42,15 @@ namespace Wifi.Playlist.FormsUI
             lbl_playlistDetails.Text = string.Empty;
             EnableEditControls(false);
 
-            var iconURL = $"https://openweathermap.org/img/wn/13d@2x.png";
+            pic_weather.ImageLocation = $"https://openweathermap.org/img/wn/{_weatherDataProvider.WeatherIcon}.png";
 
-            System.Drawing.Icon img = null;
+            // set ToolTip
+            ToolTip tt_weather = new ToolTip();
 
+            tt_weather.SetToolTip(pic_weather, $"{_weatherDataProvider.Name}\n" +
+                                        $"{_weatherDataProvider.Weather}\n" +
+                                        $"{_weatherDataProvider.Temp}°C");
 
-            WebClient client = new WebClient();
-            byte[] imageBytes = client.DownloadData(iconURL);
-
-            using (MemoryStream ms = new MemoryStream(imageBytes))
-            {
-                pic_weather.Image = Image.FromStream(ms);
-            }
-
-
-           // pic_weather.ImageLocation = "https://openweathermap.org/img/wn/13d.png";
 
         }
 

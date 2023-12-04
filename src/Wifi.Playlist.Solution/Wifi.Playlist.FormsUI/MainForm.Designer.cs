@@ -155,7 +155,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel1.Controls.Add(this.lbl_playlistDetails);
             this.panel1.Controls.Add(this.lbl_playlistName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -230,6 +230,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(739, 650);
             this.Controls.Add(this.pic_weather);
             this.Controls.Add(this.lbl_itemDetails);
