@@ -47,7 +47,7 @@
     <Compile Include="IPlaylistItem.cs" />
     <Compile Include="IPlaylistItemFactory.cs" />
     <Compile Include="IPlaylistRepository.cs" />
-    <Compile Include="IWeatherData.cs" />
+    <Compile Include="IWeatherDataProvider.cs" />
     <Compile Include="Playlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

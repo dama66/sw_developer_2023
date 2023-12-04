@@ -1,12 +1,15 @@
-﻿using System.Net.Http;
+﻿using System.IO;
+using System.Net;
+using System.Net.Http;
 using GoogleMaps.LocationServices;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Wifi.Playlist.CoreTypes;
+using System.Drawing;
 
 namespace Wifi.Playlist.Weather
 {
-    public class GetWeatherData : IWeatherData
+    public class GetWeatherData : IWeatherDataProvider
     {
         private string _name;
         private string _temp;
@@ -14,7 +17,15 @@ namespace Wifi.Playlist.Weather
         private string _weatherIcon;
 
 
-        private void GetWeather()
+        public string Name => _name;
+
+        public string Temp => _temp;
+
+        public string Weather => _weather;
+
+        public string WeatherIcon => _weatherIcon;
+
+        public void GetWeather()
         {
             //get lat and lon
             var _geoClient = new HttpClient();
@@ -45,15 +56,15 @@ namespace Wifi.Playlist.Weather
             _weather = JsonConvert.SerializeObject(_formattedWeatherResponse["weather"][0]["description"]);
             _weatherIcon = JsonConvert.SerializeObject(_formattedWeatherResponse["weather"][0]["icon"]);
             _name = JsonConvert.SerializeObject(_formattedWeatherResponse["name"]);
+
+            // get weather image
+
+            //var _imageClient = new HttpClient();
+
+            //var _imageUrl = $"https://openweathermap.org/img/wn/{_weatherIcon}@2x.png";
+
+            //var _imageResponse = _imageClient.GetStringAsync(_imageUrl).Result;
+
         }
-
-
-        public string Name => _name;
-
-        public string Temp => _temp;
-
-        public string Weather => _weather;
-
-        public string WeatherIcon => _weatherIcon;
     }
 }

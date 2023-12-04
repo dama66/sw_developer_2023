@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wifi.Playlist.Factories;
+using Wifi.Playlist.Weather;
 
 namespace Wifi.Playlist.FormsUI
 {
@@ -21,11 +22,14 @@ namespace Wifi.Playlist.FormsUI
             //create types
             //var provider = new NewPlaylistForm();
            var provider = new DummyEditor();
+            var weather = new GetWeatherData();
 
             //factories erzeugen
             var itemFactory = new PlaylistItemFactory();
 
-            Application.Run(new MainForm(provider, itemFactory));
+           
+
+            Application.Run(new MainForm(provider, itemFactory, weather));
         }
     }
 }

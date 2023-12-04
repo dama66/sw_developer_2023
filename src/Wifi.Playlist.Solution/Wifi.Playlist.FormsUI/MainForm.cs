@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,23 +19,45 @@ namespace Wifi.Playlist.FormsUI
         private CoreTypes.Playlist _playlist;
         private readonly INewPlaylistDataProvider _newPlaylistDataProvider;
         private readonly IPlaylistItemFactory _playlistItemFactory;
+        private readonly IWeatherDataProvider _weatherDataProvider;
 
         public MainForm(INewPlaylistDataProvider newPlaylistDataProvider,
-                        IPlaylistItemFactory playlistItemFactory)
+                        IPlaylistItemFactory playlistItemFactory,
+                        IWeatherDataProvider weatherDataProvider)
+
         {
             InitializeComponent();
 
             _newPlaylistDataProvider = newPlaylistDataProvider;
             _playlistItemFactory = playlistItemFactory;
+            _weatherDataProvider = weatherDataProvider;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            _weatherDataProvider.GetWeather();
+
             lbl_playlistName.Text = string.Empty;
             lbl_itemDetails.Text = string.Empty;
             lbl_playlistDetails.Text = string.Empty;
-
             EnableEditControls(false);
+
+            var iconURL = $"https://openweathermap.org/img/wn/13d@2x.png";
+
+            System.Drawing.Icon img = null;
+
+
+            WebClient client = new WebClient();
+            byte[] imageBytes = client.DownloadData(iconURL);
+
+            using (MemoryStream ms = new MemoryStream(imageBytes))
+            {
+                pic_weather.Image = Image.FromStream(ms);
+            }
+
+
+           // pic_weather.ImageLocation = "https://openweathermap.org/img/wn/13d.png";
+
         }
 
         private void EnableEditControls(bool controlsEnabled)
@@ -187,5 +212,6 @@ namespace Wifi.Playlist.FormsUI
         {
             Close();
         }
+
     }
 }

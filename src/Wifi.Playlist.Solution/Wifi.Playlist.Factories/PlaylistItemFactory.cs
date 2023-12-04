@@ -17,7 +17,10 @@ namespace Wifi.Playlist.Factories
             {
                 return new IFileInfo[]
                 {
-                    new Mp3Item(string.Empty)
+                    new Mp3Item(string.Empty),
+                    new JpgPictureItem(string.Empty),
+                    new PngPictureItem(string.Empty),
+                    new BmpPictureItem(string.Empty)
                 };
             } 
         }
@@ -32,6 +35,14 @@ namespace Wifi.Playlist.Factories
             {
                 case ".mp3":
                     item = new Mp3Item(fileName);
+                    break;
+
+                case ".jpg":
+                    item = new JpgPictureItem(fileName);
+                    break;
+
+                case ".png":
+                    item = new PngPictureItem(fileName);
                     break;
             }
             return item;
