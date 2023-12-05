@@ -45,7 +45,6 @@
     <Compile Include="BmpPictureItem.cs" />
     <Compile Include="JpgPictureItem.cs" />
     <Compile Include="Mp3Item.cs" />
-    <Compile Include="MediaItem.cs" />
     <Compile Include="PictureItemBase.cs" />
     <Compile Include="PngPictureItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using Wifi.Playlist.CoreTypes;
 using System.Drawing;
 
+
 namespace Wifi.Playlist.Weather
 {
     public class GetWeatherData : IWeatherDataProvider
@@ -31,7 +32,7 @@ namespace Wifi.Playlist.Weather
             var _geoClient = new HttpClient();
             var _geoApi = "a821e8feebfe413d200cbf4e427ffb2a";
 
-            var _zip = "6835";
+            var _zip = "6800";
             var _country = "AT";
 
             var _geoUrl = $"http://api.openweathermap.org/geo/1.0/zip?zip={_zip},{_country}&appid={_geoApi}";
@@ -44,6 +45,7 @@ namespace Wifi.Playlist.Weather
 
 
             // get weather data
+
             var _weatherClient = new HttpClient();
             var _weatherApi = "a3408b9d4397bde432220040aa73721f";
 
@@ -57,13 +59,10 @@ namespace Wifi.Playlist.Weather
             _weatherIcon = JsonConvert.SerializeObject(_formattedWeatherResponse["weather"][0]["icon"]);
             _name = JsonConvert.SerializeObject(_formattedWeatherResponse["name"]);
 
-            // get weather image
-
-            //var _imageClient = new HttpClient();
-
-            //var _imageUrl = $"https://openweathermap.org/img/wn/{_weatherIcon}@2x.png";
-
-            //var _imageResponse = _imageClient.GetStringAsync(_imageUrl).Result;
+            _temp = _temp.Replace("\"", "");
+            _weather = _weather.Replace("\"","");
+            _weatherIcon = _weatherIcon.Replace("\"","");
+            _name = _name.Replace("\"","");
 
         }
     }

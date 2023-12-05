@@ -108,6 +108,10 @@
       <Project>{D7821284-26B9-4240-BAB8-C130AF0B1E9B}</Project>
       <Name>Wifi.Playlist.Factories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Wifi.Playlist.Repositories\Wifi.Playlist.Repositories.csproj">
+      <Project>{8758fcf0-33f3-4bc0-b7d9-379b79aa132c}</Project>
+      <Name>Wifi.Playlist.Repositories</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wifi.Playlist.Weather\Wifi.Playlist.Weather.csproj">
       <Project>{aa27d7b0-fe02-44a8-a2ea-ed5447b34f9e}</Project>
       <Name>Wifi.Playlist.Weather</Name>

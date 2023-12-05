@@ -11,19 +11,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wifi.Playlist.CoreTypes;
+using Wifi.Playlist.Factories;
+using Wifi.Playlist.Repositories;
 
 namespace Wifi.Playlist.FormsUI
 {
     public partial class MainForm : Form
     {
         private CoreTypes.Playlist _playlist;
+        private M3uRepository _m3uRepository;
         private readonly INewPlaylistDataProvider _newPlaylistDataProvider;
         private readonly IPlaylistItemFactory _playlistItemFactory;
         private readonly IWeatherDataProvider _weatherDataProvider;
 
         public MainForm(INewPlaylistDataProvider newPlaylistDataProvider,
                         IPlaylistItemFactory playlistItemFactory,
-                        IWeatherDataProvider weatherDataProvider)
+                        IWeatherDataProvider weatherDataProvider,
+                        M3uRepository m3uRepo)
 
         {
             InitializeComponent();
@@ -31,32 +35,32 @@ namespace Wifi.Playlist.FormsUI
             _newPlaylistDataProvider = newPlaylistDataProvider;
             _playlistItemFactory = playlistItemFactory;
             _weatherDataProvider = weatherDataProvider;
+            _m3uRepository = m3uRepo;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            //get Weather Data
             _weatherDataProvider.GetWeather();
 
+            //get Weather Icon
+            pic_weather.ImageLocation = $"https://openweathermap.org/img/wn/{_weatherDataProvider.WeatherIcon}.png";
+
+            // set ToolTip
+            ToolTip tt_weather = new ToolTip();
+
+            tt_weather.SetToolTip(pic_weather, $"{_weatherDataProvider.Name}\n" +
+                                                $"{_weatherDataProvider.Weather}\n" +
+                                                $"{_weatherDataProvider.Temp}°C");
+
+            // init
             lbl_playlistName.Text = string.Empty;
             lbl_itemDetails.Text = string.Empty;
             lbl_playlistDetails.Text = string.Empty;
             EnableEditControls(false);
 
-            var iconURL = $"https://openweathermap.org/img/wn/13d@2x.png";
-
-            System.Drawing.Icon img = null;
 
 
-            WebClient client = new WebClient();
-            byte[] imageBytes = client.DownloadData(iconURL);
-
-            using (MemoryStream ms = new MemoryStream(imageBytes))
-            {
-                pic_weather.Image = Image.FromStream(ms);
-            }
-
-
-           // pic_weather.ImageLocation = "https://openweathermap.org/img/wn/13d.png";
 
         }
 
@@ -213,5 +217,37 @@ namespace Wifi.Playlist.FormsUI
             Close();
         }
 
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog.FileName = $"{_playlist.Name.Replace (" ", "_")}.txt";
+
+
+            if (saveFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            _m3uRepository.Save(_playlist, Path.GetFullPath(saveFileDialog.FileName));
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            if (_playlist != null)
+            {
+                _playlist.Clear();
+                ShowPlaylistDetails();
+                ShowPlaylistItems();
+            }
+            _playlist = (CoreTypes.Playlist)_m3uRepository.Load(Path.GetFullPath(openFileDialog.FileName));
+
+            EnableEditControls(true);
+            ShowPlaylistDetails();
+            ShowPlaylistItems();
+        }
     }
 }

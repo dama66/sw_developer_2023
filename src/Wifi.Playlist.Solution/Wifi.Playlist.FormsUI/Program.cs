@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wifi.Playlist.Factories;
+using Wifi.Playlist.Repositories;
 using Wifi.Playlist.Weather;
 
 namespace Wifi.Playlist.FormsUI
@@ -27,9 +28,10 @@ namespace Wifi.Playlist.FormsUI
             //factories erzeugen
             var itemFactory = new PlaylistItemFactory();
 
-           
+            //repositories erzeugen
+            var m3uRepo = new M3uRepository(itemFactory);
 
-            Application.Run(new MainForm(provider, itemFactory, weather));
+            Application.Run(new MainForm(provider, itemFactory, weather, m3uRepo));
         }
     }
 }
