@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wifi.Playlist.CoreTypes;
 using Wifi.Playlist.Factories;
@@ -44,7 +37,7 @@ namespace Wifi.Playlist.FormsUI
             _weatherDataProvider.GetWeather();
 
             //get Weather Icon
-            pic_weather.ImageLocation = $"https://openweathermap.org/img/wn/{_weatherDataProvider.WeatherIcon}.png";
+            pic_weather.ImageLocation = $"http://openweathermap.org/img/wn/{_weatherDataProvider.WeatherIcon}.png";
 
             // set ToolTip
             ToolTip tt_weather = new ToolTip();
@@ -126,7 +119,10 @@ namespace Wifi.Playlist.FormsUI
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openFileDialog.Multiselect = true;
+
+
+            SetupFileDialog(openFileDialog, "Select Item", string.Empty, 
+                            true, _playlistItemFactory.AvailableTypes);
 
             if (openFileDialog.ShowDialog() != DialogResult.OK)
             {
@@ -148,6 +144,39 @@ namespace Wifi.Playlist.FormsUI
 
             ShowPlaylistDetails();
             ShowPlaylistItems();
+        }
+
+        private void SetupFileDialog(FileDialog fileDialog, string title, string defaultFileName, bool multiSelect, IEnumerable<IFileInfo> availableTypes)
+        {
+            if (fileDialog is OpenFileDialog openFileDialog)
+            {
+                openFileDialog.Multiselect = multiSelect;
+            }
+
+            fileDialog.Title = title;
+            fileDialog.FileName = defaultFileName;
+            fileDialog.Filter = CreateFilter(availableTypes);
+        }
+
+        private string CreateFilter(IEnumerable<IFileInfo> availableTypes)
+        {
+            string filter = string.Empty;
+
+            filter = "All supported types|";
+
+            var extensions = availableTypes.Select(x => x.Extension);
+            extensions.ToList().ForEach(extension => filter += "*" + extension + ";" );
+
+            filter += "|";
+
+            foreach (var type in availableTypes)
+            {
+                filter += $"{type.Description}|*{type.Extension}|";
+            }
+
+            //remove last | from filter string
+            filter = filter.Substring(0, filter.Length -1);
+            return filter;
         }
 
         private void lst_itemsView_SelectedIndexChanged(object sender, EventArgs e)
@@ -219,7 +248,9 @@ namespace Wifi.Playlist.FormsUI
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog.FileName = $"{_playlist.Name.Replace (" ", "_")}.txt";
+            //SetupFileDialog(saveFileDialog, "Save playlist as", _playlist.Name, 
+            //                false, _repositoryFactory.AvailableTypes);
+            saveFileDialog.FileName = $"{_playlist.Name.Replace (" ", "_")}.m3u";
 
 
             if (saveFileDialog.ShowDialog() != DialogResult.OK)

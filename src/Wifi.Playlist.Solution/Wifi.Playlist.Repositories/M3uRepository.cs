@@ -1,16 +1,9 @@
 ﻿using PlaylistsNET.Content;
 using PlaylistsNET.Models;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wifi.Playlist.CoreTypes;
-using PlaylistsNET;
-using System.Runtime.InteropServices.ComTypes;
-using System.Runtime.InteropServices;
-using Wifi.Playlist.Factories;
+using System.IO.Abstractions;
+
 
 namespace Wifi.Playlist.Repositories
 {
@@ -23,9 +16,7 @@ namespace Wifi.Playlist.Repositories
 
         public M3uRepository(IPlaylistItemFactory playlistItemFactory)
         {
-
             _playlistItemFactory = playlistItemFactory;
-
         }
 
 
@@ -35,7 +26,7 @@ namespace Wifi.Playlist.Repositories
             M3uContent _content = new M3uContent();
             M3uPlaylist _m3uPlaylist = _content.GetFromStream(_streamReader.BaseStream);
 
-            var _playlist = new CoreTypes.Playlist(Path.GetFileName(filePath).Replace("_"," ").Replace(".txt",""), "MAERIDA");
+            var _playlist = new CoreTypes.Playlist(Path.GetFileName(filePath).Replace("_"," ").Replace(".m3u",""), "MAERIDA");
 
             foreach (M3uPlaylistEntry _m3uPlaylistItem in _m3uPlaylist.PlaylistEntries)
             {
@@ -53,12 +44,16 @@ namespace Wifi.Playlist.Repositories
 
         public void Save(IPlaylist playlist, string filePath)
         {
-            M3uPlaylist _m3uPlaylist = new M3uPlaylist();
-            _m3uPlaylist.IsExtended = true;
+            M3uPlaylist m3uPlaylist = new M3uPlaylist();
+            m3uPlaylist.IsExtended = true;
 
-            foreach(IPlaylistItem item in playlist.Items)
+            m3uPlaylist.Comments.Add($"#Title:{playlist.Name}");
+            m3uPlaylist.Comments.Add($"#Author:{playlist.Author}");
+            m3uPlaylist.Comments.Add($"#CreatedAt:{playlist.CreatedAt.ToShortDateString()}");
+
+            foreach (IPlaylistItem item in playlist.Items)
             {
-                _m3uPlaylist.PlaylistEntries.Add(new M3uPlaylistEntry()
+                m3uPlaylist.PlaylistEntries.Add(new M3uPlaylistEntry()
                 {
                     Album = "Album",
                     AlbumArtist = item.Author,
@@ -70,7 +65,7 @@ namespace Wifi.Playlist.Repositories
 
             StreamWriter _streamWriter = new StreamWriter(filePath);
 
-            _streamWriter.Write(PlaylistToTextHelper.ToText(_m3uPlaylist));
+            _streamWriter.Write(PlaylistToTextHelper.ToText(m3uPlaylist));
             _streamWriter.Flush();
             _streamWriter.Close();
         }

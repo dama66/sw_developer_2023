@@ -22,9 +22,15 @@ namespace Wifi.Playlist.Items
 
         public PictureItemBase(string filePath, string extension)
         {
+            _extension = extension;
+
+            if (string.IsNullOrEmpty(filePath))
+            {
+                return;
+            }
             _filePath = filePath;
             _tagFile = TagLib.File.Create(filePath);
-            _extension = extension;
+            
         }
 
         public string Title

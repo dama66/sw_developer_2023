@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wifi.Playlist.CoreTypes;
 using Wifi.Playlist.Factories;
 using Wifi.Playlist.Repositories;
 using Wifi.Playlist.Weather;
@@ -20,9 +22,21 @@ namespace Wifi.Playlist.FormsUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            var builder = new ContainerBuilder();
+            builder.RegisterType<DummyEditor>().As<INewPlaylistDataProvider>();
+            builder.RegisterType<PlaylistItemFactory>().As<IPlaylistItemFactory>();
+            builder.RegisterType<GetWeatherData>().As<IWeatherDataProvider>();
+            builder.RegisterType<MainForm>();
+
+            //container erzeugen
+            var container = builder.Build();    
+
+            //Typen erzeugen lassen
+            container.Resolve<MainForm>();  
+
             //create types
             //var provider = new NewPlaylistForm();
-           var provider = new DummyEditor();
+            var provider = new DummyEditor();
             var weather = new GetWeatherData();
 
             //factories erzeugen
