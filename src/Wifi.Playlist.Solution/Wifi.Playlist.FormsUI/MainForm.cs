@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wifi.Playlist.CoreTypes;
+using Wifi.Playlist.Repositories;
 
 namespace Wifi.Playlist.FormsUI
 {
@@ -35,21 +36,26 @@ namespace Wifi.Playlist.FormsUI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            //get Weather Data
             _weatherDataProvider.GetWeather();
 
-            lbl_playlistName.Text = string.Empty;
-            lbl_itemDetails.Text = string.Empty;
-            lbl_playlistDetails.Text = string.Empty;
-            EnableEditControls(false);
-
+            //get Weather Icon
             pic_weather.ImageLocation = $"https://openweathermap.org/img/wn/{_weatherDataProvider.WeatherIcon}.png";
 
             // set ToolTip
             ToolTip tt_weather = new ToolTip();
 
             tt_weather.SetToolTip(pic_weather, $"{_weatherDataProvider.Name}\n" +
-                                        $"{_weatherDataProvider.Weather}\n" +
-                                        $"{_weatherDataProvider.Temp}°C");
+                                                $"{_weatherDataProvider.Weather}\n" +
+                                                $"{_weatherDataProvider.Temp}°C");
+
+            // init
+            lbl_playlistName.Text = string.Empty;
+            lbl_itemDetails.Text = string.Empty;
+            lbl_playlistDetails.Text = string.Empty;
+            EnableEditControls(false);
+
+
 
 
         }
@@ -207,5 +213,36 @@ namespace Wifi.Playlist.FormsUI
             Close();
         }
 
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var _m3uRepo = new M3uRepository();
+            saveFileDialog.FileName = $"{_playlist.Name.Replace (" ", "_")}.txt";
+
+
+            if (saveFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            _m3uRepo.Save(_playlist, Path.GetFullPath(saveFileDialog.FileName));
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var _m3uRepo = new M3uRepository();
+            _playlist = new CoreTypes.Playlist(_newPlaylistDataProvider.PlaylistName,
+                       _newPlaylistDataProvider.PlaylistAuthor);
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            _playlist = (CoreTypes.Playlist)_m3uRepo.Load(Path.GetFullPath(openFileDialog.FileName));
+
+            EnableEditControls(true);
+            ShowPlaylistDetails();
+            ShowPlaylistItems();
+        }
     }
 }

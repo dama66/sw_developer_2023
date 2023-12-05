@@ -32,7 +32,7 @@ namespace Wifi.Playlist.Weather
             var _geoClient = new HttpClient();
             var _geoApi = "a821e8feebfe413d200cbf4e427ffb2a";
 
-            var _zip = "6835";
+            var _zip = "6800";
             var _country = "AT";
 
             var _geoUrl = $"http://api.openweathermap.org/geo/1.0/zip?zip={_zip},{_country}&appid={_geoApi}";
