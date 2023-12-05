@@ -19,13 +19,22 @@ namespace Wifi.Playlist.Repositories
         public string Description => "M3U Repository";
         public string Extension => ".m3u";
 
+        private IPlaylistItemFactory _playlistItemFactory;
+
+        public M3uRepository(IPlaylistItemFactory playlistItemFactory)
+        {
+
+            _playlistItemFactory = playlistItemFactory;
+
+        }
+
+
         public IPlaylist Load(string filePath)
         {
             StreamReader _streamReader = new StreamReader(filePath);
             M3uContent _content = new M3uContent();
             M3uPlaylist _m3uPlaylist = _content.GetFromStream(_streamReader.BaseStream);
 
-            var _playlistItemFactory = new PlaylistItemFactory();
             var _playlist = new CoreTypes.Playlist(Path.GetFileName(filePath).Replace("_"," ").Replace(".txt",""), "MAERIDA");
 
             foreach (M3uPlaylistEntry _m3uPlaylistItem in _m3uPlaylist.PlaylistEntries)
@@ -37,12 +46,8 @@ namespace Wifi.Playlist.Repositories
                 if (newItem != null)
                 {
                     _playlist.Add(newItem);
-                }
-
-                
+                }   
             }
-   
-
             return _playlist;
         }
 
@@ -65,9 +70,9 @@ namespace Wifi.Playlist.Repositories
 
             StreamWriter _streamWriter = new StreamWriter(filePath);
 
-            string _playlistText = PlaylistToTextHelper.ToText(_m3uPlaylist);
-
-            _streamWriter.Write(_playlistText);
+            _streamWriter.Write(PlaylistToTextHelper.ToText(_m3uPlaylist));
+            _streamWriter.Flush();
+            _streamWriter.Close();
         }
     }
 }

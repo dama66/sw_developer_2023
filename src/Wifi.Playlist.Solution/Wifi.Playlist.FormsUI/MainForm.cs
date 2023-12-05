@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wifi.Playlist.CoreTypes;
+using Wifi.Playlist.Factories;
 using Wifi.Playlist.Repositories;
 
 namespace Wifi.Playlist.FormsUI
@@ -18,13 +19,15 @@ namespace Wifi.Playlist.FormsUI
     public partial class MainForm : Form
     {
         private CoreTypes.Playlist _playlist;
+        private M3uRepository _m3uRepository;
         private readonly INewPlaylistDataProvider _newPlaylistDataProvider;
         private readonly IPlaylistItemFactory _playlistItemFactory;
         private readonly IWeatherDataProvider _weatherDataProvider;
 
         public MainForm(INewPlaylistDataProvider newPlaylistDataProvider,
                         IPlaylistItemFactory playlistItemFactory,
-                        IWeatherDataProvider weatherDataProvider)
+                        IWeatherDataProvider weatherDataProvider,
+                        M3uRepository m3uRepo)
 
         {
             InitializeComponent();
@@ -32,6 +35,7 @@ namespace Wifi.Playlist.FormsUI
             _newPlaylistDataProvider = newPlaylistDataProvider;
             _playlistItemFactory = playlistItemFactory;
             _weatherDataProvider = weatherDataProvider;
+            _m3uRepository = m3uRepo;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -215,7 +219,6 @@ namespace Wifi.Playlist.FormsUI
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var _m3uRepo = new M3uRepository();
             saveFileDialog.FileName = $"{_playlist.Name.Replace (" ", "_")}.txt";
 
 
@@ -224,21 +227,23 @@ namespace Wifi.Playlist.FormsUI
                 return;
             }
 
-            _m3uRepo.Save(_playlist, Path.GetFullPath(saveFileDialog.FileName));
+            _m3uRepository.Save(_playlist, Path.GetFullPath(saveFileDialog.FileName));
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var _m3uRepo = new M3uRepository();
-            _playlist = new CoreTypes.Playlist(_newPlaylistDataProvider.PlaylistName,
-                       _newPlaylistDataProvider.PlaylistAuthor);
-
             if (openFileDialog.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
 
-            _playlist = (CoreTypes.Playlist)_m3uRepo.Load(Path.GetFullPath(openFileDialog.FileName));
+            if (_playlist != null)
+            {
+                _playlist.Clear();
+                ShowPlaylistDetails();
+                ShowPlaylistItems();
+            }
+            _playlist = (CoreTypes.Playlist)_m3uRepository.Load(Path.GetFullPath(openFileDialog.FileName));
 
             EnableEditControls(true);
             ShowPlaylistDetails();
