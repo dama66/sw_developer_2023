@@ -49,8 +49,8 @@
             this.lbl_itemDetails = new System.Windows.Forms.Label();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.pic_weather = new System.Windows.Forms.PictureBox();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_weather)).BeginInit();
@@ -63,7 +63,7 @@
             this.itemsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(739, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1040, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -83,38 +83,38 @@
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.neuToolStripMenuItem.Text = "New";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(97, 6);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(97, 6);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -163,14 +163,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(739, 73);
+            this.panel1.Size = new System.Drawing.Size(1040, 73);
             this.panel1.TabIndex = 1;
             // 
             // lbl_playlistDetails
             // 
             this.lbl_playlistDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_playlistDetails.AutoSize = true;
-            this.lbl_playlistDetails.Location = new System.Drawing.Point(468, 47);
+            this.lbl_playlistDetails.Location = new System.Drawing.Point(769, 47);
             this.lbl_playlistDetails.Name = "lbl_playlistDetails";
             this.lbl_playlistDetails.Size = new System.Drawing.Size(259, 13);
             this.lbl_playlistDetails.TabIndex = 1;
@@ -194,7 +194,7 @@
             this.lst_itemsView.HideSelection = false;
             this.lst_itemsView.Location = new System.Drawing.Point(0, 103);
             this.lst_itemsView.Name = "lst_itemsView";
-            this.lst_itemsView.Size = new System.Drawing.Size(739, 496);
+            this.lst_itemsView.Size = new System.Drawing.Size(1040, 496);
             this.lst_itemsView.TabIndex = 2;
             this.lst_itemsView.UseCompatibleStateImageBehavior = false;
             this.lst_itemsView.SelectedIndexChanged += new System.EventHandler(this.lst_itemsView_SelectedIndexChanged);
@@ -203,12 +203,12 @@
             // 
             this.lbl_itemDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_itemDetails.AutoSize = true;
-            this.lbl_itemDetails.Location = new System.Drawing.Point(12, 615);
+            this.lbl_itemDetails.Location = new System.Drawing.Point(12, 611);
             this.lbl_itemDetails.Name = "lbl_itemDetails";
-            this.lbl_itemDetails.Size = new System.Drawing.Size(483, 26);
+            this.lbl_itemDetails.Size = new System.Drawing.Size(479, 26);
             this.lbl_itemDetails.TabIndex = 3;
-            this.lbl_itemDetails.Text = "Pfad: \"C:\\myCode\\Repos\\sw_developer_2023_trainer\\DemoFiles\\001 - Bruno Mars - Gre" +
-    "nade.mp3\"\r\nDauer: 00:00:00";
+            this.lbl_itemDetails.Text = "Pfad:   C:\\myCode\\Repos\\sw_developer_2023_trainer\\DemoFiles\\001 - Bruno Mars - Gr" +
+    "enade.mp3\r\nDauer: 00:00:00";
             // 
             // imageList
             // 
@@ -223,22 +223,18 @@
             // pic_weather
             // 
             this.pic_weather.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pic_weather.Location = new System.Drawing.Point(679, 605);
+            this.pic_weather.Location = new System.Drawing.Point(980, 605);
             this.pic_weather.Name = "pic_weather";
             this.pic_weather.Size = new System.Drawing.Size(48, 35);
-            this.pic_weather.TabIndex = 4;
+            this.pic_weather.TabIndex = 5;
             this.pic_weather.TabStop = false;
-            // 
-            // saveFileDialog
-            // 
-            this.saveFileDialog.FileName = "saveFileDialog1";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(739, 650);
+            this.ClientSize = new System.Drawing.Size(1040, 650);
             this.Controls.Add(this.pic_weather);
             this.Controls.Add(this.lbl_itemDetails);
             this.Controls.Add(this.lst_itemsView);
@@ -281,8 +277,8 @@
         private System.Windows.Forms.Label lbl_itemDetails;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.PictureBox pic_weather;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 

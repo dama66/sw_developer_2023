@@ -1,0 +1,16 @@
+#EXTM3U
+##Title:Test2
+##Author:MAIERDA
+##CreatedAt:06.12.2023
+#EXTART:Unknown
+#EXTINF:10,IMG_20200624_103820.jpg
+C:\Users\David\source\repos\sw_developer_2023\DemoFiles\IMG_20200624_103820.jpg
+#EXTART:Unknown
+#EXTINF:10,IMG_20200624_103833.jpg
+C:\Users\David\source\repos\sw_developer_2023\DemoFiles\IMG_20200624_103833.jpg
+#EXTART:Unknown
+#EXTINF:10,IMG_20200624_103844.jpg
+C:\Users\David\source\repos\sw_developer_2023\DemoFiles\IMG_20200624_103844.jpg
+#EXTART:Unknown
+#EXTINF:10,no-image-icon-1.jpg
+C:\Users\David\source\repos\sw_developer_2023\DemoFiles\no-image-icon-1.jpg

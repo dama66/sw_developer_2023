@@ -14,7 +14,7 @@ namespace Wifi.Playlist.Items
 
         public Mp3Item(string filePath)
         {
-            if (string.IsNullOrEmpty(filePath))
+            if(string.IsNullOrEmpty(filePath))
             {
                 return;
             }

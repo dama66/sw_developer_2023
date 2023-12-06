@@ -28,9 +28,9 @@ namespace Wifi.Playlist.Items
             {
                 return;
             }
+
             _filePath = filePath;
-            _tagFile = TagLib.File.Create(filePath);
-            
+            _tagFile = TagLib.File.Create(filePath);            
         }
 
         public string Title

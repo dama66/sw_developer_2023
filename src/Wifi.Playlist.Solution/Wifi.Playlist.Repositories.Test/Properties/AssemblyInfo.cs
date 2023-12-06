@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Wifi.Playlist.Weather")]
+[assembly: AssemblyTitle("Wifi.Playlist.Repositories.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Hilti")]
-[assembly: AssemblyProduct("Wifi.Playlist.Weather")]
-[assembly: AssemblyCopyright("Copyright © Hilti 2023")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Wifi.Playlist.Repositories.Test")]
+[assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("aa27d7b0-fe02-44a8-a2ea-ed5447b34f9e")]
+[assembly: Guid("f7cf5405-2d68-4a2a-9323-ff243cdc9e63")]
 
 // Version information for an assembly consists of the following four values:
 //

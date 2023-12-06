@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D7821284-26B9-4240-BAB8-C130AF0B1E9B}</ProjectGuid>
+    <ProjectGuid>{AEA0F9E7-E285-48C3-B695-6C406778DB6A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Wifi.Playlist.Factories</RootNamespace>
@@ -53,6 +53,10 @@
     <ProjectReference Include="..\Wifi.Playlist.Items\Wifi.Playlist.Items.csproj">
       <Project>{f1e95ad3-ab90-412b-8740-5ab224698e9d}</Project>
       <Name>Wifi.Playlist.Items</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wifi.Playlist.Repositories\Wifi.Playlist.Repositories.csproj">
+      <Project>{8758fcf0-33f3-4bc0-b7d9-379b79aa132c}</Project>
+      <Name>Wifi.Playlist.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

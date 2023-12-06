@@ -15,11 +15,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.CoreTypes.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Items.Test", "Wifi.Playlist.Items.Test\Wifi.Playlist.Items.Test.csproj", "{8232026A-9EA0-48A8-A689-B2DF022C9836}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Weather", "Wifi.Playlist.Weather\Wifi.Playlist.Weather.csproj", "{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Factories", "Wifi.Playlist.Factories\Wifi.Playlist.Factories.csproj", "{AEA0F9E7-E285-48C3-B695-6C406778DB6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Weather.Test", "Wifi.Playlist.Weather.Test\Wifi.Playlist.Weather.Test.csproj", "{CA9011A9-FA35-403C-B775-A1E60DF0DE68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Repositories.Test", "Wifi.Playlist.Repositories.Test\Wifi.Playlist.Repositories.Test.csproj", "{F7CF5405-2D68-4A2A-9323-FF243CDC9E63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Factories", "Wifi.Playlist.Factories\Wifi.Playlist.Factories.csproj", "{D7821284-26B9-4240-BAB8-C130AF0B1E9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Weather", "D:\temp\Wifi.Playlist.Solution\Wifi.Playlist.Weather\Wifi.Playlist.Weather.csproj", "{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Weather.Test", "D:\temp\Wifi.Playlist.Solution\Wifi.Playlist.Weather.Test\Wifi.Playlist.Weather.Test.csproj", "{CA9011A9-FA35-403C-B775-A1E60DF0DE68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,14 @@ Global
 		{8232026A-9EA0-48A8-A689-B2DF022C9836}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8232026A-9EA0-48A8-A689-B2DF022C9836}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8232026A-9EA0-48A8-A689-B2DF022C9836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEA0F9E7-E285-48C3-B695-6C406778DB6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA0F9E7-E285-48C3-B695-6C406778DB6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEA0F9E7-E285-48C3-B695-6C406778DB6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEA0F9E7-E285-48C3-B695-6C406778DB6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7CF5405-2D68-4A2A-9323-FF243CDC9E63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7CF5405-2D68-4A2A-9323-FF243CDC9E63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7CF5405-2D68-4A2A-9323-FF243CDC9E63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7CF5405-2D68-4A2A-9323-FF243CDC9E63}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -59,10 +69,6 @@ Global
 		{CA9011A9-FA35-403C-B775-A1E60DF0DE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA9011A9-FA35-403C-B775-A1E60DF0DE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA9011A9-FA35-403C-B775-A1E60DF0DE68}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D7821284-26B9-4240-BAB8-C130AF0B1E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D7821284-26B9-4240-BAB8-C130AF0B1E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D7821284-26B9-4240-BAB8-C130AF0B1E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D7821284-26B9-4240-BAB8-C130AF0B1E9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

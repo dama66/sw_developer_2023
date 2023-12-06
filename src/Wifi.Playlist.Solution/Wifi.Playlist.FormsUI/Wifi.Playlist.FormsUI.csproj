@@ -105,20 +105,16 @@
       <Name>Wifi.Playlist.CoreTypes</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wifi.Playlist.Factories\Wifi.Playlist.Factories.csproj">
-      <Project>{D7821284-26B9-4240-BAB8-C130AF0B1E9B}</Project>
+      <Project>{AEA0F9E7-E285-48C3-B695-6C406778DB6A}</Project>
       <Name>Wifi.Playlist.Factories</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wifi.Playlist.Repositories\Wifi.Playlist.Repositories.csproj">
-      <Project>{8758fcf0-33f3-4bc0-b7d9-379b79aa132c}</Project>
-      <Name>Wifi.Playlist.Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Wifi.Playlist.Weather\Wifi.Playlist.Weather.csproj">
-      <Project>{aa27d7b0-fe02-44a8-a2ea-ed5447b34f9e}</Project>
+    <ProjectReference Include="D:\temp\Wifi.Playlist.Solution\Wifi.Playlist.Weather\Wifi.Playlist.Weather.csproj">
+      <Project>{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}</Project>
       <Name>Wifi.Playlist.Weather</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\no-image-icon-1.jpg" />
+    <None Include="Resources\no-image-available.jpg" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Autofac">

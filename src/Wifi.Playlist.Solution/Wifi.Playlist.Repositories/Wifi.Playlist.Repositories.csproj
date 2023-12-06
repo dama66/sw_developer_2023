@@ -54,12 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wifi.Playlist.CoreTypes\Wifi.Playlist.CoreTypes.csproj">
-      <Project>{8b9f2d64-7ce4-46c3-a7ae-ff854178787a}</Project>
+      <Project>{8B9F2D64-7CE4-46C3-A7AE-FF854178787A}</Project>
       <Name>Wifi.Playlist.CoreTypes</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Wifi.Playlist.Factories\Wifi.Playlist.Factories.csproj">
-      <Project>{d7821284-26b9-4240-bab8-c130af0b1e9b}</Project>
-      <Name>Wifi.Playlist.Factories</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

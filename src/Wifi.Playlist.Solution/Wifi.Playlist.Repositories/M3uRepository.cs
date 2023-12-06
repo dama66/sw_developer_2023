@@ -1,73 +1,119 @@
 ﻿using PlaylistsNET.Content;
 using PlaylistsNET.Models;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using Wifi.Playlist.CoreTypes;
 using System.IO.Abstractions;
-
+using System.Linq;
+using Wifi.Playlist.CoreTypes;
 
 namespace Wifi.Playlist.Repositories
 {
     public class M3uRepository : IPlaylistRepository
     {
-        public string Description => "M3U Repository";
-        public string Extension => ".m3u";
+        private readonly IFileSystem _fileSystem;
+        private readonly IPlaylistItemFactory _playlistItemFactory;
 
-        private IPlaylistItemFactory _playlistItemFactory;
+        public M3uRepository(IPlaylistItemFactory playlistItemFactory) 
+            : this(playlistItemFactory, new FileSystem())
+        {           
+        }
 
-        public M3uRepository(IPlaylistItemFactory playlistItemFactory)
+        public M3uRepository(IPlaylistItemFactory playlistItemFactory, IFileSystem fileSystem)
         {
             _playlistItemFactory = playlistItemFactory;
+            _fileSystem = fileSystem;
         }
 
 
+        public string Description => "M3U Playlist format";
+
+        public string Extension => ".m3u";
+
         public IPlaylist Load(string filePath)
         {
-            StreamReader _streamReader = new StreamReader(filePath);
-            M3uContent _content = new M3uContent();
-            M3uPlaylist _m3uPlaylist = _content.GetFromStream(_streamReader.BaseStream);
+            string title = string.Empty;
+            string author = string.Empty;
+            string createAt = string.Empty;
 
-            var _playlist = new CoreTypes.Playlist(Path.GetFileName(filePath).Replace("_"," ").Replace(".m3u",""), "MAERIDA");
+            IPlaylist domainPlaylist = null;
 
-            foreach (M3uPlaylistEntry _m3uPlaylistItem in _m3uPlaylist.PlaylistEntries)
+            if (string.IsNullOrEmpty(filePath))
             {
-
-                 var newItem = _playlistItemFactory.Create(_m3uPlaylistItem.Path);
-                
-
-                if (newItem != null)
-                {
-                    _playlist.Add(newItem);
-                }   
+                return null;
             }
-            return _playlist;
+
+            var stream = _fileSystem.File.OpenRead(filePath);
+
+            var content = new M3uContent();
+            var playlistEntity = content.GetFromStream(stream);
+
+            //read meta data first
+            foreach (var entry in playlistEntity.PlaylistEntries)
+            {
+                if (entry.Comments.Count > 0)
+                {
+                    title = GetCommentValue(entry.Comments, "#Title:");
+                    author = GetCommentValue(entry.Comments, "#Author:");
+                    createAt = GetCommentValue(entry.Comments, "#CreatedAt:");
+
+                    break;
+                }
+            }
+
+            domainPlaylist = new CoreTypes.Playlist(title, author, DateTime.Parse(createAt));
+            foreach (var entry in playlistEntity.PlaylistEntries)
+            {
+                var playlistItem = _playlistItemFactory.Create(entry.Path);
+                if (playlistItem != null)
+                {
+                    domainPlaylist.Add(playlistItem);
+                }
+            }
+
+            return domainPlaylist;
+        }
+
+        private string GetCommentValue(IEnumerable<string> commentList, string valueKey)
+        {
+            var valueLine = commentList.Where(x => x.StartsWith(valueKey))
+                                   .FirstOrDefault();
+
+            return valueLine.Replace(valueKey, string.Empty);
         }
 
         public void Save(IPlaylist playlist, string filePath)
         {
-            M3uPlaylist m3uPlaylist = new M3uPlaylist();
+            if (playlist == null)
+            {
+                return;
+            }
+
+            var m3uPlaylist = new M3uPlaylist();
             m3uPlaylist.IsExtended = true;
 
             m3uPlaylist.Comments.Add($"#Title:{playlist.Name}");
             m3uPlaylist.Comments.Add($"#Author:{playlist.Author}");
             m3uPlaylist.Comments.Add($"#CreatedAt:{playlist.CreatedAt.ToShortDateString()}");
 
-            foreach (IPlaylistItem item in playlist.Items)
+            foreach (var item in playlist.Items)
             {
-                m3uPlaylist.PlaylistEntries.Add(new M3uPlaylistEntry()
+                var entityItem = new M3uPlaylistEntry()
                 {
-                    Album = "Album",
                     AlbumArtist = item.Author,
                     Duration = item.Duration,
                     Path = item.FilePath,
                     Title = item.Title
-                });
+                };
+
+                m3uPlaylist.PlaylistEntries.Add(entityItem);
             }
 
-            StreamWriter _streamWriter = new StreamWriter(filePath);
+            //var content = new M3uContent();
+            //string text = content.ToText(m3uPlaylist);
+            var text = PlaylistToTextHelper.ToText(m3uPlaylist);
 
-            _streamWriter.Write(PlaylistToTextHelper.ToText(m3uPlaylist));
-            _streamWriter.Flush();
-            _streamWriter.Close();
+            _fileSystem.File.WriteAllText(filePath, text);
         }
     }
 }

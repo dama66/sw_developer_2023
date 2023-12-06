@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wifi.Playlist.CoreTypes;
 using Wifi.Playlist.Factories;
-using Wifi.Playlist.Repositories;
 using Wifi.Playlist.Weather;
 
 namespace Wifi.Playlist.FormsUI
@@ -22,30 +21,24 @@ namespace Wifi.Playlist.FormsUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            //builder erzeugen
             var builder = new ContainerBuilder();
-            builder.RegisterType<DummyEditor>().As<INewPlaylistDataProvider>();
+
+            //typen registrieren
+            //builder.RegisterType<DummyEditor>().As<INewPlaylistDataProvider>();
+            builder.RegisterType<NewPlaylistForm>().As<INewPlaylistDataProvider>();
             builder.RegisterType<PlaylistItemFactory>().As<IPlaylistItemFactory>();
+            builder.RegisterType<RepositoryFactory>().As<IRepositoryFactory>();
             builder.RegisterType<GetWeatherData>().As<IWeatherDataProvider>();
             builder.RegisterType<MainForm>();
 
             //container erzeugen
-            var container = builder.Build();    
+            var container = builder.Build();
 
             //Typen erzeugen lassen
-            container.Resolve<MainForm>();  
+            var mainForm = container.Resolve<MainForm>();           
 
-            //create types
-            //var provider = new NewPlaylistForm();
-            var provider = new DummyEditor();
-            var weather = new GetWeatherData();
-
-            //factories erzeugen
-            var itemFactory = new PlaylistItemFactory();
-
-            //repositories erzeugen
-            var m3uRepo = new M3uRepository(itemFactory);
-
-            Application.Run(new MainForm(provider, itemFactory, weather, m3uRepo));
+            Application.Run(mainForm);
         }
     }
 }
