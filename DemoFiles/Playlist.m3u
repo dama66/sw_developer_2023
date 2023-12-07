@@ -1,0 +1,25 @@
+#EXTM3U
+##Title:Playlist
+##Author:David
+##CreatedAt:07.12.2023
+#EXTART:Bruno Mars
+#EXTINF:222,Grenade
+C:\Users\User\source\repos\sw_developer_2023\DemoFiles\001 - Bruno Mars - Grenade.mp3
+#EXTART:Camo & Krooked
+#EXTINF:203,Broken Pieces (feat. Nihils)
+C:\Users\User\source\repos\sw_developer_2023\DemoFiles\01 - Broken Pieces (feat. Nihils).mp3
+#EXTART:Lena
+#EXTINF:206,Taken By A Stranger
+C:\Users\User\source\repos\sw_developer_2023\DemoFiles\002 - Lena - Taken By A Stranger.mp3
+#EXTART:Adele
+#EXTINF:227,Rolling in the deep
+C:\Users\User\source\repos\sw_developer_2023\DemoFiles\003 - Adele - Rolling in the deep.mp3
+#EXTART:Hurts
+#EXTINF:235,Stay
+C:\Users\User\source\repos\sw_developer_2023\DemoFiles\004 - Hurts - Stay.mp3
+#EXTART:Taio Cruz feat. Kylie Minogue
+#EXTINF:187,Higher
+C:\Users\User\source\repos\sw_developer_2023\DemoFiles\005 - Taio Cruz feat. Kylie Minogue - Higher.mp3
+#EXTART:Lady Gaga
+#EXTINF:260,Born This Way
+C:\Users\User\source\repos\sw_developer_2023\DemoFiles\006 - Lady Gaga - Born This Way.mp3

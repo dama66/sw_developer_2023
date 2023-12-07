@@ -19,9 +19,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Factories", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Repositories.Test", "Wifi.Playlist.Repositories.Test\Wifi.Playlist.Repositories.Test.csproj", "{F7CF5405-2D68-4A2A-9323-FF243CDC9E63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Weather", "D:\temp\Wifi.Playlist.Solution\Wifi.Playlist.Weather\Wifi.Playlist.Weather.csproj", "{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Weather", "Wifi.Playlist.Weather\Wifi.Playlist.Weather.csproj", "{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Weather.Test", "D:\temp\Wifi.Playlist.Solution\Wifi.Playlist.Weather.Test\Wifi.Playlist.Weather.Test.csproj", "{CA9011A9-FA35-403C-B775-A1E60DF0DE68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Weather.Test", "Wifi.Playlist.Weather.Test\Wifi.Playlist.Weather.Test.csproj", "{CA9011A9-FA35-403C-B775-A1E60DF0DE68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

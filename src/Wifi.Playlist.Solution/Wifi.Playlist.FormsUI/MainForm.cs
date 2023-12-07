@@ -14,6 +14,7 @@ namespace Wifi.Playlist.FormsUI
 {
     public partial class MainForm : Form
     {
+        private ToolTip tt_weather = new ToolTip();
         private IPlaylist _playlist;
         private readonly INewPlaylistDataProvider _newPlaylistDataProvider;
         private readonly IPlaylistItemFactory _playlistItemFactory;
@@ -42,7 +43,6 @@ namespace Wifi.Playlist.FormsUI
             pic_weather.ImageLocation = $"http://openweathermap.org/img/wn/{_weatherDataProvider.WeatherIcon}.png";
 
             // set ToolTip
-            ToolTip tt_weather = new ToolTip();
 
             tt_weather.SetToolTip(pic_weather, $"{_weatherDataProvider.Name}\n" +
                                                 $"{_weatherDataProvider.Weather}\n" +
@@ -277,6 +277,15 @@ namespace Wifi.Playlist.FormsUI
                 ShowPlaylistDetails();
                 ShowPlaylistItems();
             }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            tt_weather.SetToolTip(pic_weather, $"{_weatherDataProvider.Name}\n" +
+                                    $"{_weatherDataProvider.Weather}\n" +
+                                    $"{_weatherDataProvider.Temp}°C");
+
+            timer.Enabled = false;
         }
     }
 }
