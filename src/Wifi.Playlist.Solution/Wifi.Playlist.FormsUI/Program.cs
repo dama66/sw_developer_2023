@@ -30,6 +30,7 @@ namespace Wifi.Playlist.FormsUI
             builder.RegisterType<PlaylistItemFactory>().As<IPlaylistItemFactory>();
             builder.RegisterType<RepositoryFactory>().As<IRepositoryFactory>();
             builder.RegisterType<GetWeatherData>().As<IWeatherDataProvider>();
+           // builder.RegisterType<GetWeatherData>().As<CurrentWeatherProxy>();
             builder.RegisterType<MainForm>();
 
             //container erzeugen

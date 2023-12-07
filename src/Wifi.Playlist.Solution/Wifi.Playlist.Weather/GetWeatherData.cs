@@ -1,11 +1,7 @@
-﻿using System.IO;
-using System.Net;
-using System.Net.Http;
-using GoogleMaps.LocationServices;
+﻿using System.Net.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Wifi.Playlist.CoreTypes;
-using System.Drawing;
 
 
 namespace Wifi.Playlist.Weather
