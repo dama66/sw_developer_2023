@@ -19,9 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Factories", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Repositories.Test", "Wifi.Playlist.Repositories.Test\Wifi.Playlist.Repositories.Test.csproj", "{F7CF5405-2D68-4A2A-9323-FF243CDC9E63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Weather", "Wifi.Playlist.Weather\Wifi.Playlist.Weather.csproj", "{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.Weather.Test", "Wifi.Playlist.Weather.Test\Wifi.Playlist.Weather.Test.csproj", "{CA9011A9-FA35-403C-B775-A1E60DF0DE68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wifi.Playlist.WeatherExtension", "Wifi.Playlist.WeatherExtension\Wifi.Playlist.WeatherExtension.csproj", "{2F1FB60E-87B3-4477-8FE1-7DA904A61199}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,14 +59,10 @@ Global
 		{F7CF5405-2D68-4A2A-9323-FF243CDC9E63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7CF5405-2D68-4A2A-9323-FF243CDC9E63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7CF5405-2D68-4A2A-9323-FF243CDC9E63}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA27D7B0-FE02-44A8-A2EA-ED5447B34F9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA9011A9-FA35-403C-B775-A1E60DF0DE68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA9011A9-FA35-403C-B775-A1E60DF0DE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA9011A9-FA35-403C-B775-A1E60DF0DE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA9011A9-FA35-403C-B775-A1E60DF0DE68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F1FB60E-87B3-4477-8FE1-7DA904A61199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F1FB60E-87B3-4477-8FE1-7DA904A61199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F1FB60E-87B3-4477-8FE1-7DA904A61199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F1FB60E-87B3-4477-8FE1-7DA904A61199}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

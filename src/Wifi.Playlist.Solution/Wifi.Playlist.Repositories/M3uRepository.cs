@@ -73,15 +73,7 @@ namespace Wifi.Playlist.Repositories
 
             return domainPlaylist;
         }
-
-        private string GetCommentValue(IEnumerable<string> commentList, string valueKey)
-        {
-            var valueLine = commentList.Where(x => x.StartsWith(valueKey))
-                                   .FirstOrDefault();
-
-            return valueLine.Replace(valueKey, string.Empty);
-        }
-
+      
         public void Save(IPlaylist playlist, string filePath)
         {
             if (playlist == null)
@@ -114,6 +106,15 @@ namespace Wifi.Playlist.Repositories
             var text = PlaylistToTextHelper.ToText(m3uPlaylist);
 
             _fileSystem.File.WriteAllText(filePath, text);
+        }
+
+
+        private string GetCommentValue(IEnumerable<string> commentList, string valueKey)
+        {
+            var valueLine = commentList.Where(x => x.StartsWith(valueKey))
+                                   .FirstOrDefault();
+
+            return valueLine.Replace(valueKey, string.Empty);
         }
     }
 }

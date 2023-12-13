@@ -15,10 +15,9 @@ namespace Wifi.Playlist.Repositories.Test
     public class M3uRepositoryTests
     {
         private M3uRepository _fixture;
-       // private MockFileSystem _mockFileSystem;
+        //private MockFileSystem _mockFileSystem;
         private Mock<IFileSystem> _mockedFileSystem;
         private Mock<IPlaylist> _mockedPlaylist;
-        private Mock<IPlaylistItemFactory> _mockedPlaylistFactory;
 
         [SetUp]
         public void Init()
@@ -43,13 +42,13 @@ namespace Wifi.Playlist.Repositories.Test
             _mockedPlaylist.Setup(x => x.CreatedAt).Returns(DateTime.Now);
             _mockedPlaylist.Setup(x => x.Items).Returns(new IPlaylistItem[] { playlistItem1.Object, playlistItem2.Object });
 
-            _fixture = new M3uRepository(_mockedPlaylistFactory.Object);
+         //   _fixture = new M3uRepository(playlistItem1.Object);
         }
 
         [Test]
         public void Load()
         {
-            _fixture = new M3uRepository(_mockedPlaylistFactory.Object);
+         //   _fixture = new M3uRepository(_mockedFileSystem.Object);
 
             var playlist = _fixture.Load(@"C:\Users\User\Desktop\atilla.m3u");
 

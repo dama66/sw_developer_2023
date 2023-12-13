@@ -1,4 +1,4 @@
-﻿namespace Wifi.Playlist.Repositories.json
+﻿namespace Wifi.Playlist.Repositories.Json
 {
     public class ItemEntity
     {

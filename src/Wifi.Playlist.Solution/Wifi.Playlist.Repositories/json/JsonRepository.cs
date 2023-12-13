@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wifi.Playlist.CoreTypes;
 
-namespace Wifi.Playlist.Repositories.json
+namespace Wifi.Playlist.Repositories.Json
 {
     public class JsonRepository : IPlaylistRepository
     {
@@ -15,9 +15,9 @@ namespace Wifi.Playlist.Repositories.json
         private readonly IPlaylistItemFactory _playlistItemFactory;
 
         public JsonRepository(IPlaylistItemFactory playlistItemFactory)
-           : this(new FileSystem(), playlistItemFactory) { }
+            : this(new FileSystem(), playlistItemFactory) { }
 
-        public JsonRepository(IFileSystem fileSystem, IPlaylistItemFactory playlistItemFactory) 
+        public JsonRepository(IFileSystem fileSystem, IPlaylistItemFactory playlistItemFactory)
         {
             _fileSystem = fileSystem;
             _playlistItemFactory = playlistItemFactory;
@@ -40,8 +40,8 @@ namespace Wifi.Playlist.Repositories.json
         {
             var entity = playlist.ToEntity();
 
-            string json = JsonConvert.SerializeObject(entity); 
-            
+            string json = JsonConvert.SerializeObject(entity);
+
             _fileSystem.File.WriteAllText(filePath, json);
         }
     }

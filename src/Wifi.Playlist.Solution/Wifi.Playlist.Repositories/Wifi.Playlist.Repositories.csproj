@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="json\ItemEntity.cs" />
-    <Compile Include="json\JsonRepository.cs" />
-    <Compile Include="json\MapperExtensions.cs" />
-    <Compile Include="json\PlaylistEntity.cs" />
+    <Compile Include="Json\ItemEntity.cs" />
+    <Compile Include="Json\JsonRepository.cs" />
+    <Compile Include="Json\MapperExtensions.cs" />
+    <Compile Include="Json\PlaylistEntity.cs" />
     <Compile Include="M3uRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -14,46 +14,43 @@ namespace Wifi.Playlist.FormsUI
 {
     public partial class MainForm : Form
     {
-        private ToolTip tt_weather = new ToolTip();
         private IPlaylist _playlist;
         private readonly INewPlaylistDataProvider _newPlaylistDataProvider;
         private readonly IPlaylistItemFactory _playlistItemFactory;
         private readonly IRepositoryFactory _repositoryFactory;
-        private readonly IWeatherDataProvider _weatherDataProvider;
+        private readonly ICurrentWeatherService _currentWeatherService;
 
         public MainForm(INewPlaylistDataProvider newPlaylistDataProvider,
-                        IWeatherDataProvider weatherDataProvider,
                         IPlaylistItemFactory playlistItemFactory,
-                        IRepositoryFactory repositoryFactory)
+                        IRepositoryFactory repositoryFactory,
+                        ICurrentWeatherService currentWeatherService)
         {
             InitializeComponent();
 
             _newPlaylistDataProvider = newPlaylistDataProvider;
             _playlistItemFactory = playlistItemFactory;
             _repositoryFactory = repositoryFactory;
-            _weatherDataProvider = weatherDataProvider;
+            _currentWeatherService = currentWeatherService;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private async void MainForm_Load(object sender, EventArgs e)
         {
-            //get Weather Data
-            _weatherDataProvider.GetWeather();
-
-            //get Weather Icon
-            pic_weather.ImageLocation = $"http://openweathermap.org/img/wn/{_weatherDataProvider.WeatherIcon}.png";
-
-            // set ToolTip
-
-            tt_weather.SetToolTip(pic_weather, $"{_weatherDataProvider.Name}\n" +
-                                                $"{_weatherDataProvider.Weather}\n" +
-                                                $"{_weatherDataProvider.Temp}°C");
-
-
             lbl_playlistName.Text = string.Empty;
             lbl_itemDetails.Text = string.Empty;
             lbl_playlistDetails.Text = string.Empty;
 
             EnableEditControls(false);
+
+            await _currentWeatherService.SetGeoLocationAsync("Dornbirn", "AT");
+            _currentWeatherService.UpdateCurrentWeatherAsync();
+
+            UpdateWeather();
+        }
+
+        private void UpdateWeather()
+        {
+            img_weatherIcon.Image = _currentWeatherService.Thumbnail;
+            toolTip.SetToolTip(img_weatherIcon, $"{_currentWeatherService.LocationName} - {_currentWeatherService.Description}");
         }
 
         private void EnableEditControls(bool controlsEnabled)
@@ -281,10 +278,7 @@ namespace Wifi.Playlist.FormsUI
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            tt_weather.SetToolTip(pic_weather, $"{_weatherDataProvider.Name}\n" +
-                                    $"{_weatherDataProvider.Weather}\n" +
-                                    $"{_weatherDataProvider.Temp}°C");
-
+            UpdateWeather();
             timer.Enabled = false;
         }
     }
