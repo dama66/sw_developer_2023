@@ -1,0 +1,14 @@
+{ 
+    "author": "David",
+    "name": "Playlist",
+	"createdAt": "2023-12-07",
+    "items":
+    [
+		{
+            "FilePath": "C:\\Users\\User\\source\\repos\\sw_developer_2023\\DemoFiles\\001 - Bruno Mars - Grenade.mp3"
+        }, 
+		{
+            "FilePath": "C:\\Users\\User\\source\\repos\\sw_developer_2023\\DemoFiles\\01 - Broken Pieces (feat. Nihils).mp3"
+        }
+    ]
+}

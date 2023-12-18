@@ -42,12 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICurrentWeatherService.cs" />
     <Compile Include="IFileInfo.cs" />
     <Compile Include="IPlaylist.cs" />
     <Compile Include="IPlaylistItem.cs" />
+    <Compile Include="IRepositoryFactory.cs" />
     <Compile Include="IPlaylistItemFactory.cs" />
     <Compile Include="IPlaylistRepository.cs" />
-    <Compile Include="IWeatherDataProvider.cs" />
     <Compile Include="Playlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

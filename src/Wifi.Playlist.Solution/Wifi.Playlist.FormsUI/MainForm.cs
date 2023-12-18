@@ -3,65 +3,54 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wifi.Playlist.CoreTypes;
-using Wifi.Playlist.Factories;
-using Wifi.Playlist.Repositories;
+using Wifi.Playlist.FormsUI.Properties;
 
 namespace Wifi.Playlist.FormsUI
 {
     public partial class MainForm : Form
     {
-        private CoreTypes.Playlist _playlist;
-        private M3uRepository _m3uRepository;
+        private IPlaylist _playlist;
         private readonly INewPlaylistDataProvider _newPlaylistDataProvider;
         private readonly IPlaylistItemFactory _playlistItemFactory;
-        private readonly IWeatherDataProvider _weatherDataProvider;
+        private readonly IRepositoryFactory _repositoryFactory;
+        private readonly ICurrentWeatherService _currentWeatherService;
 
         public MainForm(INewPlaylistDataProvider newPlaylistDataProvider,
                         IPlaylistItemFactory playlistItemFactory,
-                        IWeatherDataProvider weatherDataProvider,
-                        M3uRepository m3uRepo)
-
+                        IRepositoryFactory repositoryFactory,
+                        ICurrentWeatherService currentWeatherService)
         {
             InitializeComponent();
 
             _newPlaylistDataProvider = newPlaylistDataProvider;
             _playlistItemFactory = playlistItemFactory;
-            _weatherDataProvider = weatherDataProvider;
-            _m3uRepository = m3uRepo;
+            _repositoryFactory = repositoryFactory;
+            _currentWeatherService = currentWeatherService;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private async void MainForm_Load(object sender, EventArgs e)
         {
-            //get Weather Data
-            _weatherDataProvider.GetWeather();
-
-            //get Weather Icon
-            pic_weather.ImageLocation = $"https://openweathermap.org/img/wn/{_weatherDataProvider.WeatherIcon}.png";
-
-            // set ToolTip
-            ToolTip tt_weather = new ToolTip();
-
-            tt_weather.SetToolTip(pic_weather, $"{_weatherDataProvider.Name}\n" +
-                                                $"{_weatherDataProvider.Weather}\n" +
-                                                $"{_weatherDataProvider.Temp}°C");
-
-            // init
             lbl_playlistName.Text = string.Empty;
             lbl_itemDetails.Text = string.Empty;
             lbl_playlistDetails.Text = string.Empty;
+
             EnableEditControls(false);
 
+            await _currentWeatherService.SetGeoLocationAsync("Dornbirn", "AT");
+            _currentWeatherService.UpdateCurrentWeatherAsync();
 
+            UpdateWeather();
+        }
 
-
+        private void UpdateWeather()
+        {
+            img_weatherIcon.Image = _currentWeatherService.Thumbnail;
+            toolTip.SetToolTip(img_weatherIcon, $"{_currentWeatherService.LocationName} - {_currentWeatherService.Description}");
         }
 
         private void EnableEditControls(bool controlsEnabled)
@@ -79,8 +68,7 @@ namespace Wifi.Playlist.FormsUI
                 return;
             }
 
-
-            //HACK: Wird verbessert!
+            //HACK: Wird verbessert!! 
             _playlist = new CoreTypes.Playlist(_newPlaylistDataProvider.PlaylistName,
                                                _newPlaylistDataProvider.PlaylistAuthor);
 
@@ -108,14 +96,14 @@ namespace Wifi.Playlist.FormsUI
                 }
                 else
                 {
-                    imageList.Images.Add(Resource.no_image_icon);
+                    imageList.Images.Add(Resource.no_image_available);
                 }
+
                 listViewItem.ImageIndex = imageIndex++;
                 lst_itemsView.Items.Add(listViewItem);
             }
 
             lst_itemsView.LargeImageList = imageList;
-
         }
 
         private void ShowPlaylistDetails()
@@ -125,19 +113,18 @@ namespace Wifi.Playlist.FormsUI
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            openFileDialog.Multiselect = true;
+        {            
+            SetupFileDialog(openFileDialog, "Select Item", string.Empty, 
+                            true, _playlistItemFactory.AvailableTypes);
 
             if (openFileDialog.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
 
-
             foreach (var fileName in openFileDialog.FileNames)
             {
                 var newItem = _playlistItemFactory.Create(fileName);
-
                 if (newItem == null)
                 {
                     return;
@@ -150,13 +137,45 @@ namespace Wifi.Playlist.FormsUI
             ShowPlaylistItems();
         }
 
+        private void SetupFileDialog(FileDialog fileDialog, string title, string defaultFileName, bool multiselect, IEnumerable<IFileInfo> availableTypes)
+        {           
+            if(fileDialog is OpenFileDialog openFileDialog)
+            {                
+                openFileDialog.Multiselect = multiselect;
+            }
+            
+            fileDialog.Title = title;
+            fileDialog.FileName = defaultFileName;
+            fileDialog.Filter = CreateFilter(availableTypes);            
+        }
+
+        private string CreateFilter(IEnumerable<IFileInfo> availableTypes)
+        {
+            string filter = string.Empty;
+
+            filter = "All supported types|";
+
+            var extensions = availableTypes.Select(x => x.Extension);
+            extensions.ToList().ForEach(extension => filter += "*" + extension + ";");
+
+            filter += "|";
+
+            foreach (var type in availableTypes)
+            {
+                filter += $"{type.Description}|*{type.Extension}|";
+            }
+
+            //remove last | from filter string
+            filter = filter.Substring(0, filter.Length - 1);
+            return filter;
+        }
+
         private void lst_itemsView_SelectedIndexChanged(object sender, EventArgs e)
         {
-          var item =  GetSelectedPlaylistItem(sender);
-
+            var item = GetSelectedPlaylistItem(sender);
             if(item == null)
             {
-                return; 
+                return;
             }
 
             ShowPlaylistItemDetails(item);
@@ -164,12 +183,12 @@ namespace Wifi.Playlist.FormsUI
 
         private void ShowPlaylistItemDetails(IPlaylistItem item)
         {
-
-            if (item == null)
-            { 
-                return; 
+            if(item == null)
+            {
+                return;
             }
-            lbl_itemDetails.Text = $"Pfad: {item.FilePath} {Environment.NewLine}";
+
+            lbl_itemDetails.Text =  $"Pfad:  {item.FilePath} {Environment.NewLine}";
             lbl_itemDetails.Text += $"Dauer: {item.Duration.ToString("hh\\:mm\\:ss")}";
         }
 
@@ -193,15 +212,15 @@ namespace Wifi.Playlist.FormsUI
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var item = GetSelectedPlaylistItem(lst_itemsView);
-            if (item == null)
+            if(item == null)
             {
                 return;
             }
-             
+
             _playlist.Remove(item);
 
             ShowPlaylistDetails();
-            ShowPlaylistItems();
+            ShowPlaylistItems();            
         }
 
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
@@ -219,35 +238,48 @@ namespace Wifi.Playlist.FormsUI
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog.FileName = $"{_playlist.Name.Replace (" ", "_")}.txt";
+            SetupFileDialog(saveFileDialog1, "Save playlist as",
+                            _playlist.Name, false, _repositoryFactory.AvailableTypes);
 
-
-            if (saveFileDialog.ShowDialog() != DialogResult.OK)
+            if(saveFileDialog1.ShowDialog() != DialogResult.OK) 
             {
                 return;
             }
 
-            _m3uRepository.Save(_playlist, Path.GetFullPath(saveFileDialog.FileName));
+            var playlistPath = saveFileDialog1.FileName;
+            var repository = _repositoryFactory.Create(playlistPath);
+
+            if(repository != null)
+            {
+                repository.Save(_playlist, playlistPath);
+            }
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() != DialogResult.OK)
-            {
-                return;
+            SetupFileDialog(openFileDialog, "Select Playlist", "", false, 
+                            _repositoryFactory.AvailableTypes);
+
+            if(openFileDialog.ShowDialog() != DialogResult.OK) 
+            { 
+                return; 
             }
 
-            if (_playlist != null)
+            var repository = _repositoryFactory.Create(openFileDialog.FileName);
+            if(repository != null)
             {
-                _playlist.Clear();
+                _playlist = repository.Load(openFileDialog.FileName);
+
+                EnableEditControls(true);
                 ShowPlaylistDetails();
                 ShowPlaylistItems();
             }
-            _playlist = (CoreTypes.Playlist)_m3uRepository.Load(Path.GetFullPath(openFileDialog.FileName));
+        }
 
-            EnableEditControls(true);
-            ShowPlaylistDetails();
-            ShowPlaylistItems();
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            UpdateWeather();
+            timer.Enabled = false;
         }
     }
 }
