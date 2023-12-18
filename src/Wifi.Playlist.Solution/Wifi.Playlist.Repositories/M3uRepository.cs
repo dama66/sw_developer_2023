@@ -35,13 +35,13 @@ namespace Wifi.Playlist.Repositories
             M3uContent _content = new M3uContent();
             M3uPlaylist _m3uPlaylist = _content.GetFromStream(_streamReader.BaseStream);
 
-            var _playlist = new CoreTypes.Playlist(Path.GetFileName(filePath).Replace("_"," ").Replace(".txt",""), "MAERIDA");
+            var _playlist = new CoreTypes.Playlist(Path.GetFileName(filePath).Replace("_", " ").Replace(".txt", ""), _m3uPlaylist.Comments[1]);
+
 
             foreach (M3uPlaylistEntry _m3uPlaylistItem in _m3uPlaylist.PlaylistEntries)
             {
 
                  var newItem = _playlistItemFactory.Create(_m3uPlaylistItem.Path);
-                
 
                 if (newItem != null)
                 {
@@ -56,7 +56,12 @@ namespace Wifi.Playlist.Repositories
             M3uPlaylist _m3uPlaylist = new M3uPlaylist();
             _m3uPlaylist.IsExtended = true;
 
-            foreach(IPlaylistItem item in playlist.Items)
+            _m3uPlaylist.Comments.Add($"#Title:{playlist.Name}");
+            _m3uPlaylist.Comments.Add($"#Author:{playlist.Author}");
+            _m3uPlaylist.Comments.Add($"#CreatedAt:{playlist.CreatedAt}");
+
+
+            foreach (IPlaylistItem item in playlist.Items)
             {
                 _m3uPlaylist.PlaylistEntries.Add(new M3uPlaylistEntry()
                 {
