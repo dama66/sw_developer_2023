@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,10 @@ namespace Kursverwaltung.Models
 {
     public class Kurs
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-
         public string Bezeichnung { get; set; } = null!;
-
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Preis {  get; set; }
 
