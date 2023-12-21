@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Swd.TimeManager.Helper\Swd.TimeManager.Helper.csproj" />
+    <ProjectReference Include="..\Swd.TimeManager.Model\Swd.TimeManager.Model.csproj" />
+    <ProjectReference Include="..\Swd.TimeManager.Repository\Swd.TimeManager.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

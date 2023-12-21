@@ -8,4 +8,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Swd.TimeManager.Business\Swd.TimeManager.Business.csproj" />
+    <ProjectReference Include="..\Swd.TimeManager.Helper\Swd.TimeManager.Helper.csproj" />
+    <ProjectReference Include="..\Swd.TimeManager.Model\Swd.TimeManager.Model.csproj" />
+  </ItemGroup>
+
 </Project>
