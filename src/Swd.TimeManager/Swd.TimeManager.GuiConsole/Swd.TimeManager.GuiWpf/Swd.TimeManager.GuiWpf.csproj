@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Swd.TimeManager.Business\Swd.TimeManager.Business.csproj" />
+    <ProjectReference Include="..\Swd.TimeManager.Helper\Swd.TimeManager.Helper.csproj" />
+    <ProjectReference Include="..\Swd.TimeManager.Model\Swd.TimeManager.Model.csproj" />
+  </ItemGroup>
+
+</Project>

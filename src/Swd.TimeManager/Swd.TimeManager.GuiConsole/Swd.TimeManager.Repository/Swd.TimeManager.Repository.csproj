@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Swd.TimeManager.Helper\Swd.TimeManager.Helper.csproj" />
+    <ProjectReference Include="..\Swd.TimeManager.Model\Swd.TimeManager.Model.csproj" />
+  </ItemGroup>
+
+</Project>
