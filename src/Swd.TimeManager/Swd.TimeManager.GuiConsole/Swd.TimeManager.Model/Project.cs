@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Swd.TimeManager.Model
 {
-    public class Project
+    public class Project : ModelBase
     {
         public long Id { get; set; }
         public string Name { get; set; }

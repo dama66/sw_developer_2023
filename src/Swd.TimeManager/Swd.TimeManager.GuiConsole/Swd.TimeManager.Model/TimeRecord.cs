@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Swd.TimeManager.Model
 {
-    public class TimeRecord
+    public class TimeRecord : ModelBase
     {
         public long Id { get; set; }
         public DateOnly Date {  get; set; }
