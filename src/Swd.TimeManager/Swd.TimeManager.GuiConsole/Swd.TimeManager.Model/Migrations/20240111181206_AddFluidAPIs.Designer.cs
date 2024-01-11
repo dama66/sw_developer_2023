@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Swd.TimeManager.Model;
 
@@ -11,9 +12,11 @@ using Swd.TimeManager.Model;
 namespace Swd.TimeManager.Model.Migrations
 {
     [DbContext(typeof(TimeManagerContext))]
-    partial class TimeManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20240111181206_AddFluidAPIs")]
+    partial class AddFluidAPIs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,9 +174,7 @@ namespace Swd.TimeManager.Model.Migrations
                         .HasColumnType("nVarchar(50)");
 
                     b.Property<decimal>("Duration")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(18,2)")
-                        .HasDefaultValue(0m);
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<long>("PersonId")
                         .HasColumnType("bigint");
