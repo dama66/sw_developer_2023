@@ -17,7 +17,7 @@ namespace Swd.Messanger.Model
             
             //Primary Key definieren und nach Id sortieren
             entity.HasKey(x => x.Id).IsClustered(true);
-            entity.Property(x => x.Id).ValueGeneratedNever();
+            //entity.Property(x => x.Id).IsRequired().ValueGeneratedNever();
             //Pflichtfelder und Datentyp definieren
             entity.Property(m => m.State).IsRequired().HasColumnType("nVarchar(20)"); //Für erstellung der Datenbank, Datentyp definieren, ....
         }

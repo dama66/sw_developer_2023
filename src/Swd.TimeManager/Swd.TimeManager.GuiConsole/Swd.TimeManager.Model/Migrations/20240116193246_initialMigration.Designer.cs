@@ -12,8 +12,8 @@ using Swd.TimeManager.Model;
 namespace Swd.TimeManager.Model.Migrations
 {
     [DbContext(typeof(TimeManagerContext))]
-    [Migration("20240111181206_AddFluidAPIs")]
-    partial class AddFluidAPIs
+    [Migration("20240116193246_initialMigration")]
+    partial class initialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -174,7 +174,9 @@ namespace Swd.TimeManager.Model.Migrations
                         .HasColumnType("nVarchar(50)");
 
                     b.Property<decimal>("Duration")
-                        .HasColumnType("decimal(18,2)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,2)")
+                        .HasDefaultValue(0m);
 
                     b.Property<long>("PersonId")
                         .HasColumnType("bigint");

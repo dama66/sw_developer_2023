@@ -11,6 +11,7 @@ namespace Swd.Messanger.Model
     {
         public long Id { get; set; }
         public MessageType Type { get; set; }
+        [Range(1,100)]
         public int Priority { get; set; }
         public DateTime Sent {  get; set; }
         public DateTime Delivered { get; set; }

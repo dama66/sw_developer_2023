@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Swd.Messanger.Model.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class initialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,14 +15,13 @@ namespace Swd.Messanger.Model.Migrations
                 name: "MessageState",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<long>(type: "bigint", nullable: false),
                     State = table.Column<string>(type: "nVarchar(20)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MessageState", x => x.Id)
-                        .Annotation("SqlServer:Clustered", false);
+                        .Annotation("SqlServer:Clustered", true);
                 });
 
             migrationBuilder.CreateTable(

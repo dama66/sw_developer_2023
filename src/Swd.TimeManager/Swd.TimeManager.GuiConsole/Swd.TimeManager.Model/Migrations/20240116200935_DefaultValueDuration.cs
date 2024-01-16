@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace Swd.Messanger.Model.Migrations
+namespace Swd.TimeManager.Model.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration1 : Migration
+    public partial class DefaultValueDuration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

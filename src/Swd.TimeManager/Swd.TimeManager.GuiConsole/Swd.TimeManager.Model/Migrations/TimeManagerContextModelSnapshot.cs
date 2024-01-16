@@ -102,7 +102,6 @@ namespace Swd.TimeManager.Model.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UpdatedBy")
-                        .IsRequired()
                         .HasColumnType("nVarchar(50)");
 
                     b.HasKey("Id");
@@ -172,7 +171,7 @@ namespace Swd.TimeManager.Model.Migrations
 
                     b.Property<decimal>("Duration")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("decimal(18, 2)")
                         .HasDefaultValue(0m);
 
                     b.Property<long>("PersonId")
