@@ -32,5 +32,14 @@ namespace Swd.TimeManager.Business
         return _repository.ReadByKey(id);
         }
 
+        public void Update(Project item)
+        {
+            _repository.Update(item, item.Id);
+        }
+
+        public void Delete(int id)
+        {
+            _repository.Delete(id);
+        }
     }
 }

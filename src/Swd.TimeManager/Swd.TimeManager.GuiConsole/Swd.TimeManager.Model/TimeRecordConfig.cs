@@ -14,7 +14,7 @@ namespace Swd.TimeManager.Model
 
             entity.Property(m => m.Date).IsRequired().HasColumnType("nVarchar(50)");
             entity.HasIndex(m => m.Date).HasDatabaseName("idx_taskname");
-            entity.Property(m => m.Duration).IsRequired().HasDefaultValue(0);
+            entity.Property(m => m.Duration).IsRequired().HasDefaultValue(0).HasColumnType("decimal(18, 2)");
             entity.Property(m => m.CreatedBy).IsRequired().HasColumnType("nVarchar(50)");
             entity.Property(m => m.UpdatedBy).IsRequired().HasColumnType("nVarchar(50)");
         }

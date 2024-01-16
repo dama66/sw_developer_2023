@@ -42,16 +42,52 @@ namespace Swd.TimeManager.Test
         {
             //Testdaten vorbereiten
             Project item = GetNewProject();
-
-            //Test durchführen
             ProjectRepository repository = new ProjectRepository();
             repository.Add(item);
-
             var id = item.Id;
+
+            //Test durchführen
             Project newProject = repository.ReadByKey(id);
 
             //Test auswerten
             Assert.AreEqual(id, newProject.Id);
+        }
+
+        [Test]
+        public void Delete_Project()
+        {
+            //Testdaten vorbereiten
+            Project item = GetNewProject();
+            ProjectRepository repository = new ProjectRepository();
+            repository.Add(item);
+            var id = item.Id;
+
+            //Test durchführen
+            repository.Delete(id);
+            Project deletedProject = repository.ReadByKey(id);
+
+            //Test auswerten
+            Assert.IsNull(deletedProject);
+        }
+
+        [Test]
+        public void Update_Project()
+        {
+            //Testdaten vorbereiten
+            Project item = GetNewProject();
+            ProjectRepository repository = new ProjectRepository();
+            repository.Add(item);
+            var id = item.Id;   
+            var createdBy = item.CreatedBy;
+
+            //Test durchführen
+            item.CreatedBy = "MAIERDAx";
+            repository.Update(item, id);
+
+            Project updateProject = repository.ReadByKey(id);
+
+            //Test auswerten
+            Assert.AreNotEqual(createdBy, updateProject.CreatedBy);
         }
 
         private Project GetNewProject()

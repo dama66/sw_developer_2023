@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Swd.TimeManager.Model;
 
@@ -11,9 +12,11 @@ using Swd.TimeManager.Model;
 namespace Swd.TimeManager.Model.Migrations
 {
     [DbContext(typeof(TimeManagerContext))]
-    partial class TimeManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20240116200935_DefaultValueDuration")]
+    partial class DefaultValueDuration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
