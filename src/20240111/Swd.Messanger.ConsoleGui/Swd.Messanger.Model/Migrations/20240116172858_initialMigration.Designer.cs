@@ -12,8 +12,8 @@ using Swd.Messanger.Model;
 namespace Swd.Messanger.Model.Migrations
 {
     [DbContext(typeof(MessangerContext))]
-    [Migration("20240111202737_AlternateKey")]
-    partial class AlternateKey
+    [Migration("20240116172858_initialMigration")]
+    partial class initialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,10 +80,7 @@ namespace Swd.Messanger.Model.Migrations
             modelBuilder.Entity("Swd.Messanger.Model.MessageState", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("State")
                         .IsRequired()
