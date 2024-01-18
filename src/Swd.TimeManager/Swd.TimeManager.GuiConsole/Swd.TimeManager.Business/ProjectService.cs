@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Swd.TimeManager.Business
 {
     public class ProjectService
@@ -22,9 +23,19 @@ namespace Swd.TimeManager.Business
             _repository.Add(item); 
         }
 
+        public async System.Threading.Tasks.Task AddAsync(Project item)
+        {
+          await _repository.AddAsync(item);
+        }
+
         public IQueryable<Project> ReadAll()
         {
             return _repository.ReadAll();
+        }
+
+        public async Task<IQueryable<Project>> ReadAllAsync()
+        {
+            return await _repository.ReadAllAsync();
         }
 
         public Project ReadById(int id)
