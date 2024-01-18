@@ -1,3 +1,5 @@
+using log4net;
+using log4net.Config;
 using Swd.TimeManager.Model;
 using Swd.TimeManager.Repository;
 
@@ -6,9 +8,13 @@ namespace Swd.TimeManager.Test
 {
     public class RepositoryTest
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(RepositoryTest));
+
         [SetUp]
         public void Setup()
         {
+            XmlConfigurator.Configure(new System.IO.FileInfo("log4net.config"));
+            log.Debug("Logging started");
         }
 
         [Test]

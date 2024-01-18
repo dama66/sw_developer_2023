@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using log4net;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,9 @@ namespace Swd.TimeManager.Repository
         where TModel : DbContext, new()
 
     {
+
+        //Logger
+        private static readonly ILog log = LogManager.GetLogger(typeof(GenericRepository<TEntity, TModel>));
         //Member
         private DbContext _dbContext; //Verbindung zur DB
         private DbSet<TEntity> _dbSet; //Lokale kopien der Tabellen
@@ -42,8 +47,19 @@ namespace Swd.TimeManager.Repository
 
         public void Add(TEntity t)
         {
-            _dbSet.Add(t);
-            _dbContext.SaveChanges();
+            try
+            {
+                log.Debug(string.Format("{0} Adding item", MethodBase.GetCurrentMethod().Name));
+                _dbSet.Add(t);
+                _dbContext.SaveChanges();
+                log.Debug(string.Format("{0} Item added", MethodBase.GetCurrentMethod().Name));
+            }
+            catch (Exception ex)
+            {
+                log.Debug(string.Format("{0} Error occured", MethodBase.GetCurrentMethod().Name), ex);
+            }
+
+
         }
 
         public async Task AddAsync(TEntity t)
@@ -59,7 +75,7 @@ namespace Swd.TimeManager.Repository
 
         public async Task<IQueryable<TEntity>> ReadAllAsync()
         {
-           return _dbSet.AsQueryable();
+            return _dbSet.AsQueryable();
         }
         public TEntity ReadByKey(object key)
         {
