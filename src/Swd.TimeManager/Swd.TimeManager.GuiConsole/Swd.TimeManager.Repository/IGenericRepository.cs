@@ -14,10 +14,11 @@ namespace Swd.TimeManager.Repository
         //CRUD (Create - Read - Update - Delete)
         //create  Methods 
         void Add(TEntity t);
+        Task AddAsync(TEntity t);
 
         //Read Methods
         IQueryable<TEntity> ReadAll();
-
+       Task<IQueryable<TEntity>> ReadAllAsync();
         TEntity ReadByKey(object key);
 
         //Update Methods

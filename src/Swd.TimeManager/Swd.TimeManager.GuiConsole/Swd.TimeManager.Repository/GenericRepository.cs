@@ -14,8 +14,8 @@ namespace Swd.TimeManager.Repository
 
     {
         //Member
-        private DbContext _dbContext;
-        private DbSet<TEntity> _dbSet;
+        private DbContext _dbContext; //Verbindung zur DB
+        private DbSet<TEntity> _dbSet; //Lokale kopien der Tabellen
 
         //Properties
         public DbSet<TEntity> DbSet
@@ -46,11 +46,21 @@ namespace Swd.TimeManager.Repository
             _dbContext.SaveChanges();
         }
 
+        public async Task AddAsync(TEntity t)
+        {
+            await _dbSet.AddAsync(t);
+            await _dbContext.SaveChangesAsync();
+        }
+
         public IQueryable<TEntity> ReadAll()
         {
             return _dbSet.AsQueryable();
         }
 
+        public async Task<IQueryable<TEntity>> ReadAllAsync()
+        {
+           return _dbSet.AsQueryable();
+        }
         public TEntity ReadByKey(object key)
         {
             return _dbSet.Find(key);
@@ -58,7 +68,7 @@ namespace Swd.TimeManager.Repository
 
         public void Update(TEntity t, object key)
         {
-           TEntity existing = _dbSet.Find(key);
+            TEntity existing = _dbSet.Find(key);
             if (existing != null)
             {
                 _dbContext.Entry(existing).CurrentValues.SetValues(t);
