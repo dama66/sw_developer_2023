@@ -17,6 +17,7 @@ namespace Swd.TimeManager.Test
             log.Debug("Logging started");
         }
 
+        //Add Methods
         [Test]
         public void Add_Project()
         {
@@ -45,6 +46,7 @@ namespace Swd.TimeManager.Test
             Assert.AreNotEqual(0, item.Id);
         }
 
+        //Read Methods
         [Test]
         public void ReadAll_Project()
         {
@@ -88,7 +90,7 @@ namespace Swd.TimeManager.Test
         }
 
         [Test]
-        public void Delete_Project()
+        public async System.Threading.Tasks.Task ReadByKeyAsync_Project()
         {
             //Testdaten vorbereiten
             Project item = GetNewProject();
@@ -97,13 +99,13 @@ namespace Swd.TimeManager.Test
             var id = item.Id;
 
             //Test durchführen
-            repository.Delete(id);
-            Project deletedProject = repository.ReadByKey(id);
+            Project newProject = (await repository.ReadByKeyAsync(id));
 
             //Test auswerten
-            Assert.IsNull(deletedProject);
+            Assert.AreEqual(id, newProject.Id);
         }
 
+        //Update Methods
         [Test]
         public void Update_Project()
         {
@@ -124,6 +126,62 @@ namespace Swd.TimeManager.Test
             Assert.AreNotEqual(createdBy, updateProject.CreatedBy);
         }
 
+        [Test]
+        public async System.Threading.Tasks.Task UpdateAsync_Project()
+        {
+            //Testdaten vorbereiten
+            Project item = GetNewProject();
+            ProjectRepository repository = new ProjectRepository();
+            repository.Add(item);
+            var id = item.Id;
+            var createdBy = item.CreatedBy;
+
+            //Test durchführen
+            item.CreatedBy = "MAIERDAx";
+            await repository.UpdateAsync(item, id);
+
+            Project updateProject = (await repository.ReadByKeyAsync(id));
+
+            //Test auswerten
+            Assert.AreNotEqual(createdBy, updateProject.CreatedBy);
+        }
+
+        //Delete Methods
+        [Test]
+        public void Delete_Project()
+        {
+            //Testdaten vorbereiten
+            Project item = GetNewProject();
+            ProjectRepository repository = new ProjectRepository();
+            repository.Add(item);
+            var id = item.Id;
+
+            //Test durchführen
+            repository.Delete(id);
+            Project deletedProject = repository.ReadByKey(id);
+
+            //Test auswerten
+            Assert.IsNull(deletedProject);
+        }
+
+        [Test]
+        public async System.Threading.Tasks.Task DeleteAsync_Project()
+        {
+            //Testdaten vorbereiten
+            Project item = GetNewProject();
+            ProjectRepository repository = new ProjectRepository();
+            repository.Add(item);
+            var id = item.Id;
+
+            //Test durchführen
+            await repository.DeleteAsync(id);
+            Project deletedProject = (await repository.ReadByKeyAsync(id));
+
+            //Test auswerten
+            Assert.IsNull(deletedProject);
+        }
+
+        //Helper
         private Project GetNewProject()
         {
             Project p = new Project();

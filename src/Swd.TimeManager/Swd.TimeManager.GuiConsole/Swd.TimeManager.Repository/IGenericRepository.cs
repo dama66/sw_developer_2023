@@ -18,13 +18,16 @@ namespace Swd.TimeManager.Repository
 
         //Read Methods
         IQueryable<TEntity> ReadAll();
-       Task<IQueryable<TEntity>> ReadAllAsync();
+        Task<IQueryable<TEntity>> ReadAllAsync();
         TEntity ReadByKey(object key);
+        Task<TEntity> ReadByKeyAsync(object key);
 
         //Update Methods
         void Update(TEntity t, object key);
+        Task UpdateAsync(TEntity t, object key);
 
         //Delete Methods
         void Delete(object key);
+        Task DeleteAsync(object key);
     }
 }

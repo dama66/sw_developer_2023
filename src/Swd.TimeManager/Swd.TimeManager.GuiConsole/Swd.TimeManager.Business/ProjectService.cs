@@ -18,16 +18,18 @@ namespace Swd.TimeManager.Business
             _repository = new ProjectRepository();
         }
 
+        //Add Methods
         public void Add(Project item)
         {
-            _repository.Add(item); 
+            _repository.Add(item);
         }
 
         public async System.Threading.Tasks.Task AddAsync(Project item)
         {
-          await _repository.AddAsync(item);
+            await _repository.AddAsync(item);
         }
 
+        //Read Methods
         public IQueryable<Project> ReadAll()
         {
             return _repository.ReadAll();
@@ -40,17 +42,34 @@ namespace Swd.TimeManager.Business
 
         public Project ReadById(int id)
         {
-        return _repository.ReadByKey(id);
+            return _repository.ReadByKey(id);
         }
 
+        public async Task<Project> ReadByIdAsync(int id)
+        {
+            return await _repository.ReadByKeyAsync(id);
+        }
+
+        //Update Methods
         public void Update(Project item)
         {
             _repository.Update(item, item.Id);
         }
 
+        public async System.Threading.Tasks.Task UpdateAsync(Project item)
+        {
+            await _repository.UpdateAsync(item, item.Id);
+        }
+
+        //Delete Methods
         public void Delete(int id)
         {
             _repository.Delete(id);
+        }
+
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
+        {
+            await _repository.DeleteAsync(id);
         }
     }
 }
