@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Swd.TimeManager.Model.Migrations
 {
     /// <inheritdoc />
-    public partial class initialMigration : Migration
+    public partial class InitMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,7 +26,7 @@ namespace Swd.TimeManager.Model.Migrations
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nVarchar(50)", nullable: false),
                     Updated = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nVarchar(50)", nullable: false)
+                    UpdatedBy = table.Column<string>(type: "nVarchar(50)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -44,7 +44,7 @@ namespace Swd.TimeManager.Model.Migrations
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nVarchar(50)", nullable: false),
                     Updated = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nVarchar(50)", nullable: false)
+                    UpdatedBy = table.Column<string>(type: "nVarchar(50)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -62,7 +62,7 @@ namespace Swd.TimeManager.Model.Migrations
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nVarchar(50)", nullable: false),
                     Updated = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nVarchar(50)", nullable: false)
+                    UpdatedBy = table.Column<string>(type: "nVarchar(50)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -84,7 +84,7 @@ namespace Swd.TimeManager.Model.Migrations
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nVarchar(50)", nullable: false),
                     Updated = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nVarchar(50)", nullable: false)
+                    UpdatedBy = table.Column<string>(type: "nVarchar(50)", nullable: true)
                 },
                 constraints: table =>
                 {

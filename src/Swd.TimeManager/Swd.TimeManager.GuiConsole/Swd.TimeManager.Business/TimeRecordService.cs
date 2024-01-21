@@ -9,54 +9,54 @@ using System.Threading.Tasks;
 
 namespace Swd.TimeManager.Business
 {
-    public class ProjectService
+    public class TimeRecordService
     {
-        private IProjectRepository _repository;
+        private ITimeRecordRepository _repository;
 
-        public ProjectService()
+        public TimeRecordService()
         {
-            _repository = new ProjectRepository();
+            _repository = new TimeRecordRepository();
         }
 
         //Add Methods
-        public void Add(Project item)
+        public void Add(TimeRecord item)
         {
             _repository.Add(item);
         }
 
-        public async System.Threading.Tasks.Task AddAsync(Project item)
+        public async System.Threading.Tasks.Task AddAsync(TimeRecord item)
         {
             await _repository.AddAsync(item);
         }
 
         //Read Methods
-        public IQueryable<Project> ReadAll()
+        public IQueryable<TimeRecord> ReadAll()
         {
             return _repository.ReadAll();
         }
 
-        public async Task<IQueryable<Project>> ReadAllAsync()
+        public async Task<IQueryable<TimeRecord>> ReadAllAsync()
         {
             return await _repository.ReadAllAsync();
         }
 
-        public Project ReadById(int id)
+        public TimeRecord ReadById(int id)
         {
             return _repository.ReadByKey(id);
         }
 
-        public async Task<Project> ReadByIdAsync(int id)
+        public async Task<TimeRecord> ReadByIdAsync(int id)
         {
             return await _repository.ReadByKeyAsync(id);
         }
 
         //Update Methods
-        public void Update(Project item)
+        public void Update(TimeRecord item)
         {
             _repository.Update(item, item.Id);
         }
 
-        public async System.Threading.Tasks.Task UpdateAsync(Project item)
+        public async System.Threading.Tasks.Task UpdateAsync(TimeRecord item)
         {
             await _repository.UpdateAsync(item, item.Id);
         }

@@ -9,54 +9,54 @@ using System.Threading.Tasks;
 
 namespace Swd.TimeManager.Business
 {
-    public class ProjectService
+    public class TaskService
     {
-        private IProjectRepository _repository;
+        private ITaskRepository _repository;
 
-        public ProjectService()
+        public TaskService()
         {
-            _repository = new ProjectRepository();
+            _repository = new TaskRepository();
         }
 
         //Add Methods
-        public void Add(Project item)
+        public void Add(Model.Task item)
         {
             _repository.Add(item);
         }
 
-        public async System.Threading.Tasks.Task AddAsync(Project item)
+        public async System.Threading.Tasks.Task AddAsync(Model.Task item)
         {
             await _repository.AddAsync(item);
         }
 
         //Read Methods
-        public IQueryable<Project> ReadAll()
+        public IQueryable<Model.Task> ReadAll()
         {
             return _repository.ReadAll();
         }
 
-        public async Task<IQueryable<Project>> ReadAllAsync()
+        public async Task<IQueryable<Model.Task>> ReadAllAsync()
         {
             return await _repository.ReadAllAsync();
         }
 
-        public Project ReadById(int id)
+        public Model.Task ReadById(int id)
         {
             return _repository.ReadByKey(id);
         }
 
-        public async Task<Project> ReadByIdAsync(int id)
+        public async Task<Model.Task> ReadByIdAsync(int id)
         {
             return await _repository.ReadByKeyAsync(id);
         }
 
         //Update Methods
-        public void Update(Project item)
+        public void Update(Model.Task item)
         {
             _repository.Update(item, item.Id);
         }
 
-        public async System.Threading.Tasks.Task UpdateAsync(Project item)
+        public async System.Threading.Tasks.Task UpdateAsync(Model.Task item)
         {
             await _repository.UpdateAsync(item, item.Id);
         }
