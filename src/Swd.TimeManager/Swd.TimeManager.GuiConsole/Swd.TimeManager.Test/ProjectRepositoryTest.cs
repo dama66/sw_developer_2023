@@ -6,9 +6,9 @@ using Swd.TimeManager.Repository;
 
 namespace Swd.TimeManager.Test
 {
-    public class RepositoryTest
+    public class ProjectRepositoryTest
     {
-        private static readonly ILog log = LogManager.GetLogger(typeof(RepositoryTest));
+        private static readonly ILog log = LogManager.GetLogger(typeof(ProjectRepositoryTest));
 
         [SetUp]
         public void Setup()
@@ -190,5 +190,6 @@ namespace Swd.TimeManager.Test
             p.CreatedBy = "MAIERDA";
             return p;
         }
+       
     }
 }

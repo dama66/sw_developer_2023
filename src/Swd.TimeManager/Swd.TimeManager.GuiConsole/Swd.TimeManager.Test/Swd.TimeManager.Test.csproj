@@ -28,7 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="RepositoryTest.cs">
+    <Compile Update="PersonRepositoryTest.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="ProjectRepositoryTest.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>

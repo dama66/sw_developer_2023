@@ -21,7 +21,7 @@ namespace Swd.TimeManager.Model
             entity.Property(m => m.DisplayName).HasComputedColumnSql("[LastName] + ' ' + [FirstName]",true); //zusammengesetzte (berechnete) Spalte
             entity.Property(m => m.Email).IsRequired().HasColumnType("nVarchar(100)");
             entity.Property(m => m.CreatedBy).IsRequired().HasColumnType("nVarchar(50)");
-            entity.Property(m => m.UpdatedBy).IsRequired().HasColumnType("nVarchar(50)");
+            entity.Property(m => m.UpdatedBy).HasColumnType("nVarchar(50)");
         }
     }
 }
