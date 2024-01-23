@@ -9,6 +9,11 @@ namespace Swd.TimeManager.Model
 {
     public class TimeManagerContext : DbContext
     {
+        public DbSet<TimeRecord> TimeRecord { get; set; }
+        public DbSet<Project> Project { get; set; }
+        public DbSet<Person> Person { get; set; }
+        public DbSet<Task> Task { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

@@ -91,6 +91,22 @@ namespace Swd.TimeManager.Test
         }
 
         [Test]
+        public void ReadByKeyInclusive_TimeRecord()
+        {
+            //Testdaten vorbereiten
+            TimeRecord item = GetNewTimeRecord();
+            TimeRecordRepository repository = new TimeRecordRepository();
+            repository.Add(item);
+            var id = item.Id;
+
+            //Test durchführen
+            TimeRecord newTimeRecord = repository.ReadByKeyInclusive(id);
+
+            //Test auswerten
+            Assert.AreEqual(id, newTimeRecord.Id);
+        }
+
+        [Test]
         public async System.Threading.Tasks.Task ReadByKeyAsync_TimeRecord()
         {
             //Testdaten vorbereiten

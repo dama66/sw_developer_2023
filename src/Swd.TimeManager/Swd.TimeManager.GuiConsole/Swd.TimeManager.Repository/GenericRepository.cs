@@ -16,6 +16,8 @@ namespace Swd.TimeManager.Repository
         where TModel : DbContext, new()
 
     {
+        const string PROPERTY_CREATED = "Created";
+        const string PROPERTY_UPDATED = "Updated";
 
         //Logger
         private static readonly ILog log = LogManager.GetLogger(typeof(GenericRepository<TEntity, TModel>));
@@ -53,7 +55,7 @@ namespace Swd.TimeManager.Repository
             {
                 log.Debug(string.Format("{0} Adding item", MethodBase.GetCurrentMethod().Name));
                 _dbSet.Add(t);
-                EntityHelper.SetObjectProperty("Created", DateTime.Now, t);
+                EntityHelper.SetObjectProperty(PROPERTY_CREATED, DateTime.Now, t);
                 _dbContext.SaveChanges();
                 log.Debug(string.Format("{0} Item added", MethodBase.GetCurrentMethod().Name));
             }
@@ -70,7 +72,7 @@ namespace Swd.TimeManager.Repository
             {
                 log.Debug(string.Format("{0} Adding item", MethodBase.GetCurrentMethod().Name));
                 await _dbSet.AddAsync(t);
-                EntityHelper.SetObjectProperty("Created", DateTime.Now, t);
+                EntityHelper.SetObjectProperty(PROPERTY_CREATED, DateTime.Now, t);
                 await _dbContext.SaveChangesAsync();
                 log.Debug(string.Format("{0} Item added", MethodBase.GetCurrentMethod().Name));
             }
@@ -146,7 +148,7 @@ namespace Swd.TimeManager.Repository
                 if (existing != null)
                 {
                     _dbContext.Entry(existing).CurrentValues.SetValues(t);
-                    EntityHelper.SetObjectProperty("Updated", DateTime.Now, t);
+                    EntityHelper.SetObjectProperty(PROPERTY_UPDATED, DateTime.Now, t);
                     _dbContext.SaveChanges();
                     _dbContext.Entry(existing).Reload();
                 }
@@ -167,7 +169,7 @@ namespace Swd.TimeManager.Repository
                 if (existing != null)
                 {
                     _dbContext.Entry(existing).CurrentValues.SetValues(t);
-                    EntityHelper.SetObjectProperty("Updated", DateTime.Now, t);
+                    EntityHelper.SetObjectProperty(PROPERTY_UPDATED, DateTime.Now, t);
                     await _dbContext.SaveChangesAsync();
                     await _dbContext.Entry(existing).ReloadAsync();
                 }
