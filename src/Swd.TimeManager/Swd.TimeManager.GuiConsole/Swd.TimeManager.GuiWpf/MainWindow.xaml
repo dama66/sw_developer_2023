@@ -5,9 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Swd.TimeManager.GuiWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" >
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="340,150,0,0" VerticalAlignment="Top" Height="111" Width="265" Click="Button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Button x:Name="btnLoadData" Content="Daten laden" Grid.Column="1" Margin="10" Click="btnLoadData_Click" />
+        <ListBox x:Name="lstData" Grid.Row="1" Grid.Column="1" Background="Beige" Margin="10" DisplayMemberPath="Name"/>
 
     </Grid>
+
+    
 </Window>
