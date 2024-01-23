@@ -184,49 +184,56 @@ namespace Swd.TimeManager.Test
 
         //Helper
 
-        private Model.Task GetNewTask()
-        {
-            Model.Task t = new Model.Task();
-            t.Name = string.Format("Project {0}", DateTime.Now);
-            t.Created = DateTime.Now;
-            t.CreatedBy = "MAIERDA";
-            return t;
-        }
-        private Project GetNewProject()
-        {
-            Project p = new Project();
-            p.Name = string.Format("Project {0}", DateTime.Now);
-            p.Created = DateTime.Now;
-            p.CreatedBy = "MAIERDA";
-            return p;
-        }
-        private Person GetNewPerson()
-        {
-            Person p = new Person();
-            p.FirstName = string.Format("Project {0}", DateTime.Now);
-            p.LastName = string.Format("Project {0}", DateTime.Now);
-            p.Email = "test@google.com";
-            p.EntryDate = DateOnly.FromDateTime(DateTime.Now);
-            p.Created = DateTime.Now;
-            p.CreatedBy = "MAIERDA";
-            return p;
-        }
+        //private Model.Task GetNewTask()
+        //{
+        //    Model.Task t = new Model.Task();
+        //    t.Name = string.Format("Project {0}", DateTime.Now);
+        //    t.Created = DateTime.Now;
+        //    t.CreatedBy = "MAIERDA";
+        //    return t;
+        //}
+        //private Project GetNewProject()
+        //{
+        //    Project p = new Project();
+        //    p.Name = string.Format("Project {0}", DateTime.Now);
+        //    p.Created = DateTime.Now;
+        //    p.CreatedBy = "MAIERDA";
+        //    return p;
+        //}
+        //private Person GetNewPerson()
+        //{
+        //    Person p = new Person();
+        //    p.FirstName = string.Format("Project {0}", DateTime.Now);
+        //    p.LastName = string.Format("Project {0}", DateTime.Now);
+        //    p.Email = "test@google.com";
+        //    p.EntryDate = DateOnly.FromDateTime(DateTime.Now);
+        //    p.Created = DateTime.Now;
+        //    p.CreatedBy = "MAIERDA";
+        //    return p;
+        //}
         private TimeRecord GetNewTimeRecord()
         {
             var rand = new Random();
             var randDuration = new decimal(rand.NextDouble());
 
-            Person person = GetNewPerson();
-            Project project = GetNewProject();
-            Model.Task task = GetNewTask();
+            PersonRepository personRepository = new PersonRepository();
+            TaskRepository taskRepository = new TaskRepository();
+            ProjectRepository projectRepository = new ProjectRepository();
+
+            Person person = personRepository.ReadAll().FirstOrDefault();
+            Model.Task task = taskRepository.ReadAll().FirstOrDefault();
+            Project project = projectRepository.ReadAll().FirstOrDefault();
+
+            //Person person = GetNewPerson();
+            //Project project = GetNewProject();
+            //Model.Task task = GetNewTask();
 
             TimeRecord t = new TimeRecord();
             t.Date = DateOnly.FromDateTime(DateTime.Now);
             t.Duration = randDuration;
-            t.Person = person;
-            t.Project = project;
-            t.Task = task;
-            t.Created = DateTime.Now;
+            t.PersonId = person.Id;
+            t.ProjectId = project.Id;
+            t.TaskId = task.Id;
             t.CreatedBy = "MAIERDA";
             return t;
         }

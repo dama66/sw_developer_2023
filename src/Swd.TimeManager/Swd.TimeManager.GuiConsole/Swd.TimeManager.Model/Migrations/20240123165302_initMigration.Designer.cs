@@ -12,8 +12,8 @@ using Swd.TimeManager.Model;
 namespace Swd.TimeManager.Model.Migrations
 {
     [DbContext(typeof(TimeManagerContext))]
-    [Migration("20240121101832_InitMigration")]
-    partial class InitMigration
+    [Migration("20240123165302_initMigration")]
+    partial class initMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

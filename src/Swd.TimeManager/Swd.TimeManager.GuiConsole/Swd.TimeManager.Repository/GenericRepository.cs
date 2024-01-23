@@ -1,5 +1,6 @@
 ﻿using log4net;
 using Microsoft.EntityFrameworkCore;
+using Swd.TimeManager.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,7 @@ namespace Swd.TimeManager.Repository
             {
                 log.Debug(string.Format("{0} Adding item", MethodBase.GetCurrentMethod().Name));
                 _dbSet.Add(t);
+                EntityHelper.SetObjectProperty("Created", DateTime.Now, t);
                 _dbContext.SaveChanges();
                 log.Debug(string.Format("{0} Item added", MethodBase.GetCurrentMethod().Name));
             }
@@ -68,6 +70,7 @@ namespace Swd.TimeManager.Repository
             {
                 log.Debug(string.Format("{0} Adding item", MethodBase.GetCurrentMethod().Name));
                 await _dbSet.AddAsync(t);
+                EntityHelper.SetObjectProperty("Created", DateTime.Now, t);
                 await _dbContext.SaveChangesAsync();
                 log.Debug(string.Format("{0} Item added", MethodBase.GetCurrentMethod().Name));
             }
@@ -143,6 +146,7 @@ namespace Swd.TimeManager.Repository
                 if (existing != null)
                 {
                     _dbContext.Entry(existing).CurrentValues.SetValues(t);
+                    EntityHelper.SetObjectProperty("Updated", DateTime.Now, t);
                     _dbContext.SaveChanges();
                     _dbContext.Entry(existing).Reload();
                 }
@@ -159,10 +163,11 @@ namespace Swd.TimeManager.Repository
             try
             {
                 log.Debug(string.Format("{0} Updating item", MethodBase.GetCurrentMethod().Name));
-                TEntity existing = _dbSet.Find(key); //TODO: async?
+                TEntity existing = _dbSet.Find(key);
                 if (existing != null)
                 {
-                    _dbContext.Entry(existing).CurrentValues.SetValues(t); //TODO: async?
+                    _dbContext.Entry(existing).CurrentValues.SetValues(t);
+                    EntityHelper.SetObjectProperty("Updated", DateTime.Now, t);
                     await _dbContext.SaveChangesAsync();
                     await _dbContext.Entry(existing).ReloadAsync();
                 }

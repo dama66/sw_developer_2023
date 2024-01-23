@@ -189,7 +189,6 @@ namespace Swd.TimeManager.Test
             p.LastName = string.Format("Project {0}", DateTime.Now);
             p.Email = "test@google.com";
             p.EntryDate = DateOnly.FromDateTime(DateTime.Now);
-            p.Created = DateTime.Now;
             p.CreatedBy = "MAIERDA";
             return p;
         }

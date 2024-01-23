@@ -186,7 +186,6 @@ namespace Swd.TimeManager.Test
         {
             Project p = new Project();
             p.Name = string.Format("Project {0}", DateTime.Now);
-            p.Created = DateTime.Now;
             p.CreatedBy = "MAIERDA";
             return p;
         }
