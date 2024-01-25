@@ -6,7 +6,39 @@
         xmlns:local="clr-namespace:WpfSpielwiese"
         mc:Ignorable="d"
         Title="fSimpleBinding" Height="450" Width="800" Closing="Window_Closing">
-    <Grid>
-        
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   x:Name="txbAnzeigeText"
+                   Text="{Binding Text, ElementName=txbTextToShow}"
+                   TextAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="{Binding Value, ElementName=sliFontSize}"
+                   RenderTransformOrigin="0.5,0.5"
+                   >
+            <TextBlock.RenderTransform>
+                <RotateTransform Angle="{Binding Value, ElementName=sliRotation}" />
+
+            </TextBlock.RenderTransform>
+
+        </TextBlock>
+        <Slider Grid.Row="1" x:Name="sliRotation" Value="0" Minimum="0" Maximum="360" Margin="10" />
+        <Slider Grid.Row="2" x:Name="sliFontSize" Value="24" Minimum="6" Maximum="150" Margin="10" />
+        <TextBox Grid.Row="3" x:Name="txbTextToShow" Text="Textanzege" FontSize="20" Margin="10" />
+        <StackPanel Grid.Row="4" Orientation="Horizontal">
+            <Label Content="Schriftgrösse" VerticalAlignment="Center" FontSize="20"/>
+            <TextBox x:Name="txbFontSize" Text="{Binding Value, ElementName=sliFontSize, Mode=TwoWay}" FontSize="20" Margin="10" MinWidth="100" />
+            <Label Content="Rotationswinkel" VerticalAlignment="Center" FontSize="20"/>
+            <TextBox x:Name="txbRotation" Text="{Binding Value, ElementName=sliRotation, Mode=TwoWay} " FontSize="20" Margin="10" MinWidth="100" />
+        </StackPanel>
+
     </Grid>
 </Window>
