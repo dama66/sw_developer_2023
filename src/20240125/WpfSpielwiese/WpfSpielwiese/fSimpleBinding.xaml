@@ -32,12 +32,12 @@
         </TextBlock>
         <Slider Grid.Row="1" x:Name="sliRotation" Value="0" Minimum="0" Maximum="360" Margin="10" />
         <Slider Grid.Row="2" x:Name="sliFontSize" Value="24" Minimum="6" Maximum="150" Margin="10" />
-        <TextBox Grid.Row="3" x:Name="txbTextToShow" Text="Textanzege" FontSize="20" Margin="10" />
+        <TextBox Grid.Row="3" x:Name="txbTextToShow" Text="Textanzeige" FontSize="20" Margin="10" />
         <StackPanel Grid.Row="4" Orientation="Horizontal">
             <Label Content="Schriftgrösse" VerticalAlignment="Center" FontSize="20"/>
-            <TextBox x:Name="txbFontSize" Text="{Binding Value, ElementName=sliFontSize, Mode=TwoWay}" FontSize="20" Margin="10" MinWidth="100" />
+            <TextBox x:Name="txbFontSize" Text="{Binding Value, ElementName=sliFontSize, Mode=TwoWay, StringFormat={}{0:0}}" FontSize="20" Margin="10" MinWidth="100" />
             <Label Content="Rotationswinkel" VerticalAlignment="Center" FontSize="20"/>
-            <TextBox x:Name="txbRotation" Text="{Binding Value, ElementName=sliRotation, Mode=TwoWay} " FontSize="20" Margin="10" MinWidth="100" />
+            <TextBox x:Name="txbRotation" Text="{Binding Value, ElementName=sliRotation, Mode=TwoWay, StringFormat={}{0:0}}" FontSize="20" Margin="10" MinWidth="100" />
         </StackPanel>
 
     </Grid>
