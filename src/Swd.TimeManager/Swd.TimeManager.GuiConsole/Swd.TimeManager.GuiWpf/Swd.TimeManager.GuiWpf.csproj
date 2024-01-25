@@ -35,4 +35,10 @@
     <ProjectReference Include="..\Swd.TimeManager.Model\Swd.TimeManager.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="fEditTimeRecord.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

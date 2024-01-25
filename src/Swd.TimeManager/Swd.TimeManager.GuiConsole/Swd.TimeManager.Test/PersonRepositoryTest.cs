@@ -185,8 +185,8 @@ namespace Swd.TimeManager.Test
         private Person GetNewPerson()
         {
             Person p = new Person();
-            p.FirstName = string.Format("Project {0}", DateTime.Now);
-            p.LastName = string.Format("Project {0}", DateTime.Now);
+            p.FirstName = string.Format("FirstName {0}", DateTime.Now);
+            p.LastName = string.Format("LastName {0}", DateTime.Now);
             p.Email = "test@google.com";
             p.EntryDate = DateOnly.FromDateTime(DateTime.Now);
             p.CreatedBy = "MAIERDA";

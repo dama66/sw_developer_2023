@@ -28,5 +28,21 @@ namespace Swd.TimeManager.GuiWpf
             ProjectService projectService = new ProjectService();
             this.lstData.ItemsSource = projectService.ReadAll().ToList();
         }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            fEdit f = new fEdit(this);
+            f.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            f.Show();
+            this.Hide();
+        }
+
+        private void btnEditTimeRecord_Click(object sender, RoutedEventArgs e)
+        {
+            fEditTimeRecord f = new fEditTimeRecord(this);
+            f.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            f.Show();
+            this.Hide();
+        }
     }
 }
