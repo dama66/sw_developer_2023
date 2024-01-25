@@ -1,0 +1,45 @@
+﻿<Window x:Class="Swd.TimeManager.GuiWpf.fEditTimeRecord"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Swd.TimeManager.GuiWpf"
+        mc:Ignorable="d"
+        Title="TimeRecord" Height="450" Width="800" Closing="Window_Closing">
+    <Grid Margin="50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Content="Id"/>
+        <Label Grid.Row="1" Content="Person"/>
+        <Label Grid.Row="2" Content="Project"/>
+        <Label Grid.Row="3" Content="Task"/>
+        <Label Grid.Row="5" Content="Date"/>
+        <Label Grid.Row="6" Content="Duration"/>
+
+        <TextBox x:Name="txbId" Grid.Row="0" Grid.Column="1" Text="{Binding TimeRecord.Id}" ToolTip="Id" IsReadOnly="True"/>
+        <ComboBox x:Name="lstPerson" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Persons}" DisplayMemberPath="DisplayName" ToolTip="Person"/>
+        <ComboBox x:Name="lstProject" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Projects}" DisplayMemberPath="Name" ToolTip="Project"/>
+        <ComboBox x:Name="lstTask" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Tasks}" ToolTip="Task"/>
+        <DatePicker x:Name="pickDate" Grid.Row="5" Grid.Column="1" ToolTip="Date"  FirstDayOfWeek="Monday"/>
+        <TextBox x:Name="txbDuration" Grid.Row="6" Grid.Column="1" Text="{Binding TimeRecord.Duration}" ToolTip="Duration"/>
+
+        <StackPanel Grid.Row="8" Grid.Column="1">
+            <Button x:Name="btnLoad" Content="Anzeigen" Click="btnLoad_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

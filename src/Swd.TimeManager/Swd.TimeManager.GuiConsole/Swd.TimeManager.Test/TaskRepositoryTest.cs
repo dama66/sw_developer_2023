@@ -186,7 +186,7 @@ namespace Swd.TimeManager.Test
         private Model.Task GetNewTask()
         {
             Model.Task t = new Model.Task();
-            t.Name = string.Format("Project {0}", DateTime.Now);
+            t.Name = string.Format("Task {0}", DateTime.Now);
             t.CreatedBy = "MAIERDA";
             return t;
         }

@@ -1,0 +1,45 @@
+﻿<Window x:Class="Swd.TimeManager.GuiWpf.fEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Swd.TimeManager.GuiWpf"
+        mc:Ignorable="d"
+        Title="Person" Height="450" Width="800" Closing="Window_Closing">
+    <Grid Margin="50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Content="Id"/>
+        <Label Grid.Row="1" Content="LastName"/>
+        <Label Grid.Row="2" Content="FirstName"/>
+        <Label Grid.Row="3" Content="E-Mail"/>
+        <Label Grid.Row="5" Content="EntryDate"/>
+        <Label Grid.Row="6" Content="ExitDate"/>
+
+        <TextBox x:Name="txbId" Grid.Row="0" Grid.Column="1" Text="" ToolTip="Id" IsReadOnly="True"/>
+        <TextBox x:Name="txbLastName" Grid.Row="1" Grid.Column="1" Text="{Binding LastName}" ToolTip="LastName"/>
+        <TextBox x:Name="txbFirstName" Grid.Row="2" Grid.Column="1" Text="{Binding FirstName}" ToolTip="FirstName"/>
+        <TextBox x:Name="txbEMail" Grid.Row="3" Grid.Column="1" Text="{Binding Email}" ToolTip="E-Mail"/>
+        <DatePicker x:Name="pickEntryDate" Grid.Row="5" Grid.Column="1" ToolTip="EntryDate"/>
+        <DatePicker x:Name="pickExitDate" Grid.Row="6" Grid.Column="1" ToolTip="ExitDate" FirstDayOfWeek="Monday"/>
+
+        <StackPanel Grid.Row="8" Grid.Column="1">
+            <Button x:Name="btnLoad" Content="Anzeigen" Click="btnLoad_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
