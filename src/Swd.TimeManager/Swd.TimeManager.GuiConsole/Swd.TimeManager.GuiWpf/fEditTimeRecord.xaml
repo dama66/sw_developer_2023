@@ -32,10 +32,10 @@
         <Label Grid.Row="6" Content="Duration"/>
 
         <TextBox x:Name="txbId" Grid.Row="0" Grid.Column="1" Text="{Binding TimeRecord.Id}" ToolTip="Id" IsReadOnly="True"/>
-        <ComboBox x:Name="lstPerson" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Persons}" DisplayMemberPath="DisplayName" ToolTip="Person"/>
-        <ComboBox x:Name="lstProject" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Projects}" DisplayMemberPath="Name" ToolTip="Project"/>
-        <ComboBox x:Name="lstTask" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Tasks}" ToolTip="Task"/>
-        <DatePicker x:Name="pickDate" Grid.Row="5" Grid.Column="1" ToolTip="Date"  FirstDayOfWeek="Monday"/>
+        <ComboBox x:Name="lstPerson"  Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Persons}" SelectedValuePath="Id" SelectedValue="{Binding TimeRecord.PersonId}" DisplayMemberPath="DisplayName" ToolTip="Person"/>
+        <ComboBox x:Name="lstProject" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Projects}" SelectedValuePath="Id" SelectedValue="{Binding TimeRecord.ProjectId}" DisplayMemberPath="Name" ToolTip="Project"/>
+        <ComboBox x:Name="lstTask" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Tasks}" SelectedValuePath="Id" SelectedValue="{Binding TimeRecord.TaskId}" ToolTip="Task"/>
+        <DatePicker x:Name="pickDate" Grid.Row="5" Grid.Column="1" ToolTip="Date" SelectedDate="{Binding TimeRecord.Date}"  FirstDayOfWeek="Monday"/>
         <TextBox x:Name="txbDuration" Grid.Row="6" Grid.Column="1" Text="{Binding TimeRecord.Duration}" ToolTip="Duration"/>
 
         <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal" Margin="10, 0, 10, 0">

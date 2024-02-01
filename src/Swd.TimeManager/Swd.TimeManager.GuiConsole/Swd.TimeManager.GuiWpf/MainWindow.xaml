@@ -28,7 +28,7 @@
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
             <Button Style="{StaticResource StyleButtonAlert}" x:Name="btnLoadData" Content="Daten laden" Margin="10" Click="btnLoadData_Click" />
             <Button x:Name="btnEdit" Content="Person" Grid.Column="1" Margin="10" Click="btnEdit_Click" />
-            <Button x:Name="btnEditTimeRecord" Content="TimeRecord" Grid.Column="1" Margin="10" Click="btnEditTimeRecord_Click" />
+            <Button x:Name="btnEditTimeRecord"  Content="TimeRecord" Grid.Column="1" Margin="10" Click="btnEditTimeRecord_Click" />
         </StackPanel>
 
         <ListBox x:Name="lstData" Grid.Row="2" Grid.Column="1" Background="Beige" Margin="10" DisplayMemberPath="Name"/>
