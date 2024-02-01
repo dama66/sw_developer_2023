@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Swd.TimeManager.GuiWpf"
         mc:Ignorable="d"
-        Title="TimeRecord" Height="450" Width="800" Closing="Window_Closing">
+        Title="TimeRecord" Height="450" Width="800" Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid Margin="50">
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -38,8 +38,9 @@
         <DatePicker x:Name="pickDate" Grid.Row="5" Grid.Column="1" ToolTip="Date"  FirstDayOfWeek="Monday"/>
         <TextBox x:Name="txbDuration" Grid.Row="6" Grid.Column="1" Text="{Binding TimeRecord.Duration}" ToolTip="Duration"/>
 
-        <StackPanel Grid.Row="8" Grid.Column="1">
+        <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal" Margin="10, 0, 10, 0">
             <Button x:Name="btnLoad" Content="Anzeigen" Click="btnLoad_Click"/>
+            <Button x:Name="btnShowViewModel" Content="Show" Click="btnShowViewModel_Click" Margin="10, 0, 0, 0"/>
         </StackPanel>
     </Grid>
 </Window>

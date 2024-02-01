@@ -6,6 +6,14 @@
         xmlns:local="clr-namespace:Swd.TimeManager.GuiWpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="LightBlue" />
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -18,7 +26,7 @@
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-            <Button x:Name="btnLoadData" Content="Daten laden" Margin="10" Click="btnLoadData_Click" />
+            <Button Style="{StaticResource StyleButtonAlert}" x:Name="btnLoadData" Content="Daten laden" Margin="10" Click="btnLoadData_Click" />
             <Button x:Name="btnEdit" Content="Person" Grid.Column="1" Margin="10" Click="btnEdit_Click" />
             <Button x:Name="btnEditTimeRecord" Content="TimeRecord" Grid.Column="1" Margin="10" Click="btnEditTimeRecord_Click" />
         </StackPanel>

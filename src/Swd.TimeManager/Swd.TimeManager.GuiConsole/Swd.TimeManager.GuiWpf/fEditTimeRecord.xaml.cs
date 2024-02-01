@@ -4,6 +4,7 @@ using Swd.TimeManager.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -42,6 +43,17 @@ namespace Swd.TimeManager.GuiWpf
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
             this.DataContext = new TimeRecordViewModel();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = new TimeRecordViewModel();
+        }
+
+        private void btnShowViewModel_Click(object sender, RoutedEventArgs e)
+        {
+            TimeRecordViewModel vm = (TimeRecordViewModel)this.DataContext;
+            var list = vm.Persons.ToList();
         }
     }
 }
