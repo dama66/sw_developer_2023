@@ -8,8 +8,18 @@
     Title="Swd.TimeManager.GuiMaui">
 
     <ShellContent
+        Title="Intro"
+        ContentTemplate="{DataTemplate local:IntroPage}"
+        Route="intro" />
+
+    <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="main" />
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:LoginPage}"
+        Route="login" />
 
 </Shell>
