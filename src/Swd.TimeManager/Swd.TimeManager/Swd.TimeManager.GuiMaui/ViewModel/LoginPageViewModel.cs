@@ -9,14 +9,11 @@ using System.Windows.Input;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class LoginPageViewModel : INotifyPropertyChanged
+    public class LoginPageViewModel : BasicViewModel
     {
         //Fields
         private string _username;
         private string _password;
-
-        //Events
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         //Properties
         public string Username
@@ -25,7 +22,6 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 			set 
             { 
                 _username = value;
-                // OnPropertyChanged("Username"); nicht nötig wenn [CallerMemberName] verwendet wird
                 OnPropertyChanged();
             }
 		}
@@ -55,9 +51,6 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
                 () => IsLoginDataComplete()
                 );
         }
-
-        private void OnPropertyChanged([CallerMemberName] string name = "") => 
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         public async Task Login()
         {

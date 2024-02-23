@@ -7,6 +7,13 @@
     Shell.FlyoutBehavior="Disabled"
     Title="Swd.TimeManager.GuiMaui">
 
+    <Shell.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="Exit"  />
+        </MenuBarItem>
+
+    </Shell.MenuBarItems>
+
     <ShellContent
         Title="Intro"
         ContentTemplate="{DataTemplate local:IntroPage}"
@@ -21,5 +28,10 @@
         Title="Home"
         ContentTemplate="{DataTemplate local:LoginPage}"
         Route="login" />
+
+    <ShellContent
+       Title="Home"
+       ContentTemplate="{DataTemplate local:OverviewPage}"
+       Route="overview" />
 
 </Shell>

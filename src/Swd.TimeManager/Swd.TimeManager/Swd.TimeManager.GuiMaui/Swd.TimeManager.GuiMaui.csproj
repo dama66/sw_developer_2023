@@ -57,9 +57,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DevExpress.Maui.Charts" Version="23.2.4" />
-		<PackageReference Include="DevExpress.Maui.CollectionView" Version="23.2.4" />
-		<PackageReference Include="DevExpress.Maui.Controls" Version="23.2.4" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />

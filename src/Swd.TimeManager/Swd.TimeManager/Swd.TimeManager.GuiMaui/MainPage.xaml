@@ -4,12 +4,15 @@
              x:Class="Swd.TimeManager.GuiMaui.MainPage"
             xmlns:local="clr-namespace:Swd.TimeManager.GuiMaui">
 
-    <local:OverviewPage/>
-    <local:AddPage/>
-    <local:ListPage/>
-    <local:SettingsPage/>
+    <TabbedPage.Children>
+        
+        <local:OverviewPage/>
+        <local:AddPage/>
+        <local:ListPage/>
+        <local:SettingsPage/>
 
 
+    </TabbedPage.Children>
 
 
 
