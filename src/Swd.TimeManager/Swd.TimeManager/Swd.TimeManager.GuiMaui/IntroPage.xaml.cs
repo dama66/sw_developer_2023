@@ -1,3 +1,5 @@
+using Microsoft.Identity.Client;
+
 namespace Swd.TimeManager.GuiMaui;
 
 public partial class IntroPage : ContentPage
@@ -5,10 +7,13 @@ public partial class IntroPage : ContentPage
 	public IntroPage()
 	{
 		InitializeComponent();
+
 	}
 
 	protected override async void OnNavigatedTo(NavigatedToEventArgs args)
 	{
+		
+
 		if(await isAutenticated())
 		{
 			await Shell.Current.GoToAsync("///main");

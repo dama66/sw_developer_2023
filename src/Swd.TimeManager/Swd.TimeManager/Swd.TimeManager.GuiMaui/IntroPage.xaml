@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Swd.TimeManager.GuiMaui.IntroPage"
              Title="IntroPage">
+    
     <VerticalStackLayout>
         <Label 
             Text="Intro Page"

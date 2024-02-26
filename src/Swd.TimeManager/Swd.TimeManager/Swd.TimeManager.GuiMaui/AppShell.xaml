@@ -11,27 +11,42 @@
         <MenuBarItem Text="File">
             <MenuFlyoutItem Text="Exit"  />
         </MenuBarItem>
-
     </Shell.MenuBarItems>
+
 
     <ShellContent
         Title="Intro"
         ContentTemplate="{DataTemplate local:IntroPage}"
-        Route="intro" />
+        Route="intro"/>
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="main" />
-
-    <ShellContent
-        Title="Home"
+        Title="Login"
         ContentTemplate="{DataTemplate local:LoginPage}"
         Route="login" />
 
     <ShellContent
-       Title="Home"
+        Title="Main"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="main" />
+
+    <ShellContent
+       Title="Overview"
        ContentTemplate="{DataTemplate local:OverviewPage}"
        Route="overview" />
+
+    <ShellContent
+       Title="Add"
+       ContentTemplate="{DataTemplate local:AddPage}"
+       Route="add" />
+
+    <ShellContent
+       Title="List"
+       ContentTemplate="{DataTemplate local:ListPage}"
+       Route="list" />
+
+    <ShellContent
+       Title="Settings"
+       ContentTemplate="{DataTemplate local:SettingsPage}"
+       Route="settings" />
 
 </Shell>

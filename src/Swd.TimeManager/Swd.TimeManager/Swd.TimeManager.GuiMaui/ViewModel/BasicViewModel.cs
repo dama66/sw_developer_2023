@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class BasicViewModel : INotifyPropertyChanged
+    public abstract class BasicViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

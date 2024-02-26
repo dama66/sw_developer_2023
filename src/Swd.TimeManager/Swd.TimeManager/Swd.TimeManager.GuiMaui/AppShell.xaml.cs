@@ -14,5 +14,6 @@
             Routing.RegisterRoute("list", typeof(ListPage));
             Routing.RegisterRoute("settings", typeof(SettingsPage));
         }
+
     }
 }
