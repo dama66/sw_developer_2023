@@ -7,7 +7,6 @@
             InitializeComponent();
 
             Routing.RegisterRoute("intro", typeof(IntroPage));
-           // Routing.RegisterRoute("main", typeof(MainPage));
             Routing.RegisterRoute("login", typeof(LoginPage));
             Routing.RegisterRoute("overview", typeof(OverviewPage));
             Routing.RegisterRoute("add", typeof(AddPage));

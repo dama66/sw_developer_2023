@@ -20,6 +20,9 @@
         <Tab Title="Settings">
             <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}"/>
         </Tab>
+        <Tab Title="Project">
+            <ShellContent ContentTemplate="{DataTemplate views:AddProjectPage}"/>
+        </Tab>
     </TabBar>
 
     <ShellContent

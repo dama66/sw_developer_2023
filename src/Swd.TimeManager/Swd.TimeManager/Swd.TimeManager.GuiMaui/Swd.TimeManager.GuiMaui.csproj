@@ -60,6 +60,8 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.8" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -69,6 +71,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="AddProjectPage.xaml.cs">
+	    <DependentUpon>AddProjectPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AddProjectPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="AddPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
