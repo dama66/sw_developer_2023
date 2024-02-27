@@ -54,7 +54,8 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 
         public async Task Login()
         {
-            await Shell.Current.GoToAsync("main");
+            //  await Shell.Current.GoToAsync("main");
+            Application.Current.MainPage = new AppShell();
         }
 
         private bool IsLoginDataComplete()
