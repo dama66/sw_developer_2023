@@ -7,5 +7,32 @@
 
         <Button Text="Add project" Clicked="Button_Clicked"/>
 
+        <Button Text="List projects" Clicked="Button_clicked_1"/>
+
+        <ListView x:Name="lstProjects">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" Margin="10, 10, 0, 0"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Margin="0, 10, 0, 0"/>
+                        </Grid>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+            
+        </ListView>
+
+
+
     </VerticalStackLayout>
 </ContentPage>

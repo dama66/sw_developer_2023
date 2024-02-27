@@ -71,12 +71,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="ProjectPage.xaml.cs">
+	    <DependentUpon>ProjectPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="AddProjectPage.xaml.cs">
 	    <DependentUpon>AddProjectPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="ProjectPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="AddProjectPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -40,11 +40,12 @@ namespace Swd.TimeManager.GuiMaui.Model
             await Init();
             if (project.Id != 0) 
             {
-            return await _database.UpdateAsync(project);
+                return await _database.UpdateAsync(project);
             }
             else
             {
                 return await _database.InsertAsync(project);
+                
             }
         }
 

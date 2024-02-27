@@ -21,4 +21,13 @@ public partial class AddProjectPage : ContentPage
 
 		await _database.SaveProjectAsync(p);
     }
+
+    private async void Button_clicked_1(object sender, EventArgs e)
+    {
+		List<Project> list = new List<Project>();
+
+		list = await _database.GetProjectsAsync();
+		this.lstProjects.ItemsSource = list;
+
+    }
 }

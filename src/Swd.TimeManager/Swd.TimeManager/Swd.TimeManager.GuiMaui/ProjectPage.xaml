@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Swd.TimeManager.GuiMaui.ProjectPage"
+             xmlns:local="clr-namespace:Swd.TimeManager.GuiMaui.ViewModel"
+             Title="Add Project">
+
+    <ContentPage.BindingContext>
+        <local:ProjectPageViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout>
+
+        <Label Text="Projektname:" Margin="10, 0, 0, 0"/>
+        <Entry Margin="10, 0, 10, 0" Text="{Binding Project.Name}"/>
+
+
+        <Button Text="Save project" Margin="10, 0, 10, 0" Command="{Binding SaveCommand}"/>
+
+
+
+
+
+    </VerticalStackLayout>
+</ContentPage>
