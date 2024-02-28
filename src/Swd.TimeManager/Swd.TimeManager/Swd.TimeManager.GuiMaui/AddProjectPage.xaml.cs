@@ -28,6 +28,5 @@ public partial class AddProjectPage : ContentPage
 
 		list = await _database.GetProjectsAsync();
 		this.lstProjects.ItemsSource = list;
-
     }
 }

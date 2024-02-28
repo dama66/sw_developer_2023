@@ -12,6 +12,7 @@
             Routing.RegisterRoute("add", typeof(AddPage));
             Routing.RegisterRoute("list", typeof(ListPage));
             Routing.RegisterRoute("settings", typeof(SettingsPage));
+            Routing.RegisterRoute("project", typeof(ProjectPage));
         }
 
     }

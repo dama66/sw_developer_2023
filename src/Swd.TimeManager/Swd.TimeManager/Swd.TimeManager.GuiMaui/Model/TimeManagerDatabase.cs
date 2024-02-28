@@ -38,15 +38,19 @@ namespace Swd.TimeManager.GuiMaui.Model
         public async Task<int> SaveProjectAsync(Project project)
         {
             await Init();
-            if (project.Id != 0) 
+            if (project.Name != null)
             {
-                return await _database.UpdateAsync(project);
+                if (project.Id != 0)
+                {
+                    return await _database.UpdateAsync(project);
+                }
+                else
+                {
+                    return await _database.InsertAsync(project);
+
+                }
             }
-            else
-            {
-                return await _database.InsertAsync(project);
-                
-            }
+            return 0;
         }
 
         public async Task<int> DeleteProjectAsync(Project project)

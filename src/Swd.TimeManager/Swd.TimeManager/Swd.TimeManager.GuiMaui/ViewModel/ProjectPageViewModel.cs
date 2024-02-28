@@ -1,4 +1,5 @@
-﻿using Swd.TimeManager.GuiMaui.Model;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Swd.TimeManager.GuiMaui.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,6 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
                 _project = value;
                 OnPropertyChanged();
             }
-
         }
 
         public ICommand SaveCommand { get; set; }
@@ -29,8 +29,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
         public ProjectPageViewModel()
         {
             Project = new Project();
-            SaveCommand = new Command(() => Save());
-
+            SaveCommand = new Command(async () => await Save());
         }
 
         public async Task Save()

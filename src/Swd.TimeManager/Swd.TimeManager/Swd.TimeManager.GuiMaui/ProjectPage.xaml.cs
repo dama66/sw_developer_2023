@@ -9,7 +9,6 @@ public partial class ProjectPage : ContentPage
 	public ProjectPage()
 	{
 		InitializeComponent();
-		_database = new TimeManagerDatabase();
 	}
 
 }
