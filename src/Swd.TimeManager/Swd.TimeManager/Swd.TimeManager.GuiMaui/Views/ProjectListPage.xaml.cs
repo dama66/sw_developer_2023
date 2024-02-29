@@ -14,5 +14,7 @@ public partial class ProjectListPage : ContentPage
 	{
 		var viewModel = (ProjectListViewModel)BindingContext;
 		await viewModel.LoadProjectsAsync();
+		await MainThread.InvokeOnMainThreadAsync(() => ((ListView)Content).ItemsSource = viewModel.ProjectList);
+		
 	}
 }

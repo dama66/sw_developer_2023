@@ -49,17 +49,17 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 
         public async Task Add()
         {
-
+            await Shell.Current.GoToAsync("projectadd");
         }
 
         public async Task Edit()
         {
-
+            await Shell.Current.GoToAsync("projectedit");
         }
 
         public async Task Delete()
         {
-
+            await Shell.Current.GoToAsync("projectdelete");
         }
 
         private bool IsActionPossible()

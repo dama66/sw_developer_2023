@@ -26,9 +26,9 @@
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" Margin="10, 10, 0, 0" IsVisible="False"/>
                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Margin="0, 10, 0, 0"/>
-                        <Button Grid.Row="0" Grid.Column="2" Text="Add" Command="{Binding AddCommand}"/>
-                        <Button Grid.Row="0" Grid.Column="2" Text="Edit" Command="{Binding EditCommand}"/>
-                        <Button Grid.Row="0" Grid.Column="2" Text="Delete" Command="{Binding DeleteCommand}"/>
+                        <Button Grid.Row="0" Grid.Column="2" Text="Add" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListViewModel}}, Path=AddCommand}"/>
+                        <Button Grid.Row="0" Grid.Column="3" Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListViewModel}}, Path=EditCommand}"/>
+                        <Button Grid.Row="0" Grid.Column="4" Text="Delete" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListViewModel}}, Path=DeleteCommand}"/>
                     </Grid>
                 </ViewCell>
 
