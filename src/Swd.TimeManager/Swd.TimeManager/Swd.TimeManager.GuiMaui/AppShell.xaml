@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Swd.TimeManager.GuiMaui"
     xmlns:views="clr-namespace:Swd.TimeManager.GuiMaui"
+    xmlns:vw="clr-namespace:Swd.TimeManager.GuiMaui.Views"
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
@@ -14,17 +15,14 @@
         <Tab Title="Add">
             <ShellContent ContentTemplate="{DataTemplate views:AddPage}"/>
         </Tab>
-        <Tab Title="List">
-            <ShellContent ContentTemplate="{DataTemplate views:ListPage}"/>
+        <Tab Title="Project">
+            <ShellContent ContentTemplate="{DataTemplate vw:ProjectListPage}"/>
         </Tab>
         <Tab Title="Settings">
             <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}"/>
         </Tab>
-        <Tab Title="ListProject">
-            <ShellContent ContentTemplate="{DataTemplate views:AddProjectPage}"/>
-        </Tab>
-        <Tab Title="Project">
-            <ShellContent ContentTemplate="{DataTemplate views:ProjectPage}"/>
+        <Tab Title="List">
+            <ShellContent ContentTemplate="{DataTemplate views:ListPage}"/>
         </Tab>
     </TabBar>
 

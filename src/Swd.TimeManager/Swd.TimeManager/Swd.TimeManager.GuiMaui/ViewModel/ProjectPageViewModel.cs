@@ -59,6 +59,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             TimeManagerDatabase database = new TimeManagerDatabase();
             await database.SaveProjectAsync(this.Project);
             await Shell.Current.GoToAsync("..");
+            Project = new Project();
         }
 
 
@@ -70,7 +71,15 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 
         private bool IsFormValid()
         {
-            bool isFormValid = true;
+            bool isFormValid;
+            if (Project.Name != null)
+            {
+                isFormValid = true;
+            }
+            else
+            {
+                isFormValid = false;
+            }
 
             return isFormValid;
         }

@@ -1,4 +1,6 @@
-﻿namespace Swd.TimeManager.GuiMaui
+﻿using Swd.TimeManager.GuiMaui.Views;
+
+namespace Swd.TimeManager.GuiMaui
 {
     public partial class AppShell : Shell
     {
@@ -13,6 +15,11 @@
             Routing.RegisterRoute("list", typeof(ListPage));
             Routing.RegisterRoute("settings", typeof(SettingsPage));
             Routing.RegisterRoute("project", typeof(ProjectPage));
+
+            Routing.RegisterRoute("projectlist", typeof(ProjectListPage));
+            Routing.RegisterRoute("projectadd", typeof(ProjectAddPage));
+            Routing.RegisterRoute("projectedit", typeof(ProjectEditPage));
+            Routing.RegisterRoute("projectdelete", typeof(ProjectDeletePage));
         }
 
     }

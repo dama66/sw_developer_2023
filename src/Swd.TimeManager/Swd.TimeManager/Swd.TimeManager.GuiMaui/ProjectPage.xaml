@@ -18,7 +18,7 @@
             <Label Grid.Row="0" Text="Projektname" Margin="5"/>
             <Entry Grid.Row="1" Margin="5" Text="{Binding Project.Name, Mode=TwoWay}" />
         </Grid>
-        <Button Text="Save project" Command="{Binding SaveCommand}"  />
+        <Button Text="Save project" Command="{Binding SaveCommand}" />
 
     </VerticalStackLayout>
 </ContentPage>
