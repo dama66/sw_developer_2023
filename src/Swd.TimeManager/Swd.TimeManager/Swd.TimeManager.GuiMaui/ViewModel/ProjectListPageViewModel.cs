@@ -8,9 +8,10 @@ using Swd.TimeManager.GuiMaui.Model;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 
+
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class ProjectListViewModel : BasicViewModel
+    public class ProjectListPageViewModel : BasicViewModel
     {
         //Fields
         private TimeManagerDatabase _database;
@@ -32,14 +33,23 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
 
-        public ProjectListViewModel()
+        public ProjectListPageViewModel()
         {
             _database = new TimeManagerDatabase();
             _projectlist = new ObservableCollection<Project>();
 
-            AddCommand = new Command(() => Add(),IsActionPossible);
-            EditCommand = new Command(() => Edit(), IsActionPossible);
-            DeleteCommand = new Command(() => Delete(), IsActionPossible);
+            AddCommand = new Command(
+                () => Add(),
+               ()=> IsActionPossible()
+                );
+            EditCommand = new Command(
+                (object projectId) => Edit(projectId),
+                (object projectId) => IsActionPossible()
+                );
+            DeleteCommand = new Command(
+                (object projectId) => Delete(projectId),
+                (object projectId) => IsActionPossible()
+                );
         }
 
         public async Task LoadProjectsAsync()
@@ -52,12 +62,21 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             await Shell.Current.GoToAsync("projectadd");
         }
 
-        public async Task Edit()
+        public async Task Edit(object projectId)
         {
-            await Shell.Current.GoToAsync("projectedit");
+            if(int.TryParse(projectId.ToString(), out int id))
+            {
+                var navigationParameter = new Dictionary<string, object>
+                {
+                    {"projectId", id}
+                };
+                await Shell.Current.GoToAsync("projectedit", navigationParameter);
+            }
+
+            
         }
 
-        public async Task Delete()
+        public async Task Delete(object projectId)
         {
             await Shell.Current.GoToAsync("projectdelete");
         }

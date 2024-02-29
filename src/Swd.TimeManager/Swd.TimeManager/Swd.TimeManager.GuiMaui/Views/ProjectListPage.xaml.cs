@@ -10,11 +10,18 @@ public partial class ProjectListPage : ContentPage
 		LoadProjectsAsync();
 	}
 
-	private async Task LoadProjectsAsync()
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+		LoadProjectsAsync();
+    }
+
+    private async Task LoadProjectsAsync()
 	{
-		var viewModel = (ProjectListViewModel)BindingContext;
+		var viewModel = (ProjectListPageViewModel)BindingContext;
 		await viewModel.LoadProjectsAsync();
-		await MainThread.InvokeOnMainThreadAsync(() => ((ListView)Content).ItemsSource = viewModel.ProjectList);
+		// Falls nicht gleich angezeigt wird
+		//await MainThread.InvokeOnMainThreadAsync(() => ((ListView)Content).ItemsSource = viewModel.ProjectList);
 		
 	}
 }
