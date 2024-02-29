@@ -10,16 +10,15 @@
     </ContentPage.BindingContext>
 
     <VerticalStackLayout>
-
-        <Label Text="Projektname:" Margin="10, 0, 0, 0"/>
-        <Entry Margin="10, 0, 10, 0" Text="{Binding Project.Name}"/>
-
-
-        <Button Text="Save project" Margin="10, 0, 10, 0" Command="{Binding SaveCommand}"/>
-
-
-
-
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="Projektname" Margin="5"/>
+            <Entry Grid.Row="1" Margin="5" Text="{Binding Project.Name, Mode=TwoWay}" />
+        </Grid>
+        <Button Text="Save project" Command="{Binding SaveCommand}"  />
 
     </VerticalStackLayout>
 </ContentPage>

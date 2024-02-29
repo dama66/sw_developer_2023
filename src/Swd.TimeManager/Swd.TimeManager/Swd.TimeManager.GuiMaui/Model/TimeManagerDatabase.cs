@@ -47,7 +47,6 @@ namespace Swd.TimeManager.GuiMaui.Model
                 else
                 {
                     return await _database.InsertAsync(project);
-
                 }
             }
             return 0;

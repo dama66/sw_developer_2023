@@ -9,11 +9,14 @@ using System.Windows.Input;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
+    [QueryProperty(nameof(SelectedProjectId), "Id")]
     class ProjectPageViewModel : BasicViewModel
     {
-        TimeManagerDatabase _database;
-
+        //Fields
         private Project _project;
+        private int _selectedProjectid;
+
+        //Properties
         public Project Project
         {
             get { return _project; }
@@ -23,21 +26,55 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
                 OnPropertyChanged();
             }
         }
+        public int SelectedProjectId
+        {
+            get { return _selectedProjectid; }
+            set
+            {
+                _selectedProjectid = value;
+                OnPropertyChanged();
+                SetProjectToEdit();
+            }
+        }
 
+        //Commands
         public ICommand SaveCommand { get; set; }
+
+
 
         public ProjectPageViewModel()
         {
             Project = new Project();
-            SaveCommand = new Command(async () => await Save());
+
+            SaveCommand = new Command(
+                //Execute: Methode die aufgerufen wird
+                () => Save(),
+                //Can Execute: Methode die true/false zurücklieft
+                () => IsFormValid()
+                );
         }
 
         public async Task Save()
         {
-            _database = new TimeManagerDatabase();
-
-            await _database.SaveProjectAsync(Project);
+            TimeManagerDatabase database = new TimeManagerDatabase();
+            await database.SaveProjectAsync(this.Project);
+            await Shell.Current.GoToAsync("..");
         }
+
+
+        public async Task SetProjectToEdit()
+        {
+            TimeManagerDatabase database = new TimeManagerDatabase();
+            Project = await database.GetProjectByIdAsync(SelectedProjectId);
+        }
+
+        private bool IsFormValid()
+        {
+            bool isFormValid = true;
+
+            return isFormValid;
+        }
+
 
     }
 }
