@@ -37,9 +37,9 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             _database = new TimeManagerDatabase();
             _projectlist = new ObservableCollection<Project>();
 
-            AddCommand = new Command(() => Add(),() => IsActionPossible());
-            EditCommand = new Command(() => Edit(),() => IsActionPossible());
-            DeleteCommand = new Command(() => Delete(),() => IsActionPossible());
+            AddCommand = new Command(() => Add(),IsActionPossible);
+            EditCommand = new Command(() => Edit(), IsActionPossible);
+            DeleteCommand = new Command(() => Delete(), IsActionPossible);
         }
 
         public async Task LoadProjectsAsync()
