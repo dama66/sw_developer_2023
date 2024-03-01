@@ -19,16 +19,16 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0"/>
-                            <ColumnDefinition Width="50*"/>
-                            <ColumnDefinition Width="75"/>
-                            <ColumnDefinition Width="75"/>
-                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" Margin="10, 10, 0, 0" IsVisible="False"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Margin="0, 10, 0, 0"/>
-                        <Button Grid.Row="0" Grid.Column="2" Text="Add" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=AddCommand}"/>
-                        <Button Grid.Row="0" Grid.Column="3" Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=EditCommand}" CommandParameter="{Binding Id}"/>
-                        <Button Grid.Row="0" Grid.Column="4" Text="Delete" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding Id}"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        <Button Grid.Row="0" Grid.Column="2" Text="Add" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=AddCommand}"/>
+                        <Button Grid.Row="0" Grid.Column="3" Text="Edit" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=EditCommand}" CommandParameter="{Binding Id}"/>
+                        <Button Grid.Row="0" Grid.Column="4" Text="Delete" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding Id}"/>
                     </Grid>
                 </ViewCell>
 
