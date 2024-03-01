@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class LoginPageViewModel : BasicViewModel
+    public class LoginPageViewModel : BaseViewModel
     {
         //Fields
         private string _username;

@@ -8,7 +8,7 @@ using Swd.TimeManager.GuiMaui.Model;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class ProjectAddPageViewModel : BasicViewModel
+    public class ProjectAddPageViewModel : BaseViewModel
     {
         //Fields
         private Project _project;

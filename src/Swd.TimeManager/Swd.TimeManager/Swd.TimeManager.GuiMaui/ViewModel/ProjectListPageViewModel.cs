@@ -11,7 +11,7 @@ using System.Collections.ObjectModel;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class ProjectListPageViewModel : BasicViewModel
+    public class ProjectListPageViewModel : BaseViewModel
     {
         //Fields
         private TimeManagerDatabase _database;
@@ -64,19 +64,19 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 
         public async Task Edit(object projectId)
         {
-            if(int.TryParse(projectId.ToString(), out int id))
+            if (int.TryParse(projectId.ToString(), out int id))
             {
+
                 var navigationParameter = new Dictionary<string, object>
                 {
-                    {"projectId", id}
-                };
+                    {"projectId", id }
+                }; ;
                 await Shell.Current.GoToAsync("projectedit", navigationParameter);
             }
 
-            
         }
 
-        public async Task Delete(object projectId)
+            public async Task Delete(object projectId)
         {
             await Shell.Current.GoToAsync("projectdelete");
         }

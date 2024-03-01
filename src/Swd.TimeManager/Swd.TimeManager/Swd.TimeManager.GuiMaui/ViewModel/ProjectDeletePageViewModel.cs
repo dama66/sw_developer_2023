@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class ProjectDeletePageViewModel : BasicViewModel
+    public class ProjectDeletePageViewModel : BaseViewModel
     {
     }
 }

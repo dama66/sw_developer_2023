@@ -7,7 +7,6 @@ public partial class ProjectEditPage : ContentPage
 	public ProjectEditPage()
 	{
 		InitializeComponent();
-        LoadProjectAsync();
 	}
 
     protected override void OnAppearing()

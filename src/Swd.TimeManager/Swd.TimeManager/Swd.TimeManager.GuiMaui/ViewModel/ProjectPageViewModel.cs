@@ -10,7 +10,7 @@ using System.Windows.Input;
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
     [QueryProperty(nameof(SelectedProjectId), "Id")]
-    class ProjectPageViewModel : BasicViewModel
+    class ProjectPageViewModel : BaseViewModel
     {
         //Fields
         private Project _project;
