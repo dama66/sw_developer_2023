@@ -62,19 +62,19 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 
         }
 
-        public async Task Delete()
+        public async System.Threading.Tasks.Task Delete()
         {
             TimeManagerDatabase database = new TimeManagerDatabase();
             await database.DeleteProjectAsync(this.Project);
             await Shell.Current.GoToAsync("..");
         }
 
-        public async Task Cancel()
+        public async System.Threading.Tasks.Task Cancel()
         {
             await Shell.Current.GoToAsync("..");
         }
 
-        public async Task LoadProjectAsync()
+        public async System.Threading.Tasks.Task LoadProjectAsync()
         {
             Project = await _database.GetProjectByIdAsync(ProjectId);
         }

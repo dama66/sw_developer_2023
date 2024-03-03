@@ -12,8 +12,8 @@
         <Tab Title="Overview">
             <ShellContent ContentTemplate="{DataTemplate views:OverviewPage}"/>
         </Tab>
-        <Tab Title="Add">
-            <ShellContent ContentTemplate="{DataTemplate views:AddPage}"/>
+        <Tab Title="Task">
+            <ShellContent ContentTemplate="{DataTemplate vw:TaskListPage}"/>
         </Tab>
         <Tab Title="Project">
             <ShellContent ContentTemplate="{DataTemplate vw:ProjectListPage}"/>

@@ -1,5 +1,6 @@
 ﻿
 using SQLite;
+using Swd.TimeManager.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Swd.TimeManager.GuiMaui.Model
     {
         SQLiteAsyncConnection _database;
 
-        async Task Init()
+        async System.Threading.Tasks.Task Init()
         {
             if (_database != null) 
             {
@@ -21,8 +22,10 @@ namespace Swd.TimeManager.GuiMaui.Model
             }
             _database = new SQLiteAsyncConnection(Constants.DATABASEPATH, Constants.FLAGS);
             await _database.CreateTableAsync<Project>();
+            await _database.CreateTableAsync<Task>();
         }
 
+        #region Project
         public async Task<List<Project>> GetProjectsAsync()
         {
             await Init();
@@ -57,6 +60,43 @@ namespace Swd.TimeManager.GuiMaui.Model
             await Init();
             return await _database.DeleteAsync(project);
         }
+        #endregion
 
+        #region Task
+        public async Task<List<Task>> GetTasksAsync()
+        {
+            await Init();
+            return await _database.Table<Task>().ToListAsync();
+        }
+
+        public async Task<Task> GetTaskByIdAsync(int key)
+        {
+            await Init();
+            return await _database.Table<Task>().Where(t => t.Id == key).FirstOrDefaultAsync();
+        }
+
+        public async Task<int> SaveTaskAsync(Task task)
+        {
+            await Init();
+            if (task.Name != null)
+            {
+                if (task.Id != 0)
+                {
+                    return await _database.UpdateAsync(task);
+                }
+                else
+                {
+                    return await _database.InsertAsync(task);
+                }
+            }
+            return 0;
+        }
+
+        public async Task<int> DeleteTaskAsync(Task task)
+        {
+            await Init();
+            return await _database.DeleteAsync(task);
+        }
+        #endregion
     }
 }

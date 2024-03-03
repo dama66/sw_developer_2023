@@ -8,18 +8,18 @@ using Swd.TimeManager.GuiMaui.Model;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class ProjectAddPageViewModel : BaseViewModel
+    public class TaskAddPageViewModel : BaseViewModel
     {
         //Fields
-        private Project _project;
+        private TimeManager.GuiMaui.Model.Task _task;
 
         //Properties
-        public Project Project
+        public TimeManager.GuiMaui.Model.Task Task
         {
-            get { return _project; }
+            get { return _task; }
             set
             {
-                _project = value;
+                _task = value;
                 OnPropertyChanged();
             }
         }
@@ -29,15 +29,15 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
         public ICommand CancelCommand { get; set; }
 
 
-        public ProjectAddPageViewModel()
+        public TaskAddPageViewModel()
         {
-            Project = new Project();
+            Task = new TimeManager.GuiMaui.Model.Task();
 
             SaveCommand = new Command(
                 //Execute: Methode die aufgerufen wird
                 () => Save(),
-                //Can Execute: Methode die true/false zurücklieft
-                 IsFormValid
+                 //Can Execute: Methode die true/false zurücklieft
+                 () => IsFormValid()
                 );
 
             CancelCommand = new Command(
@@ -56,24 +56,23 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
         public async System.Threading.Tasks.Task Save()
         {
             TimeManagerDatabase database = new TimeManagerDatabase();
-            await database.SaveProjectAsync(this.Project);
+            await database.SaveTaskAsync(this.Task);
             await Shell.Current.GoToAsync("..");
-            Project = new Project();
+            Task = new TimeManager.GuiMaui.Model.Task();
         }
 
-
-        public async System.Threading.Tasks.Task SetProjectToEdit()
+        public async System.Threading.Tasks.Task SetTaskToEdit()
         {
             TimeManagerDatabase database = new TimeManagerDatabase();
-           // Project = await database.GetProjectByIdAsync(SelectedProjectId);
+            // Project = await database.GetProjectByIdAsync(SelectedProjectId);
         }
 
         private bool IsFormValid()
         {
             bool isFormValid;
 
-                isFormValid = true;
-   
+            isFormValid = true;
+
             return isFormValid;
         }
 

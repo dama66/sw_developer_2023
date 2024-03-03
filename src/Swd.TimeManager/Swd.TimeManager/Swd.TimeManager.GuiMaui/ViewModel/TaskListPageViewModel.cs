@@ -7,23 +7,24 @@ using System.Threading.Tasks;
 using Swd.TimeManager.GuiMaui.Model;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using Swd.TimeManager.Model;
 
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class ProjectListPageViewModel : BaseViewModel
+    public class TaskListPageViewModel : BaseViewModel
     {
         //Fields
         private TimeManagerDatabase _database;
-        private ObservableCollection<Project> _projectlist;
+        private ObservableCollection<TimeManager.GuiMaui.Model.Task> _tasklist;
 
         //Properties
-        public ObservableCollection<Project> ProjectList
+        public ObservableCollection<TimeManager.GuiMaui.Model.Task> TaskList
         {
-            get { return _projectlist; }
+            get { return _tasklist; }
             set
             {
-                _projectlist = value;
+                _tasklist = value;
                 OnPropertyChanged();
             }
         }
@@ -33,59 +34,59 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
 
-        public ProjectListPageViewModel()
+        public TaskListPageViewModel()
         {
             _database = new TimeManagerDatabase();
-            _projectlist = new ObservableCollection<Project>();
+            _tasklist = new ObservableCollection<TimeManager.GuiMaui.Model.Task>();
 
             AddCommand = new Command(
                 () => Add(),
                ()=> IsActionPossible()
                 );
             EditCommand = new Command(
-                (object projectId) => Edit(projectId),
-                (object projectId) => IsActionPossible()
+                (object taskId) => Edit(taskId),
+                (object taskId) => IsActionPossible()
                 );
             DeleteCommand = new Command(
-                (object projectId) => Delete(projectId),
-                (object projectId) => IsActionPossible()
+                (object taskId) => Delete(taskId),
+                (object taskId) => IsActionPossible()
                 );
         }
 
         public async System.Threading.Tasks.Task LoadProjectsAsync()
         {
-            ProjectList = new ObservableCollection<Project> (await _database.GetProjectsAsync());
+            TaskList = new ObservableCollection<Swd.TimeManager.GuiMaui.Model.Task> (await _database.GetTasksAsync());
         }
 
         public async System.Threading.Tasks.Task Add()
         {
-            await Shell.Current.GoToAsync("projectadd");
+            await Shell.Current.GoToAsync("taskadd");
         }
 
-        public async System.Threading.Tasks.Task Edit(object projectId)
+        public async System.Threading.Tasks.Task Edit(object taskId)
         {
-            if (int.TryParse(projectId.ToString(), out int id))
+            if (int.TryParse(taskId.ToString(), out int id))
             {
 
                 var navigationParameter = new Dictionary<string, object>
                 {
-                    {"projectId", id }
+                    {"taskId", id }
                 };
-                await Shell.Current.GoToAsync("projectedit", navigationParameter);
+                await Shell.Current.GoToAsync("taskedit", navigationParameter);
             }
 
         }
 
-            public async System.Threading.Tasks.Task Delete(object projectId)
+            public async System.Threading.Tasks.Task Delete(object taskId)
         {
-            if (int.TryParse(projectId.ToString(), out int id))
+            if (int.TryParse(taskId.ToString(), out int id))
             {
 
                 var navigationParameter = new Dictionary<string, object>
                 {
-                    {"projectId", id }
+                    {"taskId", id }
                 };
-                await Shell.Current.GoToAsync("projectdelete", navigationParameter);
+                await Shell.Current.GoToAsync("taskdelete", navigationParameter);
             }
         }
 
