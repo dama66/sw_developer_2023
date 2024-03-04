@@ -23,6 +23,7 @@ namespace Swd.TimeManager.GuiMaui.Model
             _database = new SQLiteAsyncConnection(Constants.DATABASEPATH, Constants.FLAGS);
             await _database.CreateTableAsync<Project>();
             await _database.CreateTableAsync<Task>();
+            await _database.CreateTableAsync<Person>();
         }
 
         #region Project
@@ -96,6 +97,44 @@ namespace Swd.TimeManager.GuiMaui.Model
         {
             await Init();
             return await _database.DeleteAsync(task);
+        }
+        #endregion
+
+        #region Person
+        public async Task<List<Person>> GetPersonsAsync()
+        {
+            await Init();
+            return await _database.Table<Person>().ToListAsync();
+        }
+
+        public async Task<Person> GetPersonByIdAsync(int key)
+        {
+            await Init();
+            return await _database.Table<Person>().Where(p => p.Id == key).FirstOrDefaultAsync();
+        }
+
+        public async Task<int> SavePersonAsync(Person person)
+        {
+            await Init();
+            if (person.FirstName != null)
+            {
+                if (person.Id != 0)
+                {
+                    return await _database.UpdateAsync(person);
+                }
+                else
+                {
+                    return await _database.InsertAsync(person);
+                }
+            }
+            return 0;
+
+        }
+
+        public async Task<int> DeletePersonAsync(Person person)
+        {
+            await Init();
+            return await _database.DeleteAsync(person);
         }
         #endregion
     }

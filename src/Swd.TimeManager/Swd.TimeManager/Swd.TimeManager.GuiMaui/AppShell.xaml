@@ -12,18 +12,19 @@
         <Tab Title="Overview">
             <ShellContent ContentTemplate="{DataTemplate views:OverviewPage}"/>
         </Tab>
+        <Tab Title="Project">
+            <ShellContent ContentTemplate="{DataTemplate vw:ProjectListPage}"/>
+        </Tab>
         <Tab Title="Task">
             <ShellContent ContentTemplate="{DataTemplate vw:TaskListPage}"/>
         </Tab>
-        <Tab Title="Project">
-            <ShellContent ContentTemplate="{DataTemplate vw:ProjectListPage}"/>
+        <Tab Title="Person">
+            <ShellContent ContentTemplate="{DataTemplate vw:PersonListPage}"/>
         </Tab>
         <Tab Title="Settings">
             <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}"/>
         </Tab>
-        <Tab Title="List">
-            <ShellContent ContentTemplate="{DataTemplate views:ListPage}"/>
-        </Tab>
+
     </TabBar>
 
     <ShellContent

@@ -16,8 +16,8 @@ namespace Swd.TimeManager.GuiMaui.Model
         public string FirstName { get; set; }
         public string DisplayName { get; }
         public string Email { get; set; }
-        public DateOnly EntryDate { get; set; }
-        public DateOnly? ExitDate { get; set; }
+        public string EntryDate { get; set; }
+        public string? ExitDate { get; set; }
 
         public Person()
         { 

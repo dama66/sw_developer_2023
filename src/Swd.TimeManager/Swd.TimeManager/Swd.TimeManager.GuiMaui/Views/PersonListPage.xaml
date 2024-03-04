@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Swd.TimeManager.GuiMaui.Views.PersonListPage"
+             xmlns:viewmodel="clr-namespace:Swd.TimeManager.GuiMaui.ViewModel"
+             Title="PersonListPage">
+
+    <ContentPage.BindingContext>
+        <viewmodel:PersonListPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ListView x:Name="lstPersons" ItemsSource="{Binding PersonList}">
+
+        <ListView.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="60*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Add new Person" FontAttributes="Bold,Italic" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Button Grid.Row="0" Grid.Column="1" Text="Add" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=AddCommand}"/>
+            </Grid>
+        </ListView.Header>
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="30*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" Margin="10, 10, 0, 0" IsVisible="False"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding EntryDate}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        <Button Grid.Row="0" Grid.Column="2" Text="Edit" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=EditCommand}" CommandParameter="{Binding Id}"/>
+                        <Button Grid.Row="0" Grid.Column="3" Text="Delete" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding Id}"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+    </ListView>
+    
+</ContentPage>
