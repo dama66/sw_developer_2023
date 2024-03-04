@@ -40,12 +40,12 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
                  () => IsFormValid()
                 );
 
-            CancelCommand = new Command(
-    //Execute: Methode die aufgerufen wird
-    () => Cancle(),
-     //Can Execute: Methode die true/false zurücklieft
-     IsFormValid
-    );
+                CancelCommand = new Command(
+                //Execute: Methode die aufgerufen wird
+                () => Cancle(),
+                //Can Execute: Methode die true/false zurücklieft
+                IsFormValid
+                );
         }
 
         private async void Cancle()

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Swd.TimeManager.GuiMaui.Views.TaskDeletePage"
+             xmlns:viewmodel="clr-namespace:Swd.TimeManager.GuiMaui.ViewModel"
+             Title="TaskDeletePage">
+    
+    <ContentPage.BindingContext>
+        <viewmodel:TaskDeletePageViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout>
+        <Grid Margin="10" x:Name="editGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="Taskname" Margin="5"/>
+            <Label Grid.Row="1" Margin="5" Text="{Binding Task.Name, Mode=TwoWay}" />
+        </Grid>
+        <Button Text="Delete task" Margin="5" Command="{Binding DeleteCommand}" />
+        <Button Text="Cancel" Margin="5" Command="{Binding CancelCommand}" />
+
+    </VerticalStackLayout>
+</ContentPage>

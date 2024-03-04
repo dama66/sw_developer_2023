@@ -77,6 +77,12 @@
 	  <Compile Update="AddProjectPage.xaml.cs">
 	    <DependentUpon>AddProjectPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\TaskDeletePage.xaml.cs">
+	    <DependentUpon>TaskDeletePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\TaskEditPage.xaml.cs">
+	    <DependentUpon>TaskEditPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -102,6 +108,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TaskDeletePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TaskEditPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\TaskAddPage.xaml">

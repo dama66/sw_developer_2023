@@ -23,8 +23,8 @@ namespace Swd.TimeManager.GuiMaui
 
             Routing.RegisterRoute("tasklist", typeof(TaskListPage));
             Routing.RegisterRoute("taskadd", typeof(TaskAddPage));
-            //Routing.RegisterRoute("taskedit", typeof(TaskEditPage));
-            //Routing.RegisterRoute("taskdelete", typeof(TaskDeletePage));
+            Routing.RegisterRoute("taskedit", typeof(TaskEditPage));
+            Routing.RegisterRoute("taskdelete", typeof(TaskDeletePage));
         }
 
     }
