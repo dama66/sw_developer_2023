@@ -6,22 +6,23 @@
     xmlns:local="clr-namespace:Swd.TimeManager.GuiMaui"
     xmlns:views="clr-namespace:Swd.TimeManager.GuiMaui"
     xmlns:vw="clr-namespace:Swd.TimeManager.GuiMaui.Views"
+    xmlns:res="clr-namespace:Swd.TimeManager.GuiMaui.Resources.Strings"
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
-        <Tab Title="Overview">
+        <Tab Title="{x:Static res:AppResources.MenTitleOverview}">
             <ShellContent ContentTemplate="{DataTemplate views:OverviewPage}"/>
         </Tab>
-        <Tab Title="Project">
+        <Tab Title="{x:Static res:AppResources.MenTitleProject}">
             <ShellContent ContentTemplate="{DataTemplate vw:ProjectListPage}"/>
         </Tab>
-        <Tab Title="Task">
+        <Tab Title="{x:Static res:AppResources.MenTitleTask}">
             <ShellContent ContentTemplate="{DataTemplate vw:TaskListPage}"/>
         </Tab>
-        <Tab Title="Person">
+        <Tab Title="{x:Static res:AppResources.MenTitlePerson}">
             <ShellContent ContentTemplate="{DataTemplate vw:PersonListPage}"/>
         </Tab>
-        <Tab Title="Settings">
+        <Tab Title="{x:Static res:AppResources.MenTitleSettings}">
             <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}"/>
         </Tab>
 

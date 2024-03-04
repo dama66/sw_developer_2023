@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Swd.TimeManager.GuiMaui.Views.TaskListPage"
              xmlns:viewmodel="clr-namespace:Swd.TimeManager.GuiMaui.ViewModel"
-             Title="TaskListPage">
+             xmlns:res="clr-namespace:Swd.TimeManager.GuiMaui.Resources.Strings"
+             Title="{x:Static res:AppResources.PageTitleTaskList}">
 
     <ContentPage.BindingContext>
         <viewmodel:TaskListPageViewModel />

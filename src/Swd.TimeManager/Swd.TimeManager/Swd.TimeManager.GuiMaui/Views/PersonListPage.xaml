@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Swd.TimeManager.GuiMaui.Views.PersonListPage"
              xmlns:viewmodel="clr-namespace:Swd.TimeManager.GuiMaui.ViewModel"
-             Title="PersonListPage">
-
+             xmlns:res="clr-namespace:Swd.TimeManager.GuiMaui.Resources.Strings"
+             Title="{x:Static res:AppResources.PageTitlePersonList}">
+    
     <ContentPage.BindingContext>
         <viewmodel:PersonListPageViewModel />
     </ContentPage.BindingContext>

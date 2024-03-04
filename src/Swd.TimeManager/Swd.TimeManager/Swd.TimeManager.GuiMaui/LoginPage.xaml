@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Swd.TimeManager.GuiMaui.LoginPage"
              xmlns:local="clr-namespace:Swd.TimeManager.GuiMaui.ViewModel"
-             Title="LoginPage">
+             xmlns:res="clr-namespace:Swd.TimeManager.GuiMaui.Resources.Strings"
+             Title="{x:Static res:AppResources.PageTitleLogin}">
 
     <ContentPage.BindingContext>
         <local:LoginPageViewModel />
@@ -12,27 +13,28 @@
     <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" Padding="20" RowSpacing="5">
 
         <!-- Title & description-->
-        <Label Grid.Row="0" Text="TimeManager" FontSize="23" HorizontalTextAlignment="Center"/>
-        <Label Grid.Row="1" Text="Record your time" Margin="0,0,0,18" TextColor="#63909c" HorizontalTextAlignment="Center"/>
+        <Label Grid.Row="0" Text="{x:Static res:AppResources.Title}" FontSize="23" HorizontalTextAlignment="Center"/>
+        <Label Grid.Row="1" Text="{x:Static res:AppResources.Subtitle}" Margin="0,0,0,18" TextColor="#63909c" HorizontalTextAlignment="Center"/>
 
         <!-- Email Information-->
-        <Label Grid.Row="2" Text="Email" FontSize="16" FontAttributes="Bold"/>
+        <Label Grid.Row="2" Text="{x:Static res:AppResources.lblUseName}" FontSize="16" FontAttributes="Bold"/>
         <Entry Grid.Row="3" Text="{Binding Username}" BackgroundColor="#c7dbe0" TextColor="#578794" HeightRequest="50"/>
 
         <!-- Password Information-->
-        <Label Grid.Row="4" Text="Password" FontSize="16" FontAttributes="Bold"/>
+        <Label Grid.Row="4" Text="{x:Static res:AppResources.lblPassword}" FontSize="16" FontAttributes="Bold"/>
         <Entry Grid.Row="5" Text="{Binding Password}" BackgroundColor="#c7dbe0" TextColor="#578794" IsPassword="True" HeightRequest="50"/>
 
 
         <!-- Login Button-->
-        <Button Grid.Row="6" Command="{Binding LoginCommand}" Text="Login" FontAttributes="Bold" TextColor="White" Margin="0,20" HeightRequest="50" CornerRadius="10" BackgroundColor="#508390"/>
+        <Button Grid.Row="6" Command="{Binding LoginCommand}" Text="{x:Static res:AppResources.btnLogin}" FontAttributes="Bold" TextColor="White" Margin="0,20" HeightRequest="50" CornerRadius="10" BackgroundColor="#508390"/>
 
         <!-- Sign In Description-->
         <Label Grid.Row="7" FontAttributes="Bold">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="No account? " TextColor="#aaaaaa"/>
-                    <Span Text="Request account information from your Administrator" TextColor="#63909c"/>
+                    <Span Text="{x:Static res:AppResources.Text1}" TextColor="#aaaaaa"/>
+                    <Span Text=" "/>
+                    <Span Text="{x:Static res:AppResources.Text2}" TextColor="#63909c"/>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
