@@ -28,8 +28,8 @@ namespace Swd.TimeManager.GuiMaui
 
             Routing.RegisterRoute("personlist", typeof(PersonListPage));
             Routing.RegisterRoute("personadd", typeof(PersonAddPage));
-            //Routing.RegisterRoute("personedit", typeof(PersonEditPage));
-            //Routing.RegisterRoute("persondelete", typeof(PersonDeletePage));
+            Routing.RegisterRoute("personedit", typeof(PersonEditPage));
+            Routing.RegisterRoute("persondelete", typeof(PersonDeletePage));
         }
 
     }

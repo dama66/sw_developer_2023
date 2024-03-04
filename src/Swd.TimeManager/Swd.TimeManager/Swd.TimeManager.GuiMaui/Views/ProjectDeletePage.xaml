@@ -14,12 +14,15 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Text="Projektname" Margin="5"/>
             <Label Grid.Row="1" Margin="5" Text="{Binding Project.Name, Mode=TwoWay}" />
+            <Button Grid.Row="2" Text="Delete project" Margin="5" Command="{Binding DeleteCommand}" />
+            <Button Grid.Row="3" Text="Cancel" Margin="5" Command="{Binding CancelCommand}" />
         </Grid>
-        <Button Text="Delete project" Margin="5" Command="{Binding DeleteCommand}" />
-        <Button Text="Cancel" Margin="5" Command="{Binding CancelCommand}" />
+
 
     </VerticalStackLayout>
 </ContentPage>

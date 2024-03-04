@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Swd.TimeManager.GuiMaui.Views.PersonAddPage"
+             x:Class="Swd.TimeManager.GuiMaui.Views.PersonEditPage"
              xmlns:viewmodel="clr-namespace:Swd.TimeManager.GuiMaui.ViewModel"
-             Title="PersonAddPage">
+             Title="PersonEditPage">
     
     <ContentPage.BindingContext>
-        <viewmodel:PersonAddPageViewModel />
+        <viewmodel:PersonEditPageViewModel />
     </ContentPage.BindingContext>
 
     <VerticalStackLayout>
-        <Grid Margin="10">
+        <Grid Margin="10" x:Name="editGrid">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -31,8 +33,10 @@
             <Entry Grid.Row="5" Margin="5" Text="{Binding Person.Email, Mode=TwoWay}" />
             <Label Grid.Row="6" Text="Entry date" Margin="5"/>
             <DatePicker Grid.Row="7" Margin="5" Date="{Binding EntryDateRaw}"/>
-            <Button Grid.Row="8" Text="Save person" Margin="5" Command="{Binding SaveCommand}" />
-            <Button Grid.Row="9" Text="Cancel" Margin="5" Command="{Binding CancelCommand}" />
+            <Label Grid.Row="8" Text="Exit date" Margin="5"/>
+            <DatePicker Grid.Row="9" Margin="5" Date="{Binding ExitDateRaw}"/>
+            <Button Grid.Row="10" Text="Save person" Margin="5" Command="{Binding SaveCommand}" />
+            <Button Grid.Row="11" Text="Cancel" Margin="5" Command="{Binding CancelCommand}" />
         </Grid>
 
 

@@ -14,12 +14,15 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Text="Taskname" Margin="5"/>
             <Entry Grid.Row="1" Margin="5" Text="{Binding Task.Name, Mode=TwoWay}" />
+            <Button Grid.Row="2" Text="Save task" Margin="5" Command="{Binding SaveCommand}" />
+            <Button Grid.Row="3" Text="Cancel" Margin="5" Command="{Binding CancelCommand}" />
         </Grid>
-        <Button Text="Save task" Margin="5" Command="{Binding SaveCommand}" />
-        <Button Text="Cancel" Margin="5" Command="{Binding CancelCommand}" />
+
 
     </VerticalStackLayout>
 </ContentPage>

@@ -77,17 +77,11 @@
 	  <Compile Update="AddProjectPage.xaml.cs">
 	    <DependentUpon>AddProjectPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\PersonListPage.xaml.cs">
-	    <DependentUpon>PersonListPage.xaml</DependentUpon>
+	  <Compile Update="Views\PersonEditPage.xaml.cs">
+	    <DependentUpon>PersonEditPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\PersonAddPage.xaml.cs">
-	    <DependentUpon>PersonAddPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\TaskDeletePage.xaml.cs">
-	    <DependentUpon>TaskDeletePage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\TaskEditPage.xaml.cs">
-	    <DependentUpon>TaskEditPage.xaml</DependentUpon>
+	  <Compile Update="Views\PersonDeletePage.xaml.cs">
+	    <DependentUpon>PersonDeletePage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -116,16 +110,10 @@
 	  <MauiXaml Update="SettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\PersonListPage.xaml">
+	  <MauiXaml Update="Views\PersonEditPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\PersonAddPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\TaskDeletePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\TaskEditPage.xaml">
+	  <MauiXaml Update="Views\PersonDeletePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\TaskAddPage.xaml">
