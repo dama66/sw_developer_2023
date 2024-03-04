@@ -22,7 +22,7 @@
                     <ColumnDefinition Width="60*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Text="Add new Project" FontAttributes="Bold,Italic" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                <Button Grid.Row="0" Grid.Column="1" Text="Add" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=AddCommand}"/>
+                <Button Grid.Row="0" Grid.Column="1" Text="Add" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=AddCommand}" ImageSource="add.png"/>
             </Grid>
         </ListView.Header>
 
@@ -41,8 +41,8 @@
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" Margin="10, 10, 0, 0" IsVisible="False"/>
                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                        <Button Grid.Row="0" Grid.Column="2" Text="Edit" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=EditCommand}" CommandParameter="{Binding Id}"/>
-                        <Button Grid.Row="0" Grid.Column="3" Text="Delete" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding Id}"/>
+                        <Button Grid.Row="0" Grid.Column="2" Text="Edit" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=EditCommand}" CommandParameter="{Binding Id}" ImageSource="edit.png"/>
+                        <Button Grid.Row="0" Grid.Column="3" Text="Delete" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding Id}" ImageSource="delete.png"/>
                     </Grid>
                 </ViewCell>
             </DataTemplate>

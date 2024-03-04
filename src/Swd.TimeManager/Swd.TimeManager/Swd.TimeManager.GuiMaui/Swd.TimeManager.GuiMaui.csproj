@@ -57,6 +57,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\add.png" />
+	  <None Remove="Resources\Images\cancel.png" />
+	  <None Remove="Resources\Images\check.png" />
+	  <None Remove="Resources\Images\delete.png" />
+	  <None Remove="Resources\Images\edit.png" />
+	  <None Remove="Resources\Images\list.png" />
+	  <None Remove="Resources\Images\login.png" />
+	  <None Remove="Resources\Images\settings.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
