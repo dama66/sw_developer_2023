@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Swd.TimeManager.GuiMaui.Views.TaskDeletePage"
              xmlns:viewmodel="clr-namespace:Swd.TimeManager.GuiMaui.ViewModel"
-             Title="TaskDeletePage">
+             xmlns:res="clr-namespace:Swd.TimeManager.GuiMaui.Resources.Strings"
+             Title="{x:Static res:AppResources.PageTitleTaskDelete}">
     
     <ContentPage.BindingContext>
         <viewmodel:TaskDeletePageViewModel />
@@ -17,10 +18,10 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Text="Taskname" Margin="5"/>
-            <Label Grid.Row="1" Margin="5" Text="{Binding Task.Name, Mode=TwoWay}" />
-            <Button Grid.Row="2" Text="Delete task" Margin="5" Command="{Binding DeleteCommand}" />
-            <Button Grid.Row="3" Text="Cancel" Margin="5" Command="{Binding CancelCommand}" />
+            <Label Grid.Row="0" Text="{x:Static res:AppResources.lblTaskname}"/>
+            <Label Grid.Row="1" Text="{Binding Task.Name, Mode=TwoWay}" />
+            <Button Grid.Row="2" Text="{x:Static res:AppResources.btnDelete}" Command="{Binding DeleteCommand}" />
+            <Button Grid.Row="3" Text="{x:Static res:AppResources.btnCancle}" Command="{Binding CancelCommand}" />
         </Grid>
 
 

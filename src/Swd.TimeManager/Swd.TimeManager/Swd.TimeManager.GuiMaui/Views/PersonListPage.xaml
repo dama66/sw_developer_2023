@@ -24,12 +24,11 @@
                     <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="30*"/>
-
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="3" Text="Add new Person" FontAttributes="Bold,Italic" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                <Button Grid.Row="0" Grid.Column="4" Text="Add" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=AddCommand}"/>
-                <Label Grid.Row="1" Grid.Column="1" Text="First name" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                <Label Grid.Row="1" Grid.Column="2" Text="Last name" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Grid.Row="0" Grid.Column="3" Text="{x:Static res:AppResources.lblAdd}" FontAttributes="Bold,Italic" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Button Grid.Row="0" Grid.Column="4" Text="{x:Static res:AppResources.btnAdd}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=AddCommand}"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="{x:Static res:AppResources.lblFirstname}" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Grid.Row="1" Grid.Column="2" Text="{x:Static res:AppResources.lblLastname}" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             </Grid>
         </ListView.Header>
 
@@ -50,8 +49,8 @@
                         <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" Margin="10, 10, 0, 0" IsVisible="False"/>
                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding FirstName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                         <Label Grid.Row="0" Grid.Column="2" Text="{Binding LastName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                        <Button Grid.Row="0" Grid.Column="3" Text="Edit" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=EditCommand}" CommandParameter="{Binding Id}"/>
-                        <Button Grid.Row="0" Grid.Column="4" Text="Delete" Margin="5" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding Id}"/>
+                        <Button Grid.Row="0" Grid.Column="3" Text="{x:Static res:AppResources.btnEdit}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=EditCommand}" CommandParameter="{Binding Id}"/>
+                        <Button Grid.Row="0" Grid.Column="4" Text="{x:Static res:AppResources.btnDelete}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding Id}"/>
                     </Grid>
                 </ViewCell>
             </DataTemplate>

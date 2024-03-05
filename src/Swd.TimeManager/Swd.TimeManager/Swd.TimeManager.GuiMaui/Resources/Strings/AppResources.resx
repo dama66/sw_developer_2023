@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btn Save" xml:space="preserve">
-    <value>Save</value>
-  </data>
   <data name="btnAdd" xml:space="preserve">
     <value>Add</value>
   </data>
@@ -136,12 +133,36 @@
     <value>Login</value>
     <comment>LoginPage</comment>
   </data>
+  <data name="btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="lblAdd" xml:space="preserve">
     <value>Add new</value>
+  </data>
+  <data name="lblEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="lblEntrydate" xml:space="preserve">
+    <value>Entry date</value>
+  </data>
+  <data name="lblExitdate" xml:space="preserve">
+    <value>Exit date</value>
+  </data>
+  <data name="lblFirstname" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="lblLastname" xml:space="preserve">
+    <value>Last name</value>
   </data>
   <data name="lblPassword" xml:space="preserve">
     <value>Password</value>
     <comment>LoginPage</comment>
+  </data>
+  <data name="lblProjectname" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="lblTaskname" xml:space="preserve">
+    <value>Task</value>
   </data>
   <data name="lblUseName" xml:space="preserve">
     <value>E-Mail or Username</value>
@@ -168,14 +189,41 @@
   <data name="PageTitleOverview" xml:space="preserve">
     <value>Overview</value>
   </data>
+  <data name="PageTitlePersonAdd" xml:space="preserve">
+    <value>Person add</value>
+  </data>
+  <data name="PageTitlePersonDelete" xml:space="preserve">
+    <value>Person delete</value>
+  </data>
+  <data name="PageTitlePersonEdit" xml:space="preserve">
+    <value>Person edit</value>
+  </data>
   <data name="PageTitlePersonList" xml:space="preserve">
     <value>Persons</value>
+  </data>
+  <data name="PageTitleProjectAdd" xml:space="preserve">
+    <value>Project add</value>
+  </data>
+  <data name="PageTitleProjectDelete" xml:space="preserve">
+    <value>Project delete</value>
+  </data>
+  <data name="PageTitleProjectEdit" xml:space="preserve">
+    <value>Project edit</value>
   </data>
   <data name="PageTitleProjectList" xml:space="preserve">
     <value>Projects</value>
   </data>
   <data name="PageTitleSettings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="PageTitleTaskAdd" xml:space="preserve">
+    <value>Task add</value>
+  </data>
+  <data name="PageTitleTaskDelete" xml:space="preserve">
+    <value>Task delete</value>
+  </data>
+  <data name="PageTitleTaskEdit" xml:space="preserve">
+    <value>Task edit</value>
   </data>
   <data name="PageTitleTaskList" xml:space="preserve">
     <value>Tasks</value>

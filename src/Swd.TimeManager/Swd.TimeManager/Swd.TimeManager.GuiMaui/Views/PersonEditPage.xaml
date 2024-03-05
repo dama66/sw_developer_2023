@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Swd.TimeManager.GuiMaui.Views.PersonEditPage"
              xmlns:viewmodel="clr-namespace:Swd.TimeManager.GuiMaui.ViewModel"
-             Title="PersonEditPage">
+             xmlns:res="clr-namespace:Swd.TimeManager.GuiMaui.Resources.Strings"
+             Title="{x:Static res:AppResources.PageTitlePersonEdit}">
     
     <ContentPage.BindingContext>
         <viewmodel:PersonEditPageViewModel />
@@ -25,20 +26,19 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Text="First Name" Margin="5"/>
-            <Entry Grid.Row="1" Margin="5" Text="{Binding Person.FirstName, Mode=TwoWay}" />
-            <Label Grid.Row="2" Text="Last Name" Margin="5"/>
-            <Entry Grid.Row="3" Margin="5" Text="{Binding Person.LastName, Mode=TwoWay}" />
-            <Label Grid.Row="4" Text="Email" Margin="5"/>
-            <Entry Grid.Row="5" Margin="5" Text="{Binding Person.Email, Mode=TwoWay}" />
-            <Label Grid.Row="6" Text="Entry date" Margin="5"/>
-            <DatePicker Grid.Row="7" Margin="5" Date="{Binding EntryDateRaw}"/>
-            <Label Grid.Row="8" Text="Exit date" Margin="5"/>
-            <DatePicker Grid.Row="9" Margin="5" Date="{Binding ExitDateRaw}"/>
-            <Button Grid.Row="10" Text="Save person" Margin="5" Command="{Binding SaveCommand}" />
-            <Button Grid.Row="11" Text="Cancel" Margin="5" Command="{Binding CancelCommand}" />
+            <Label Grid.Row="0" Text="{x:Static res:AppResources.lblFirstname}"/>
+            <Entry Grid.Row="1" Text="{Binding Person.FirstName, Mode=TwoWay}" />
+            <Label Grid.Row="2" Text="{x:Static res:AppResources.lblLastname}"/>
+            <Entry Grid.Row="3" Text="{Binding Person.LastName, Mode=TwoWay}" />
+            <Label Grid.Row="4" Text="{x:Static res:AppResources.lblEmail}"/>
+            <Entry Grid.Row="5" Text="{Binding Person.Email, Mode=TwoWay}" />
+            <Label Grid.Row="6" Text="{x:Static res:AppResources.lblEntrydate}"/>
+            <DatePicker Grid.Row="7" Date="{Binding EntryDateRaw}"/>
+            <Label Grid.Row="8" Text="{x:Static res:AppResources.lblExitdate}"/>
+            <DatePicker Grid.Row="9" Date="{Binding ExitDateRaw}"/>
+            <Button Grid.Row="10" Text="{x:Static res:AppResources.btnSave}" Command="{Binding SaveCommand}" />
+            <Button Grid.Row="11" Text="{x:Static res:AppResources.btnCancle}" Command="{Binding CancelCommand}" />
         </Grid>
-
 
     </VerticalStackLayout>
 </ContentPage>
