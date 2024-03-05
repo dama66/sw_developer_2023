@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Swd.TimeManager.GuiMaui.Views.TimeRecordAddPage"
+             x:Class="Swd.TimeManager.GuiMaui.Views.TimeRecordEditPage"
              xmlns:viewmodel="clr-namespace:Swd.TimeManager.GuiMaui.ViewModel"
              xmlns:res="clr-namespace:Swd.TimeManager.GuiMaui.Resources.Strings"
              Title="{x:Static res:AppResources.PageTitleTimeRecordAdd}">
     
     <ContentPage.BindingContext>
-        <viewmodel:TimeRecordAddPageViewModel />
+        <viewmodel:TimeRecordEditPageViewModel />
     </ContentPage.BindingContext>
 
     <VerticalStackLayout>
@@ -31,11 +31,11 @@
             <Label Grid.Row="2" Text="Duratin"/>
             <Entry Grid.Row="3" Text="{Binding TimeRecord.Duration}"/>
             <Label Grid.Row="4" Text="Project"/>
-            <Picker Grid.Row="5" ItemsSource="{Binding ProjectList}" SelectedItem="{Binding SelectedProject}" ItemDisplayBinding="{Binding Name}"/>
+            <Picker Grid.Row="5" ItemsSource="{Binding ProjectList}" SelectedItem="{Binding SelectedProject, Mode=TwoWay}" ItemDisplayBinding="{Binding Name}"/>
             <Label Grid.Row="6" Text="Person"/>
-            <Picker Grid.Row="7" ItemsSource="{Binding PersonList}" SelectedItem="{Binding SelectedPerson}" ItemDisplayBinding="{Binding DisplayName}"/>
+            <Picker Grid.Row="7" ItemsSource="{Binding PersonList}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}" ItemDisplayBinding="{Binding DisplayName}"/>
             <Label Grid.Row="8" Text="Task"/>
-            <Picker Grid.Row="9" ItemsSource="{Binding TaskList}" SelectedItem="{Binding SelectedTask}" ItemDisplayBinding="{Binding Name}"/>
+            <Picker Grid.Row="9" ItemsSource="{Binding TaskList}" SelectedItem="{Binding SelectedTask, Mode=TwoWay}" ItemDisplayBinding="{Binding Name}"/>
             <Button Grid.Row="10" Text="{x:Static res:AppResources.btnSave}" Command="{Binding SaveCommand}" ImageSource="save.png" />
             <Button Grid.Row="11" Text="{x:Static res:AppResources.btnCancel}" Command="{Binding CancelCommand}" ImageSource="cancel.png" />
         </Grid>

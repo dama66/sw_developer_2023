@@ -2,9 +2,9 @@ using Swd.TimeManager.GuiMaui.ViewModel;
 
 namespace Swd.TimeManager.GuiMaui.Views;
 
-public partial class TimeRecordAddPage : ContentPage
+public partial class TimeRecordEditPage : ContentPage
 {
-    public TimeRecordAddPage()
+    public TimeRecordEditPage()
     {
         InitializeComponent();
     }
@@ -17,12 +17,18 @@ public partial class TimeRecordAddPage : ContentPage
 
     private async Task LoadDataAsync()
     {
-        var viewModel = (TimeRecordAddPageViewModel)BindingContext;
+        var viewModel = (TimeRecordEditPageViewModel)BindingContext;
         await viewModel.LoadProjectsAsync();
         await viewModel.LoadPersonsAsync();
         await viewModel.LoadTasksAsync();
+        await viewModel.LoadTimeRecordAsync();
         // Falls nicht gleich angezeigt wird
-        //await MainThread.InvokeOnMainThreadAsync(() => this.editGrid.BindingContext = viewModel.Project);
+        await MainThread.InvokeOnMainThreadAsync(() =>
+        {
+            this.BindingContext = null;
+            this.BindingContext = viewModel;
+        }
+        );
 
     }
 }

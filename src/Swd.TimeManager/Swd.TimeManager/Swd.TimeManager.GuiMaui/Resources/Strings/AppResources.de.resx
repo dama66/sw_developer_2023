@@ -158,6 +158,9 @@
     <value>Passwort</value>
     <comment>LoginPage</comment>
   </data>
+  <data name="lblPersonName" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="lblProjectname" xml:space="preserve">
     <value>Projekt</value>
   </data>

@@ -178,6 +178,15 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string lblPersonName {
+            get {
+                return ResourceManager.GetString("lblPersonName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project.
         /// </summary>
         internal static string lblProjectname {

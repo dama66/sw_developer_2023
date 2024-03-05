@@ -9,21 +9,21 @@ using Swd.TimeManager.GuiMaui.Model;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class TimeRecordAddPageViewModel : BaseViewModel
+    [QueryProperty(nameof(TimeRecordId), "timerecordId")]
+    public class TimeRecordEditPageViewModel : BaseViewModel
     {
         //Fields
         private TimeManagerDatabase _database;
 
         private TimeRecord _timerecord;
-        private ObservableCollection<Project> _projectlist;
-        private ObservableCollection<Person> _personlist;
-        private ObservableCollection<Model.Task> _tasklist;
-
+        private int _timerecordId;
         private Project _selectedproject;
         private Person _selectedperson;
         private Model.Task _selectedtask;
-        
 
+        private ObservableCollection<Project> _projectlist;
+        private ObservableCollection<Person> _personlist;
+        private ObservableCollection<Model.Task> _tasklist;
 
         //Properties
         public TimeRecord TimeRecord
@@ -36,31 +36,12 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             }
         }
 
-        public ObservableCollection<Project> ProjectList
+        public int TimeRecordId
         {
-            get { return _projectlist; }
+            get { return _timerecordId; }
             set
             {
-                _projectlist = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ObservableCollection<Person> PersonList
-        {
-            get { return _personlist; }
-            set
-            {
-                _personlist = value;
-                OnPropertyChanged();
-            }
-        }
-        public ObservableCollection<Model.Task> TaskList
-        {
-            get { return _tasklist; }
-            set
-            {
-                _tasklist = value;
+                _timerecordId = value;
                 OnPropertyChanged();
             }
         }
@@ -95,30 +76,57 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             }
         }
 
+        public ObservableCollection<Project> ProjectList
+        {
+            get { return _projectlist; }
+            set
+            {
+                _projectlist = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<Person> PersonList
+        {
+            get { return _personlist; }
+            set
+            {
+                _personlist = value;
+                OnPropertyChanged();
+            }
+        }
+        public ObservableCollection<Model.Task> TaskList
+        {
+            get { return _tasklist; }
+            set
+            {
+                _tasklist = value;
+                OnPropertyChanged();
+            }
+        }
+
         //Commands
         public ICommand SaveCommand { get; set; }
         public ICommand CancelCommand { get; set; }
 
 
-        public TimeRecordAddPageViewModel()
+        public TimeRecordEditPageViewModel()
         {
             _database = new TimeManagerDatabase();
-
-            TimeRecord = new TimeRecord { Date = DateTime.Today, Duration = 0.25M };
 
             SaveCommand = new Command(
                 //Execute: Methode die aufgerufen wird
                 () => Save(),
-                //Can Execute: Methode die true/false zurücklieft
+                 //Can Execute: Methode die true/false zurücklieft
                  IsFormValid
                 );
 
             CancelCommand = new Command(
-    //Execute: Methode die aufgerufen wird
-    () => Cancel(),
-     //Can Execute: Methode die true/false zurücklieft
-     IsFormValid
-    );
+                //Execute: Methode die aufgerufen wird
+                () => Cancel(),
+                //Can Execute: Methode die true/false zurücklieft
+                IsFormValid
+                );
         }
 
         private async void Cancel()
@@ -152,18 +160,22 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             TaskList = new ObservableCollection<Model.Task>(await _database.GetTasksAsync());
         }
 
-        public async System.Threading.Tasks.Task SetTimeRecordToEdit()
+
+        public async System.Threading.Tasks.Task LoadTimeRecordAsync()
         {
-            TimeManagerDatabase database = new TimeManagerDatabase();
-           // Project = await database.GetProjectByIdAsync(SelectedProjectId);
+            TimeRecord = await _database.GetTimeRecordByIdAsync(TimeRecordId);
+
+            SelectedProject = await _database.GetProjectByIdAsync((int)TimeRecord.ProjectId);
+            SelectedPerson = await _database.GetPersonByIdAsync((int)TimeRecord.PersonId);
+            SelectedTask = await _database.GetTaskByIdAsync((int)TimeRecord.TaskId);
         }
 
         private bool IsFormValid()
         {
             bool isFormValid;
 
-                isFormValid = true;
-   
+            isFormValid = true;
+
             return isFormValid;
         }
 

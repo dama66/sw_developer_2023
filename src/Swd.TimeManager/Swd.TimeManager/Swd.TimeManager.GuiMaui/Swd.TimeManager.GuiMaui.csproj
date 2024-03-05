@@ -94,6 +94,9 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>AppResources.resx</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\TimeRecordEditPage.xaml.cs">
+	    <DependentUpon>TimeRecordEditPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\TimeRecordAddPage.xaml.cs">
 	    <DependentUpon>TimeRecordAddPage.xaml</DependentUpon>
 	  </Compile>
@@ -141,6 +144,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TimeRecordEditPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\TimeRecordAddPage.xaml">
