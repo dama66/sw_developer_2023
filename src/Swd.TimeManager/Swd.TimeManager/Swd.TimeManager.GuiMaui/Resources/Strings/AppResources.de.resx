@@ -120,7 +120,7 @@
   <data name="btnAdd" xml:space="preserve">
     <value>Neu</value>
   </data>
-  <data name="btnCancle" xml:space="preserve">
+  <data name="btnCancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
   <data name="btnDelete" xml:space="preserve">

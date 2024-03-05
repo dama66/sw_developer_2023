@@ -42,13 +42,13 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 
                 CancelCommand = new Command(
                 //Execute: Methode die aufgerufen wird
-                () => Cancle(),
+                () => Cancel(),
                 //Can Execute: Methode die true/false zurücklieft
                 IsFormValid
                 );
         }
 
-        private async void Cancle()
+        private async void Cancel()
         {
             await Shell.Current.GoToAsync("..");
         }

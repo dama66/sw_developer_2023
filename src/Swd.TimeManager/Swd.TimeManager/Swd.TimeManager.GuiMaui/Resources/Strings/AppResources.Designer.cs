@@ -70,11 +70,11 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancle.
+        ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        internal static string btnCancle {
+        internal static string btnCancel {
             get {
-                return ResourceManager.GetString("btnCancle", resourceCulture);
+                return ResourceManager.GetString("btnCancel", resourceCulture);
             }
         }
         

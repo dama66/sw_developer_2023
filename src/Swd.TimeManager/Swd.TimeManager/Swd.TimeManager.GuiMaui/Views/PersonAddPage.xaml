@@ -32,8 +32,8 @@
             <Entry Grid.Row="5" Text="{Binding Person.Email, Mode=TwoWay}" />
             <Label Grid.Row="6" Text="{x:Static res:AppResources.lblEntrydate}"/>
             <DatePicker Grid.Row="7" Date="{Binding EntryDateRaw}"/>
-            <Button Grid.Row="8" Text="{x:Static res:AppResources.btnSave}" Command="{Binding SaveCommand}" />
-            <Button Grid.Row="9" Text="{x:Static res:AppResources.btnCancle}" Command="{Binding CancelCommand}" />
+            <Button Grid.Row="8" Text="{x:Static res:AppResources.btnSave}" Command="{Binding SaveCommand}" ImageSource="save.png" />
+            <Button Grid.Row="9" Text="{x:Static res:AppResources.btnCancel}" Command="{Binding CancelCommand}" ImageSource="cancel.png" />
         </Grid>
 
 

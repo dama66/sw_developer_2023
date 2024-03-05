@@ -37,7 +37,7 @@
             <Label Grid.Row="8" Text="{x:Static res:AppResources.lblExitdate}"/>
             <DatePicker Grid.Row="9" Date="{Binding ExitDateRaw}"/>
             <Button Grid.Row="10" Text="{x:Static res:AppResources.btnSave}" Command="{Binding SaveCommand}" />
-            <Button Grid.Row="11" Text="{x:Static res:AppResources.btnCancle}" Command="{Binding CancelCommand}" />
+            <Button Grid.Row="11" Text="{x:Static res:AppResources.btnCancel}" Command="{Binding CancelCommand}" />
         </Grid>
 
     </VerticalStackLayout>
