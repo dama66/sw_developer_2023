@@ -196,6 +196,15 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Timerecord.
+        /// </summary>
+        internal static string lblTimerecordname {
+            get {
+                return ResourceManager.GetString("lblTimerecordname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-Mail or Username.
         /// </summary>
         internal static string lblUseName {
@@ -246,6 +255,15 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         internal static string MenTitleTask {
             get {
                 return ResourceManager.GetString("MenTitleTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time record.
+        /// </summary>
+        internal static string MenTitleTimeRecord {
+            get {
+                return ResourceManager.GetString("MenTitleTimeRecord", resourceCulture);
             }
         }
         
@@ -381,6 +399,24 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         internal static string PageTitleTaskList {
             get {
                 return ResourceManager.GetString("PageTitleTaskList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to add Timerecord.
+        /// </summary>
+        internal static string PageTitleTimeRecordAdd {
+            get {
+                return ResourceManager.GetString("PageTitleTimeRecordAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time record.
+        /// </summary>
+        internal static string PageTitleTimeRecordList {
+            get {
+                return ResourceManager.GetString("PageTitleTimeRecordList", resourceCulture);
             }
         }
         

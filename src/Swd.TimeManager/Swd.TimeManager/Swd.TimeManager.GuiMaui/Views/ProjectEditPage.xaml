@@ -21,7 +21,7 @@
             <Label Grid.Row="0" Text="{x:Static res:AppResources.lblProjectname}"/>
             <Entry Grid.Row="1" Text="{Binding Project.Name, Mode=TwoWay}" />
             <Button Grid.Row="2" Text="{x:Static res:AppResources.btnSave}" Command="{Binding SaveCommand}" ImageSource="save.png" />
-            <Button Grid.Row="3" Text="{x:Static res:AppResources.btnCancel}" Command="{Binding CancelCommand}" ImageSource="delete.png"/>
+            <Button Grid.Row="3" Text="{x:Static res:AppResources.btnCancel}" Command="{Binding CancelCommand}" ImageSource="cancel.png"/>
         </Grid>
 
 

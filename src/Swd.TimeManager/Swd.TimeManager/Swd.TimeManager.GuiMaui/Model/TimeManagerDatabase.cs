@@ -24,6 +24,7 @@ namespace Swd.TimeManager.GuiMaui.Model
             await _database.CreateTableAsync<Project>();
             await _database.CreateTableAsync<Task>();
             await _database.CreateTableAsync<Person>();
+            await _database.CreateTableAsync<TimeRecord>();
         }
 
         #region Project
@@ -136,6 +137,44 @@ namespace Swd.TimeManager.GuiMaui.Model
             await Init();
             return await _database.DeleteAsync(person);
         }
+        #endregion
+
+        #region TimeRecord
+
+        public async Task<List<TimeRecord>> GetTimeRecordsAsync()
+        {
+            await Init();
+            return await _database.Table<TimeRecord>().ToListAsync();
+        }
+
+        public async Task<TimeRecord> GetTimeRecordByIdAsync(int key)
+        {
+            await Init();
+            return await _database.Table<TimeRecord>().Where(p => p.Id == key).FirstOrDefaultAsync();
+        }
+
+        public async Task<int> SaveTimeRecordAsync(TimeRecord timerecord)
+        {
+            await Init();
+
+                if (timerecord.Id != 0)
+                {
+                    return await _database.UpdateAsync(timerecord);
+                }
+                else
+                {
+                    return await _database.InsertAsync(timerecord);
+                }
+
+        }
+
+        public async Task<int> DeleteTimeRecordAsync(TimeRecord timerecord)
+        {
+            await Init();
+            return await _database.DeleteAsync(timerecord);
+        }
+
+
         #endregion
     }
 }
