@@ -36,8 +36,8 @@
         <Entry Grid.Row="7" Text="{Binding Person.EntryDate}" IsEnabled="False"/>
             <Label Grid.Row="8" Text="{x:Static res:AppResources.lblExitdate}"/>
         <Entry Grid.Row="9" Text="{Binding Person.ExitDate}" IsEnabled="False"/>
-            <Button Grid.Row="10" Text="{x:Static res:AppResources.btnDelete}" Command="{Binding DeleteCommand}" />
-            <Button Grid.Row="11" Text="{x:Static res:AppResources.btnCancel}" Command="{Binding CancelCommand}" />
+            <Button Grid.Row="10" Text="{x:Static res:AppResources.btnDelete}" Command="{Binding DeleteCommand}" ImageSource="delete.png"/>
+            <Button Grid.Row="11" Text="{x:Static res:AppResources.btnCancel}" Command="{Binding CancelCommand}" ImageSource="cancel.png"/>
         </Grid>
 
 

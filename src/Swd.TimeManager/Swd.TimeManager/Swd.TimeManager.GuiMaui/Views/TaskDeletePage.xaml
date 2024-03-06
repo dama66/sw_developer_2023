@@ -19,9 +19,9 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Text="{x:Static res:AppResources.lblTaskname}"/>
-            <Label Grid.Row="1" Text="{Binding Task.Name, Mode=TwoWay}" />
-            <Button Grid.Row="2" Text="{x:Static res:AppResources.btnDelete}" Command="{Binding DeleteCommand}" />
-            <Button Grid.Row="3" Text="{x:Static res:AppResources.btnCancel}" Command="{Binding CancelCommand}" />
+            <Entry Grid.Row="1" Text="{Binding Task.Name, Mode=TwoWay}" IsEnabled="False"/>
+            <Button Grid.Row="2" Text="{x:Static res:AppResources.btnDelete}" Command="{Binding DeleteCommand}" ImageSource="delete.png"/>
+            <Button Grid.Row="3" Text="{x:Static res:AppResources.btnCancel}" Command="{Binding CancelCommand}" ImageSource="cancel.png"/>
         </Grid>
 
 

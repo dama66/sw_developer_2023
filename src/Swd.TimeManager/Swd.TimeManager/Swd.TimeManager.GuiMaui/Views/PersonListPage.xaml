@@ -25,7 +25,7 @@
                     <ColumnDefinition Width="30*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="2" Text="{x:Static res:AppResources.lblAdd}" FontAttributes="Bold,Italic" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                <Button Grid.Row="0" Grid.Column="3" Text="{x:Static res:AppResources.btnAdd}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=AddCommand}"/>
+                <Button Grid.Row="0" Grid.Column="3" Text="{x:Static res:AppResources.btnAdd}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=AddCommand}" ImageSource="add.png"/>
                 <Label Grid.Row="1" Grid.Column="1" Text="{x:Static res:AppResources.lblPersonName}" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             </Grid>
         </ListView.Header>
@@ -45,8 +45,8 @@
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" Margin="10, 10, 0, 0" IsVisible="False"/>
                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding DisplayName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                        <Button Grid.Row="0" Grid.Column="2" Text="{x:Static res:AppResources.btnEdit}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=EditCommand}" CommandParameter="{Binding Id}"/>
-                        <Button Grid.Row="0" Grid.Column="3" Text="{x:Static res:AppResources.btnDelete}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding Id}"/>
+                        <Button Grid.Row="0" Grid.Column="2" Text="{x:Static res:AppResources.btnEdit}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=EditCommand}" CommandParameter="{Binding Id}" ImageSource="edit.png"/>
+                        <Button Grid.Row="0" Grid.Column="3" Text="{x:Static res:AppResources.btnDelete}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PersonListPageViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding Id}" ImageSource="delete.png"/>
                     </Grid>
                 </ViewCell>
             </DataTemplate>

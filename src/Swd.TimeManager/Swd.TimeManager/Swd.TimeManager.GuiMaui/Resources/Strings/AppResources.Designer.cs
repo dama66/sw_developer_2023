@@ -124,6 +124,24 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string lblDate {
+            get {
+                return ResourceManager.GetString("lblDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duration.
+        /// </summary>
+        internal static string lblDuration {
+            get {
+                return ResourceManager.GetString("lblDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         internal static string lblEmail {
@@ -178,6 +196,15 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Person.
+        /// </summary>
+        internal static string lblPerson {
+            get {
+                return ResourceManager.GetString("lblPerson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string lblPersonName {
@@ -189,9 +216,27 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         /// <summary>
         ///   Looks up a localized string similar to Project.
         /// </summary>
+        internal static string lblProject {
+            get {
+                return ResourceManager.GetString("lblProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
         internal static string lblProjectname {
             get {
                 return ResourceManager.GetString("lblProjectname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task.
+        /// </summary>
+        internal static string lblTask {
+            get {
+                return ResourceManager.GetString("lblTask", resourceCulture);
             }
         }
         
@@ -417,6 +462,24 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         internal static string PageTitleTimeRecordAdd {
             get {
                 return ResourceManager.GetString("PageTitleTimeRecordAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to delete Timerecord.
+        /// </summary>
+        internal static string PageTitleTimeRecordDelete {
+            get {
+                return ResourceManager.GetString("PageTitleTimeRecordDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to edit Timerecord.
+        /// </summary>
+        internal static string PageTitleTimeRecordEdit {
+            get {
+                return ResourceManager.GetString("PageTitleTimeRecordEdit", resourceCulture);
             }
         }
         

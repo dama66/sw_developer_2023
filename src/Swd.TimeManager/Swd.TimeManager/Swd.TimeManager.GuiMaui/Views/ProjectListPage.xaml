@@ -21,8 +21,8 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0"/>
                     <ColumnDefinition Width="40*"/>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="30*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="2" Text="{x:Static res:AppResources.lblAdd}" FontAttributes="Bold,Italic" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                 <Button Grid.Row="0" Grid.Column="3" Text="{x:Static res:AppResources.btnAdd}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProjectListPageViewModel}}, Path=AddCommand}" ImageSource="add.png"/>
@@ -40,8 +40,8 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0"/>
                             <ColumnDefinition Width="40*"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="30*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" Margin="10, 10, 0, 0" IsVisible="False"/>
                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>

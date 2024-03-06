@@ -2,9 +2,9 @@ using Swd.TimeManager.GuiMaui.ViewModel;
 
 namespace Swd.TimeManager.GuiMaui.Views;
 
-public partial class TimeRecordEditPage : ContentPage
+public partial class TimeRecordDeletePage : ContentPage
 {
-    public TimeRecordEditPage()
+    public TimeRecordDeletePage()
     {
         InitializeComponent();
     }
@@ -17,7 +17,7 @@ public partial class TimeRecordEditPage : ContentPage
 
     private async Task LoadDataAsync()
     {
-        var viewModel = (TimeRecordEditPageViewModel)BindingContext;
+        var viewModel = (TimeRecordDeletePageViewModel)BindingContext;
         
         await viewModel.LoadProjectsAsync();
         await viewModel.LoadPersonsAsync();

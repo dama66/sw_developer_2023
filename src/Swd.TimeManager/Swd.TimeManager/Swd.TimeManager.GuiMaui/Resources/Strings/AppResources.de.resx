@@ -139,6 +139,12 @@
   <data name="lblAdd" xml:space="preserve">
     <value>Neu hinzufügen</value>
   </data>
+  <data name="lblDate" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="lblDuration" xml:space="preserve">
+    <value>Dauer</value>
+  </data>
   <data name="lblEmail" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -158,11 +164,20 @@
     <value>Passwort</value>
     <comment>LoginPage</comment>
   </data>
+  <data name="lblPerson" xml:space="preserve">
+    <value>Person</value>
+  </data>
   <data name="lblPersonName" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="lblProject" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
   <data name="lblProjectname" xml:space="preserve">
     <value>Projekt</value>
+  </data>
+  <data name="lblTask" xml:space="preserve">
+    <value>Aufgabe</value>
   </data>
   <data name="lblTaskname" xml:space="preserve">
     <value>Aufgabe</value>
@@ -239,6 +254,12 @@
   </data>
   <data name="PageTitleTimeRecordAdd" xml:space="preserve">
     <value>neue Zeit erfassen</value>
+  </data>
+  <data name="PageTitleTimeRecordDelete" xml:space="preserve">
+    <value>Zeiterfassung löschen</value>
+  </data>
+  <data name="PageTitleTimeRecordEdit" xml:space="preserve">
+    <value>Zeiterfassung ändern</value>
   </data>
   <data name="PageTitleTimeRecordList" xml:space="preserve">
     <value>Zeiterfassung</value>
