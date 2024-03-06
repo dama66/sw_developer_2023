@@ -165,9 +165,30 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
         {
             TimeRecord = await _database.GetTimeRecordByIdAsync(TimeRecordId);
 
-            SelectedProject = await _database.GetProjectByIdAsync((int)TimeRecord.ProjectId);
-            SelectedPerson = await _database.GetPersonByIdAsync((int)TimeRecord.PersonId);
-            SelectedTask = await _database.GetTaskByIdAsync((int)TimeRecord.TaskId);
+            foreach (var Project in ProjectList)
+            {
+                if (Project.Id == TimeRecord.ProjectId)
+                {
+                    SelectedProject = Project;
+                }
+            }
+
+            foreach (var Person in PersonList)
+            {
+                if (Person.Id == TimeRecord.PersonId)
+                {
+                    SelectedPerson = Person;
+                }
+            }
+
+            foreach (var Task in TaskList)
+            {
+                if (Task.Id == TimeRecord.TaskId)
+                {
+                    SelectedTask = Task;
+                }
+            }
+
         }
 
         private bool IsFormValid()

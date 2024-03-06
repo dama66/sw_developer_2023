@@ -18,17 +18,20 @@ public partial class TimeRecordEditPage : ContentPage
     private async Task LoadDataAsync()
     {
         var viewModel = (TimeRecordEditPageViewModel)BindingContext;
+        
         await viewModel.LoadProjectsAsync();
         await viewModel.LoadPersonsAsync();
         await viewModel.LoadTasksAsync();
         await viewModel.LoadTimeRecordAsync();
-        // Falls nicht gleich angezeigt wird
-        await MainThread.InvokeOnMainThreadAsync(() =>
-        {
-            this.BindingContext = null;
-            this.BindingContext = viewModel;
-        }
-        );
 
+        
+        // Falls nicht gleich angezeigt wird
+        //await MainThread.InvokeOnMainThreadAsync(() =>
+        //{
+        //    this.BindingContext = null;
+        //    this.BindingContext = viewModel;
+        //}
+        //);
+        //ProjectPicker.SelectedItem = viewModel.SelectedProject;
     }
 }
