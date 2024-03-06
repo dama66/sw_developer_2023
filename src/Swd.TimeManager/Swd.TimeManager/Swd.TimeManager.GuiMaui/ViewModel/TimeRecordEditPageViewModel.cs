@@ -165,29 +165,9 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
         {
             TimeRecord = await _database.GetTimeRecordByIdAsync(TimeRecordId);
 
-            foreach (var Project in ProjectList)
-            {
-                if (Project.Id == TimeRecord.ProjectId)
-                {
-                    SelectedProject = Project;
-                }
-            }
-
-            foreach (var Person in PersonList)
-            {
-                if (Person.Id == TimeRecord.PersonId)
-                {
-                    SelectedPerson = Person;
-                }
-            }
-
-            foreach (var Task in TaskList)
-            {
-                if (Task.Id == TimeRecord.TaskId)
-                {
-                    SelectedTask = Task;
-                }
-            }
+            SelectedProject = ProjectList.FirstOrDefault(Project => Project.Id == TimeRecord.ProjectId);
+            SelectedPerson = PersonList.FirstOrDefault(Person => Person.Id == TimeRecord.PersonId);
+            SelectedTask = TaskList.FirstOrDefault(Task => Task.Id == TimeRecord.TaskId);
 
         }
 
