@@ -176,5 +176,16 @@ namespace Swd.TimeManager.GuiMaui.Model
 
 
         #endregion
+
+        public async Task<List<SearchResult>> GetSearchResultAsync(string searchValue)
+        {
+            await Init();
+
+            string sql = string.Empty;
+            sql += "Select * from TimeRecord";
+
+            var result = await _database.QueryAsync<SearchResult>(sql);
+            return result.ToList();
+        }
     }
 }
