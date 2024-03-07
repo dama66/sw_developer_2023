@@ -18,6 +18,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
         private TimeManagerDatabase _database;
         private ObservableCollection<SearchResult> _resultlist;
         private string _searchValue;
+        private decimal _resultSum;
 
         //Properties
         public ObservableCollection<SearchResult> ResultList
@@ -36,6 +37,16 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             set
             {
                 _searchValue = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public decimal ResultSum
+        {
+            get { return _resultSum; }
+            set
+            {
+                _resultSum = value;
                 OnPropertyChanged();
             }
         }
@@ -60,8 +71,10 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
         {
             SearchValue = searchValue.ToString();
             ObservableCollection<SearchResult> resultList = 
-                        new ObservableCollection<SearchResult>(await _database.GetSearchResultAsync(SearchValue));
+                new ObservableCollection<SearchResult>(await _database.GetSearchResultAsync(SearchValue));
             ResultList = resultList;
+            ResultSum = ResultList.Sum(r => r.Duration);
+
         }
 
         private bool IsActionPossible()

@@ -196,6 +196,8 @@ namespace Swd.TimeManager.GuiMaui.Model
                 sql += "INNER JOIN Project on TimeRecord.ProjectId = Project.Id ";
                 sql += "INNER JOIN Task ON TimeRecord.TaskId = Task.Id ";
                 sql += "INNER JOIN Person ON TimeRecord.PersonId = Person.Id ";
+                sql += "WHERE Project.Name LIKE '%" + searchValue + "%' ";
+                sql += "ORDER BY Project.Name, TimeRecord.Date";
 
             var result = await _database.QueryAsync<SearchResult>(sql);
             return result.ToList();

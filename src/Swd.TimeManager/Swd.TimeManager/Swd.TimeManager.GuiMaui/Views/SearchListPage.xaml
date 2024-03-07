@@ -19,47 +19,69 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                 
-                </Grid.ColumnDefinitions>
 
-                        <SearchBar Grid.Row="0" 
-                                   x:Name="txbSearch"
+                </Grid.ColumnDefinitions>
+                <SearchBar Grid.Row="0"
+                        x:Name="txbSearch"
                            Placeholder="Search for Timerecords..." 
                            SearchCommand="{Binding SearchCommand}"
-                           SearchCommandParameter="{Binding Text, Source={x:Reference txbSearch}}"              
-                        />
-
-
-
+                           SearchCommandParameter="{Binding Text, Source={x:Reference txbSearch}}"/>             
+                        
             </Grid>
         </ListView.Header>
 
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="120"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" Margin="10, 10, 0, 0" IsVisible="False"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Date}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding ProjectName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                        <Label Grid.Row="0" Grid.Column="3" Text="{Binding TaskName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                        <Label Grid.Row="0" Grid.Column="4" Text="{Binding PersonName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                        <Label Grid.Row="0" Grid.Column="5" Text="{Binding Duration}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
 
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="120"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" Margin="10, 10, 0, 0" IsVisible="False"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Date, StringFormat='{}{0:dd.MM.yyyy}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="{Binding ProjectName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Grid.Row="0" Grid.Column="3" Text="{Binding TaskName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Grid.Row="0" Grid.Column="4" Text="{Binding PersonName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label Grid.Row="0" Grid.Column="5" Text="{Binding Duration, StringFormat='{0:#,##0.00}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+
+
+        <ListView.Footer>
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="" IsVisible="False"/>
+            <Label Grid.Row="0" Grid.Column="1" Text=""/>
+            <Label Grid.Row="0" Grid.Column="2" Text=""/>
+            <Label Grid.Row="0" Grid.Column="3" Text=""/>
+            <Label Grid.Row="0" Grid.Column="4" Text="Sum" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold"/>
+            <Label Grid.Row="0" Grid.Column="5" Text="{Binding ResultSum, StringFormat='{0:#,##0.00}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            </Grid>
+        </ListView.Footer>
     </ListView>
+    
+    
 
 </ContentPage>
