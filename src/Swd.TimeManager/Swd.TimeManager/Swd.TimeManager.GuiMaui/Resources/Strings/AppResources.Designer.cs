@@ -295,6 +295,15 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        internal static string MenTitleSearchList {
+            get {
+                return ResourceManager.GetString("MenTitleSearchList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string MenTitleSettings {
@@ -408,6 +417,15 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         internal static string PageTitleProjectList {
             get {
                 return ResourceManager.GetString("PageTitleProjectList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        internal static string PageTitleSearchList {
+            get {
+                return ResourceManager.GetString("PageTitleSearchList", resourceCulture);
             }
         }
         

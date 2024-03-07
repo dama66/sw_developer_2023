@@ -12,7 +12,6 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
     {
         //Fields
         private Person _person;
-        private DateTime _entryDateRaw = DateTime.Now;
 
 
 
@@ -27,16 +26,6 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             }
         }
 
-        public DateTime EntryDateRaw
-        {
-            get { return _entryDateRaw; }
-            set
-            {
-                _entryDateRaw = value;
-                OnPropertyChanged();
-            }
-        }
-
         //Commands
         public ICommand SaveCommand { get; set; }
         public ICommand CancelCommand { get; set; }
@@ -44,7 +33,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 
         public PersonAddPageViewModel()
         {
-            Person = new Person();
+            Person = new Person { EntryDate = DateTime.Today};
 
             SaveCommand = new Command(
                 //Execute: Methode die aufgerufen wird
@@ -68,7 +57,6 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 
         public async System.Threading.Tasks.Task Save()
         {
-            _person.EntryDate = _entryDateRaw.ToString("dd.MM.yyyy");
             TimeManagerDatabase database = new TimeManagerDatabase();
             await database.SavePersonAsync(this.Person);
             await Shell.Current.GoToAsync("..");

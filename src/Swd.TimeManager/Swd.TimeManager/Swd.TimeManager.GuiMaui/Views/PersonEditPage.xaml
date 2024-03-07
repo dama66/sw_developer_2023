@@ -33,9 +33,9 @@
             <Label Grid.Row="4" Text="{x:Static res:AppResources.lblEmail}"/>
             <Entry Grid.Row="5" Text="{Binding Person.Email, Mode=TwoWay}" />
             <Label Grid.Row="6" Text="{x:Static res:AppResources.lblEntrydate}"/>
-            <DatePicker Grid.Row="7" Date="{Binding EntryDateRaw}"/>
+            <DatePicker Grid.Row="7" Date="{Binding Person.EntryDate}"/>
             <Label Grid.Row="8" Text="{x:Static res:AppResources.lblExitdate}"/>
-            <DatePicker Grid.Row="9" Date="{Binding ExitDateRaw}"/>
+            <DatePicker Grid.Row="9" Date="{Binding Person.ExitDate}"/>
             <Button Grid.Row="10" Text="{x:Static res:AppResources.btnSave}" Command="{Binding SaveCommand}" ImageSource="save.png"/>
             <Button Grid.Row="11" Text="{x:Static res:AppResources.btnCancel}" Command="{Binding CancelCommand}" ImageSource="cancel.png"/>
         </Grid>

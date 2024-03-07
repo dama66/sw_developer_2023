@@ -16,8 +16,6 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
         //Fields
         private Person _person;
         private int _personId;
-        private DateTime _entryDateRaw;
-        private DateTime _exitDateRaw;
         private TimeManagerDatabase _database;
 
 
@@ -38,26 +36,6 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             set
             {
                 _personId = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public DateTime EntryDateRaw
-        {
-            get { return _entryDateRaw; }
-            set
-            {
-                _entryDateRaw = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public DateTime ExitDateRaw
-        {
-            get { return _exitDateRaw; }
-            set
-            {
-                _exitDateRaw = value;
                 OnPropertyChanged();
             }
         }
@@ -87,8 +65,6 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 
         public async System.Threading.Tasks.Task Save()
         {
-            _person.EntryDate = _entryDateRaw.ToString("dd.MM.yyyy");
-            _person.ExitDate = _exitDateRaw.ToString("dd.MM.yyyy");
             TimeManagerDatabase database = new TimeManagerDatabase();
             await database.SavePersonAsync(this.Person);
             await Shell.Current.GoToAsync("..");
@@ -102,9 +78,6 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
         public async System.Threading.Tasks.Task LoadPersonAsync()
         {
             Person = await _database.GetPersonByIdAsync(PersonId);
-
-            EntryDateRaw = DateTime.Parse(Person.EntryDate);
-            ExitDateRaw = DateTime.Parse(Person.ExitDate);
         }
 
 

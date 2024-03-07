@@ -35,6 +35,8 @@ namespace Swd.TimeManager.GuiMaui
             Routing.RegisterRoute("timerecordadd", typeof(TimeRecordAddPage));
             Routing.RegisterRoute("timerecordedit", typeof(TimeRecordEditPage));
             Routing.RegisterRoute("timerecorddelete", typeof(TimeRecordDeletePage));
+
+            Routing.RegisterRoute("searchlist", typeof(SearchListPage));
         }
 
     }

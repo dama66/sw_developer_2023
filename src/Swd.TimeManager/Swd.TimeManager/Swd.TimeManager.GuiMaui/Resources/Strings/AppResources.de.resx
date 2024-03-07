@@ -198,6 +198,9 @@
   <data name="MenTitleProject" xml:space="preserve">
     <value>Projekte</value>
   </data>
+  <data name="MenTitleSearchList" xml:space="preserve">
+    <value>Suche</value>
+  </data>
   <data name="MenTitleSettings" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
@@ -236,6 +239,9 @@
   </data>
   <data name="PageTitleProjectList" xml:space="preserve">
     <value>Projekte</value>
+  </data>
+  <data name="PageTitleSearchList" xml:space="preserve">
+    <value>Suche</value>
   </data>
   <data name="PageTitleSettings" xml:space="preserve">
     <value>Einstellungen</value>

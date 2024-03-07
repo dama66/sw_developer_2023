@@ -13,6 +13,9 @@
         <Tab Title="{x:Static res:AppResources.MenTitleOverview}">
             <ShellContent ContentTemplate="{DataTemplate views:OverviewPage}"/>
         </Tab>
+        <Tab Title="{x:Static res:AppResources.MenTitleSearchList}">
+            <ShellContent ContentTemplate="{DataTemplate vw:SearchListPage}"/>
+        </Tab>
         <Tab Title="{x:Static res:AppResources.MenTitleTimeRecord}">
             <ShellContent ContentTemplate="{DataTemplate vw:TimeRecordListPage}"/>
         </Tab>
