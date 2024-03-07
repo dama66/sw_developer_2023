@@ -61,6 +61,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             SearchValue = searchValue.ToString();
             ObservableCollection<SearchResult> resultList = 
                         new ObservableCollection<SearchResult>(await _database.GetSearchResultAsync(SearchValue));
+            ResultList = resultList;
         }
 
         private bool IsActionPossible()
