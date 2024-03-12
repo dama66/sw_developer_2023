@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Swd.TimeManager.GuiMaui.Model
 {
-   public class TaskInfo
+   public class OverviewTaskData
     {
-        public string TaskName { get; set; }
+        public string? Name { get; set; }
         public decimal Duration { get; set; }
     }
 }

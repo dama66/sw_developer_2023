@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using Swd.TimeManager.Model;
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -212,32 +213,39 @@ namespace Swd.TimeManager.GuiMaui.Model
 
         public async Task<List<OverviewData>> GetOverviewDataAsync()
         {
-            //1. Projet aus Datenbank lesen
-            //2. Zu jedem Projekt alle Tasks mit Summen lesen
-            //3. Overviewdata um Liste mit den Taskinfos (TaskName, Stunden) erweitern
-            //4. Gesamtstundenzahl in Overviewdata Duration speichern
 
-            //  await Init();
+            await Init();
 
-            OverviewData ov1 = new OverviewData { ProjectId = 1, ProjectName = "Project 1", Duration = 11.0M };
-            OverviewData ov2 = new OverviewData { ProjectId = 2, ProjectName = "Project 2", Duration = 22.0M };
-            OverviewData ov3 = new OverviewData { ProjectId = 3, ProjectName = "Project 3", Duration = 33.0M };
-            OverviewData ov4 = new OverviewData { ProjectId = 4, ProjectName = "Project 4", Duration = 44.0M };
+            List<OverviewData> overviewDataList = new List<OverviewData>();
 
-            List<OverviewData> l = new List<OverviewData>();
-            l.Add(ov1);
-            l.Add(ov2);
-            l.Add(ov3);
-            l.Add(ov4);
+            string sql = string.Empty;
+            sql += "SELECT Id as ProjectId, Name as ProjectName FROM Project ";
+            var projectList = await _database.QueryAsync<SearchResult>(sql);
+            foreach (var item in projectList)
+            {
+                string taskSql = string.Empty;
+                taskSql += "SELECT Task.Name as Name, Sum(TimeRecord.Duration) as Duration ";
+                taskSql += "FROM TimeRecord ";
+                taskSql += "INNER JOIN Task ON TimeRecord.TaskId = TaskId ";
+                taskSql += "GROUP BY TimeRecord.ProjectId, Task.Name ";
+                taskSql += "HAVING(TimeRecord.ProjectId = ?) ";
 
-            return l;
+                var TaskList = await _database.QueryAsync<OverviewTaskData>(taskSql, item.ProjectId);
+                var sumDuration = TaskList.Sum(x => x.Duration);
 
-            // var result = await _database.QueryAsync<SearchResult>(sql, adaptedSearchValue);
-            // return result.ToList();
+                OverviewData ovwData = new OverviewData();
+                ovwData.ProjectId = item.ProjectId;
+                ovwData.ProjectName = item.ProjectName;
+                ovwData.Duration = sumDuration;
+                ovwData.Tasks = TaskList.ToList();
+                overviewDataList.Add(ovwData);
 
-
-
+            }
+            return overviewDataList;
         }
+
+
+
 
 
     }

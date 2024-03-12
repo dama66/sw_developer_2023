@@ -5,7 +5,7 @@
              xmlns:res="clr-namespace:Swd.TimeManager.GuiMaui.Resources.Strings"
              xmlns:local="clr-namespace:Swd.TimeManager.GuiMaui.ViewModel"
              Title="{x:Static res:AppResources.PageTitleOverview}">
-    
+
     <ContentPage.BindingContext>
         <local:OverviewViewModel/>
     </ContentPage.BindingContext>
@@ -16,19 +16,64 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <CarouselView Grid.Row="0" IndicatorView="indicatorOverview" ItemsSource="{Binding OverviewList}">
+        <CarouselView Grid.Row="0" IndicatorView="indicatorOverview" ItemsSource="{Binding OverviewList}" >
             <CarouselView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
                         <Frame BorderColor="DarkGray" 
                                HasShadow="True" 
-                               CornerRadius="5" 
+                               CornerRadius="10" 
                                Margin="20" 
                                HeightRequest="300"
                                HorizontalOptions="Center"
                                VerticalOptions="CenterAndExpand"
                                >
-                            <Label Text="{Binding ProjectName}" FontAttributes="Bold" FontSize="18"/>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{Binding ProjectName}" FontAttributes="Bold" FontSize="18"/>
+
+                                <ListView ItemsSource="{Binding Tasks}" Grid.Row="1">
+                                    <ListView.Header>
+                                        
+                                    </ListView.Header>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="100" />
+                                                        <ColumnDefinition Width="100" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="{Binding Name}" Grid.Column="0" Grid.Row="1"/>
+                                                    <Label Text="{Binding Duration}" Grid.Column="1" Grid.Row="1"/>
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                    <ListView.Footer>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100" />
+                                                <ColumnDefinition Width="100" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="Sum" FontAttributes="Bold" Grid.Column="0"/>
+                                            <Label Text="{Binding Duration}" Grid.Row="3" FontAttributes="Bold" Grid.Column="1"/>
+                                        </Grid>
+                                    </ListView.Footer>
+                                </ListView>
+
+
+
+
+                            </Grid>
+
 
                         </Frame>
                     </StackLayout>

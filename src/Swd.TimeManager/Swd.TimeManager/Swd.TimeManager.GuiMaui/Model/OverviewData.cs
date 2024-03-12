@@ -11,7 +11,7 @@ namespace Swd.TimeManager.GuiMaui.Model
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
         public decimal Duration { get; set; }
-        public List<TaskInfo> Tasks { get; set; }
+        public List<OverviewTaskData> Tasks { get; set; }
 
     }
 }
