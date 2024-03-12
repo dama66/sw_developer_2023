@@ -206,6 +206,37 @@ namespace Swd.TimeManager.GuiMaui.Model
             var result = await _database.QueryAsync<SearchResult>(sql, adaptedSearchValue);
             return result.ToList();
 
+
+
+        }
+
+        public async Task<List<OverviewData>> GetOverviewDataAsync()
+        {
+            //1. Projet aus Datenbank lesen
+            //2. Zu jedem Projekt alle Tasks mit Summen lesen
+            //3. Overviewdata um Liste mit den Taskinfos (TaskName, Stunden) erweitern
+            //4. Gesamtstundenzahl in Overviewdata Duration speichern
+
+            //  await Init();
+
+            OverviewData ov1 = new OverviewData { ProjectId = 1, ProjectName = "Project 1", Duration = 11.0M };
+            OverviewData ov2 = new OverviewData { ProjectId = 2, ProjectName = "Project 2", Duration = 22.0M };
+            OverviewData ov3 = new OverviewData { ProjectId = 3, ProjectName = "Project 3", Duration = 33.0M };
+            OverviewData ov4 = new OverviewData { ProjectId = 4, ProjectName = "Project 4", Duration = 44.0M };
+
+            List<OverviewData> l = new List<OverviewData>();
+            l.Add(ov1);
+            l.Add(ov2);
+            l.Add(ov3);
+            l.Add(ov4);
+
+            return l;
+
+            // var result = await _database.QueryAsync<SearchResult>(sql, adaptedSearchValue);
+            // return result.ToList();
+
+
+
         }
 
 

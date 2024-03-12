@@ -11,7 +11,7 @@
 
     <TabBar>
         <Tab Title="{x:Static res:AppResources.MenTitleOverview}">
-            <ShellContent ContentTemplate="{DataTemplate views:OverviewPage}"/>
+            <ShellContent ContentTemplate="{DataTemplate vw:OverviewPage}"/>
         </Tab>
         <Tab Title="{x:Static res:AppResources.MenTitleSearchList}">
             <ShellContent ContentTemplate="{DataTemplate vw:SearchListPage}"/>
