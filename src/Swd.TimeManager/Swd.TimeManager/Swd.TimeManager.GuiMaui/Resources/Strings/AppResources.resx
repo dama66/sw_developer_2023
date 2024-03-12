@@ -176,6 +176,9 @@
   <data name="lblProjectname" xml:space="preserve">
     <value>Project</value>
   </data>
+  <data name="lblSum" xml:space="preserve">
+    <value>Sum</value>
+  </data>
   <data name="lblTask" xml:space="preserve">
     <value>Task</value>
   </data>
