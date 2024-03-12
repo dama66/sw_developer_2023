@@ -1,11 +1,11 @@
-﻿
-using SQLite;
+﻿using SQLite;
 using Swd.TimeManager.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Swd.TimeManager.GuiMaui.Model
 {
@@ -16,9 +16,9 @@ namespace Swd.TimeManager.GuiMaui.Model
 
         async System.Threading.Tasks.Task Init()
         {
-            if (_database != null) 
+            if (_database != null)
             {
-            return;
+                return;
             }
             _database = new SQLiteAsyncConnection(Constants.DATABASEPATH, Constants.FLAGS);
             await _database.CreateTableAsync<Project>();
@@ -37,7 +37,7 @@ namespace Swd.TimeManager.GuiMaui.Model
         public async Task<Project> GetProjectByIdAsync(int key)
         {
             await Init();
-            return await _database.Table<Project>().Where(p=>p.Id == key).FirstOrDefaultAsync();
+            return await _database.Table<Project>().Where(p => p.Id == key).FirstOrDefaultAsync();
         }
 
         public async Task<int> SaveProjectAsync(Project project)
@@ -157,14 +157,14 @@ namespace Swd.TimeManager.GuiMaui.Model
         {
             await Init();
 
-                if (timerecord.Id != 0)
-                {
-                    return await _database.UpdateAsync(timerecord);
-                }
-                else
-                {
-                    return await _database.InsertAsync(timerecord);
-                }
+            if (timerecord.Id != 0)
+            {
+                return await _database.UpdateAsync(timerecord);
+            }
+            else
+            {
+                return await _database.InsertAsync(timerecord);
+            }
 
         }
 
@@ -177,30 +177,38 @@ namespace Swd.TimeManager.GuiMaui.Model
 
         #endregion
 
+
         public async Task<List<SearchResult>> GetSearchResultAsync(string searchValue)
         {
             await Init();
 
             string sql = string.Empty;
-                sql += "SELECT ";
-                sql += "TimeRecord.Id as Id, ";
-                sql += "TimeRecord.Date as Date, ";
-                sql += "TimeRecord.ProjectId as ProjectId, ";
-                sql += "Project.Name as ProjectName, ";
-                sql += "TimeRecord.TaskId as TaskId, "; 
-                sql += "Task.Name as TaskName, ";
-                sql += "TimeRecord.PersonId as PersonId, ";
-                sql += "Person.LastName || ' ' || Person.FirstName as PersonName, ";	
-                sql += "TimeRecord.Duration as Duration ";
-                sql += "FROM TimeRecord ";
-                sql += "INNER JOIN Project on TimeRecord.ProjectId = Project.Id ";
-                sql += "INNER JOIN Task ON TimeRecord.TaskId = Task.Id ";
-                sql += "INNER JOIN Person ON TimeRecord.PersonId = Person.Id ";
-                sql += "WHERE Project.Name LIKE '%" + searchValue + "%' ";
-                sql += "ORDER BY Project.Name, TimeRecord.Date";
+            sql += "SELECT ";
+            sql += "TimeRecord.Id as Id, ";
+            sql += "TimeRecord.Date as Date, ";
+            sql += "TimeRecord.ProjectId as ProjectId, ";
+            sql += "Project.Name as ProjectName, ";
+            sql += "TimeRecord.TaskId as TaskId, ";
+            sql += "Task.Name as TaskName, ";
+            sql += "TimeRecord.PersonId as PersonId, ";
+            sql += "Person.LastName || ' ' || Person.FirstName as PersonName, ";
+            sql += "TimeRecord.Duration as Duration ";
+            sql += "FROM TimeRecord ";
+            sql += "INNER JOIN Project ON TimeRecord.ProjectId = Project.Id ";
+            sql += "INNER JOIN Person ON TimeRecord.PersonId = Person.Id ";
+            sql += "INNER JOIN Task ON TimeRecord.TaskId = Person.Id ";
+            //sql += "WHERE Project.Name like '%" + searchValue + "%' "; => Achtung SQL Injection
+            sql += "WHERE Project.Name like ? ";
+            sql += "ORDER BY Project.Name, TimeRecord.Date";
 
-            var result = await _database.QueryAsync<SearchResult>(sql);
+            string adaptedSearchValue = $"%{searchValue}%";
+
+            var result = await _database.QueryAsync<SearchResult>(sql, adaptedSearchValue);
             return result.ToList();
+
         }
+
+
     }
 }
+

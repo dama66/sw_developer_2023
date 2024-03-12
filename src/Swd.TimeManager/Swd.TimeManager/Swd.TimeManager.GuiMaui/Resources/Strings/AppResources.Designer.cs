@@ -261,9 +261,9 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         /// <summary>
         ///   Looks up a localized string similar to E-Mail or Username.
         /// </summary>
-        internal static string lblUseName {
+        internal static string lblUserName {
             get {
-                return ResourceManager.GetString("lblUseName", resourceCulture);
+                return ResourceManager.GetString("lblUserName", resourceCulture);
             }
         }
         
@@ -513,9 +513,9 @@ namespace Swd.TimeManager.GuiMaui.Resources.Strings {
         /// <summary>
         ///   Looks up a localized string similar to Record your time.
         /// </summary>
-        internal static string Subtitle {
+        internal static string SubTitle {
             get {
-                return ResourceManager.GetString("Subtitle", resourceCulture);
+                return ResourceManager.GetString("SubTitle", resourceCulture);
             }
         }
         
