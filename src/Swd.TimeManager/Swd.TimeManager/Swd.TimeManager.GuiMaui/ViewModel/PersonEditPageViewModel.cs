@@ -1,4 +1,5 @@
-﻿using Swd.TimeManager.GuiMaui.Model;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Swd.TimeManager.GuiMaui.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +12,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 {
 
     [QueryProperty(nameof(PersonId), "personId")]
-    public class PersonEditPageViewModel : BaseViewModel
+    public class PersonEditPageViewModel : ObservableValidator
     {
         //Fields
         private Person _person;
@@ -25,8 +26,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _person; }
             set
             {
-                _person = value;
-                OnPropertyChanged();
+                SetProperty(ref _person, value);
             }
         }
 
@@ -35,8 +35,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _personId; }
             set
             {
-                _personId = value;
-                OnPropertyChanged();
+                SetProperty(ref _personId, value);
             }
         }
 

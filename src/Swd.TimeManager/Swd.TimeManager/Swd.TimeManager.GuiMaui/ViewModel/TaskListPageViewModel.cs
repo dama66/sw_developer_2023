@@ -8,11 +8,12 @@ using Swd.TimeManager.GuiMaui.Model;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using Swd.TimeManager.Model;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class TaskListPageViewModel : BaseViewModel
+    public class TaskListPageViewModel : ObservableValidator
     {
         //Fields
         private TimeManagerDatabase _database;
@@ -24,8 +25,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _tasklist; }
             set
             {
-                _tasklist = value;
-                OnPropertyChanged();
+                SetProperty(ref _tasklist, value);
             }
         }
 

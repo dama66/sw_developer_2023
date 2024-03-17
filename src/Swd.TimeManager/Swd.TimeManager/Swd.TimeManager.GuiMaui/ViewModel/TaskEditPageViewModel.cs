@@ -1,4 +1,5 @@
-﻿using Swd.TimeManager.GuiMaui.Model;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Swd.TimeManager.GuiMaui.Model;
 using Swd.TimeManager.Model;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 {
 
     [QueryProperty(nameof(TaskId), "taskId")]
-    public class TaskEditPageViewModel : BaseViewModel
+    public class TaskEditPageViewModel : ObservableValidator
     {
         //Fields
         private Swd.TimeManager.GuiMaui.Model.Task _task;
@@ -26,8 +27,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _task; }
             set
             {
-                _task = value;
-                OnPropertyChanged();
+                SetProperty(ref _task, value);
             }
         }
 
@@ -37,8 +37,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _taskId; }
             set
             {
-                _taskId = value;
-                OnPropertyChanged();
+                SetProperty(ref _taskId, value);
             }
         }
 

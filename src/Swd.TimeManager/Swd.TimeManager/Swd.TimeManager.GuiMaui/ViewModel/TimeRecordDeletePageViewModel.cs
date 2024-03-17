@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Swd.TimeManager.GuiMaui.Model;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
     [QueryProperty(nameof(TimeRecordId), "timerecordId")]
-    public class TimeRecordDeletePageViewModel : BaseViewModel
+    public class TimeRecordDeletePageViewModel : ObservableValidator
     {
         //Fields
         private TimeManagerDatabase _database;
@@ -31,8 +32,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _timerecord; }
             set
             {
-                _timerecord = value;
-                OnPropertyChanged();
+                SetProperty(ref _timerecord, value);
             }
         }
 
@@ -41,8 +41,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _timerecordId; }
             set
             {
-                _timerecordId = value;
-                OnPropertyChanged();
+                SetProperty(ref _timerecordId, value);
             }
         }
 
@@ -51,8 +50,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _selectedproject; }
             set
             {
-                _selectedproject = value;
-                OnPropertyChanged();
+                SetProperty(ref _selectedproject, value);
             }
         }
 
@@ -61,8 +59,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _selectedperson; }
             set
             {
-                _selectedperson = value;
-                OnPropertyChanged();
+                SetProperty(ref _selectedperson, value);
             }
         }
 
@@ -71,8 +68,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _selectedtask; }
             set
             {
-                _selectedtask = value;
-                OnPropertyChanged();
+                SetProperty(ref _selectedtask, value);
             }
         }
 
@@ -81,8 +77,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _projectlist; }
             set
             {
-                _projectlist = value;
-                OnPropertyChanged();
+                SetProperty(ref _projectlist, value);
             }
         }
 
@@ -91,8 +86,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _personlist; }
             set
             {
-                _personlist = value;
-                OnPropertyChanged();
+                SetProperty(ref _personlist, value);
             }
         }
         public ObservableCollection<Model.Task> TaskList
@@ -100,8 +94,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _tasklist; }
             set
             {
-                _tasklist = value;
-                OnPropertyChanged();
+                SetProperty(ref _tasklist, value);
             }
         }
 

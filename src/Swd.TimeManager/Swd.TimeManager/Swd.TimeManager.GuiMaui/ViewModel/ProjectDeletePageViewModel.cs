@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Swd.TimeManager.GuiMaui.Model;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
     [QueryProperty(nameof(ProjectId), "projectId")]
-    public class ProjectDeletePageViewModel : BaseViewModel
+    public class ProjectDeletePageViewModel : ObservableValidator
     {
         //Fields
         private Project _project;
@@ -23,8 +24,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _project; }
             set
             {
-                _project = value;
-                OnPropertyChanged();
+                SetProperty(ref _project, value);
             }
         }
 
@@ -34,8 +34,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _projectId; }
             set
             {
-                _projectId = value;
-                OnPropertyChanged();
+                SetProperty(ref _projectId, value);
             }
         }
 

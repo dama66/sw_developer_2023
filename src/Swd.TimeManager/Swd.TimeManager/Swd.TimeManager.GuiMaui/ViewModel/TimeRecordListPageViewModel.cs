@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using Swd.TimeManager.GuiMaui.Model;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class TimeRecordListPageViewModel : BaseViewModel
+    public class TimeRecordListPageViewModel : ObservableValidator
     {
         //Fields
         private TimeManagerDatabase _database;
@@ -22,8 +23,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _timerecordlist; }
             set
             {
-                _timerecordlist = value;
-                OnPropertyChanged();
+                SetProperty(ref _timerecordlist, value);
             }
         }
 

@@ -8,11 +8,12 @@ using Swd.TimeManager.GuiMaui.Model;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using System.Buffers;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class SearchListPageViewModel : BaseViewModel
+    public class SearchListPageViewModel : ObservableValidator
     {
         //Fields
         private TimeManagerDatabase _database;
@@ -26,8 +27,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _resultlist; }
             set
             {
-                _resultlist = value;
-                OnPropertyChanged();
+                SetProperty(ref _resultlist, value);
             }
         }
 
@@ -36,8 +36,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _searchValue; }
             set
             {
-                _searchValue = value;
-                OnPropertyChanged();
+                SetProperty(ref _searchValue, value);
             }
         }
 
@@ -46,8 +45,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _resultSum; }
             set
             {
-                _resultSum = value;
-                OnPropertyChanged();
+                SetProperty(ref _resultSum, value);
             }
         }
 

@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Swd.TimeManager.GuiMaui.Model;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
     [QueryProperty(nameof(PersonId), "personId")]
-    public class PersonDeletePageViewModel : BaseViewModel
+    public class PersonDeletePageViewModel : ObservableValidator
     {
         //Fields
         private Person _person;
@@ -23,8 +24,8 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _person; }
             set
             {
-                _person = value;
-                OnPropertyChanged();
+               SetProperty(ref _person, value);
+
             }
         }
 
@@ -34,8 +35,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _personId; }
             set
             {
-                _personId = value;
-                OnPropertyChanged();
+                SetProperty(ref _personId, value);
             }
         }
 

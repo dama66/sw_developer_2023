@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Swd.TimeManager.GuiMaui.Model;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
     [QueryProperty(nameof(TaskId), "taskId")]
-    public class TaskDeletePageViewModel : BaseViewModel
+    public class TaskDeletePageViewModel : ObservableValidator
     {
         //Fields
         private Swd.TimeManager.GuiMaui.Model.Task _task;
@@ -23,8 +24,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _task; }
             set
             {
-                _task = value;
-                OnPropertyChanged();
+                SetProperty(ref _task, value);
             }
         }
 
@@ -34,8 +34,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _taskId; }
             set
             {
-                _taskId = value;
-                OnPropertyChanged();
+                SetProperty(ref _taskId, value);
             }
         }
 

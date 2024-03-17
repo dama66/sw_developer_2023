@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Swd.TimeManager.GuiMaui.Model;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
     [QueryProperty(nameof(SelectedProjectId), "Id")]
-    class ProjectPageViewModel : BaseViewModel
+    class ProjectPageViewModel : ObservableValidator
     {
         //Fields
         private Project _project;
@@ -22,8 +23,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _project; }
             set
             {
-                _project = value;
-                OnPropertyChanged();
+                SetProperty(ref _project, value);
             }
         }
         public int SelectedProjectId
@@ -31,8 +31,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _selectedProjectid; }
             set
             {
-                _selectedProjectid = value;
-                OnPropertyChanged();
+                SetProperty(ref _selectedProjectid, value);
                 SetProjectToEdit();
             }
         }

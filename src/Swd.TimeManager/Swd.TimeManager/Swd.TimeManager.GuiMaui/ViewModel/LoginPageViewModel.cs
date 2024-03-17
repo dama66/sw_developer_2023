@@ -41,7 +41,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
         }
 
         [Required(ErrorMessage = "Password is a required field!")]
-        [MinLength(8, ErrorMessage = "Minimum length is 5 characters!")]
+        [MinLength(8, ErrorMessage = "Minimum length is 8 characters!")]
       //  [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8}$", ErrorMessage = "Password is not complex enough!")]
         [IsEmailPasswordEqual(nameof(Username))]
         public string Password
@@ -74,8 +74,8 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
 
         public LoginPageViewModel()
         {
-            Username = "marcel.butterweck";
-            Password = "12345";
+            Username = "david.maier";
+            Password = "12345678";
 
 
             //=> Nicht mehr notwendig wenn MVVM Toolkit verwendet wird 

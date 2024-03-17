@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 using Swd.TimeManager.GuiMaui.Model;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class PersonListPageViewModel : BaseViewModel
+    public class PersonListPageViewModel : ObservableValidator
     {
         //Fields
         private TimeManagerDatabase _database;
@@ -23,8 +24,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _personlist; }
             set
             {
-                _personlist = value;
-                OnPropertyChanged();
+                SetProperty(ref _personlist, value);
             }
         }
 

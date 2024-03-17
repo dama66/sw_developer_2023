@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Swd.TimeManager.GuiMaui.Model;
 
 namespace Swd.TimeManager.GuiMaui.ViewModel
 {
-    public class TaskAddPageViewModel : BaseViewModel
+    public class TaskAddPageViewModel : ObservableValidator
     {
         //Fields
         private TimeManager.GuiMaui.Model.Task _task;
@@ -19,8 +20,7 @@ namespace Swd.TimeManager.GuiMaui.ViewModel
             get { return _task; }
             set
             {
-                _task = value;
-                OnPropertyChanged();
+                SetProperty(ref _task, value);
             }
         }
 
